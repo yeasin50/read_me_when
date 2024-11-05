@@ -1,0 +1,5 @@
+enum Mood {
+  sad,
+  happy,
+  ////.
+}
