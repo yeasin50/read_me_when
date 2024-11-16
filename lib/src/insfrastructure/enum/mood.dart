@@ -1,1 +1,12 @@
-enum Mood { sad, happy, anger, disappointment, loneliness, fear, trust, love, surprise, disgust }
+enum Mood {
+  sad,
+  happy,
+  anger,
+  disappointment,
+  loneliness,
+  fear,
+  trust,
+  love,
+  surprise,
+  disgust,
+}

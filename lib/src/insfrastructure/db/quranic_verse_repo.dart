@@ -10,7 +10,18 @@ class QuranicVerseRepo {
   Map<Mood, List<QuranicVerse>> get data => _data;
 
   /// hold from assets
-  final Map<Mood, String> _moodFiles = {Mood.sad: "sadness_db"};
+  final Map<Mood, String> _moodFiles = {
+    Mood.sad: "sadness_db",
+    Mood.anger: "anger_db",
+    Mood.disappointment: "disappointment_db",
+    Mood.disgust: "disgust_db",
+    Mood.fear: "fear_db",
+    Mood.happy: "happiness_db",
+    Mood.loneliness: "loneliness_db",
+    Mood.love: "love_db",
+    Mood.surprise: "surprise_db",
+    Mood.trust: "trust_db",
+  };
 
   /// return null is Everything is fine,
   /// return string when something went wrong to notify the user

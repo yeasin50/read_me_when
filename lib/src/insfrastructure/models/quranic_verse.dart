@@ -41,7 +41,7 @@ class QuranicVerse extends Equatable {
 
   factory QuranicVerse.fromMap(Map<String, dynamic> map) {
     return QuranicVerse(
-      suraNo: map['suraNo']?.toInt() ?? 0,
+      suraNo: map['suraNo']?.toInt() ?? map['Sura No']?.toInt() ?? 0,
       suraName: map['suraName'] ?? '',
       ayatNo: map['ayatNo'] ?? '',
       ayatInArabic: map['ayatInArabic'] ?? '',
