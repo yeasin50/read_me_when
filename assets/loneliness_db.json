@@ -1,191 +1,191 @@
 [
   {
-    "Sura No": 2,
-    "Sura Name": "Al-Baqarah",
-    "Ayat No": "186",
-    "Ayat in Arabic": "وَإِذَا سَأَلَكَ عِبَادِى عَنِّى فَإِنِّى قَرِيبٌۭ ۖ أُجِيبُ دَعْوَةَ ٱلدَّاعِ إِذَا دَعَانِ",
-    "English": "And when My servants ask you concerning Me, indeed I am near. I respond to the invocation of the supplicant when he calls upon Me.",
-    "Bangla": "আমার বান্দারা যখন আমার সম্পর্কে জিজ্ঞাসা করে, তখন বলুন, আমি তো নিকটে। আমি প্রার্থনাকারীর ডাকে সাড়া দিই।",
-    "Chinese": "当我的仆人询问关于我的事时，（说）我确实近在咫尺；当他祈求我时，我回应他的祈祷。"
+    "sura_no": 2,
+    "sura_name": "Al-Baqarah",
+    "ayat_no": "186",
+    "arabic": "وَإِذَا سَأَلَكَ عِبَادِى عَنِّى فَإِنِّى قَرِيبٌۭ ۖ أُجِيبُ دَعْوَةَ ٱلدَّاعِ إِذَا دَعَانِ",
+    "english": "And when My servants ask you concerning Me, indeed I am near. I respond to the invocation of the supplicant when he calls upon Me.",
+    "bangla": "আমার বান্দারা যখন আমার সম্পর্কে জিজ্ঞাসা করে, তখন বলুন, আমি তো নিকটে। আমি প্রার্থনাকারীর ডাকে সাড়া দিই।",
+    "chinese": "当我的仆人询问关于我的事时，（说）我确实近在咫尺；当他祈求我时，我回应他的祈祷。"
   },
   {
-    "Sura No": 94,
-    "Sura Name": "Ash-Sharh",
-    "Ayat No": "5-6",
-    "Ayat in Arabic": "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا * إِنَّ مَعَ ٱلْعُسْرِ يُسْرًۭا",
-    "English": "For indeed, with hardship comes ease. Indeed, with hardship comes ease.",
-    "Bangla": "নিশ্চয়ই, কষ্টের সঙ্গে রয়েছে স্বস্তি।",
-    "Chinese": "艰难之后确有容易；艰难之后确有容易。"
+    "sura_no": 94,
+    "sura_name": "Ash-Sharh",
+    "ayat_no": "5-6",
+    "arabic": "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا * إِنَّ مَعَ ٱلْعُسْرِ يُسْرًۭا",
+    "english": "For indeed, with hardship comes ease. Indeed, with hardship comes ease.",
+    "bangla": "নিশ্চয়ই, কষ্টের সঙ্গে রয়েছে স্বস্তি।",
+    "chinese": "艰难之后确有容易；艰难之后确有容易。"
   },
   {
-    "Sura No": 13,
-    "Sura Name": "Ar-Ra'd",
-    "Ayat No": "28",
-    "Ayat in Arabic": "أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ",
-    "English": "Verily, in the remembrance of Allah do hearts find rest.",
-    "Bangla": "নিশ্চয়ই আল্লাহর স্মরণেই অন্তর শান্তি পায়।",
-    "Chinese": "确实，记念真主，心灵得安宁。"
+    "sura_no": 13,
+    "sura_name": "Ar-Ra'd",
+    "ayat_no": "28",
+    "arabic": "أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ",
+    "english": "Verily, in the remembrance of Allah do hearts find rest.",
+    "bangla": "নিশ্চয়ই আল্লাহর স্মরণেই অন্তর শান্তি পায়।",
+    "chinese": "确实，记念真主，心灵得安宁。"
   },
   {
-    "Sura No": 8,
-    "Sura Name": "Al-Anfal",
-    "Ayat No": "64",
-    "Ayat in Arabic": "يَـٰٓأَيُّهَا ٱلنَّبِىُّ حَسْبُكَ ٱللَّهُ وَمَنِ ٱتَّبَعَكَ مِنَ ٱلْمُؤْمِنِينَ",
-    "English": "O Prophet, sufficient for you is Allah and for whoever follows you of the believers.",
-    "Bangla": "হে নবী, তোমার জন্য আল্লাহই যথেষ্ট এবং মুমিনরা যারা তোমার অনুসরণ করে।",
-    "Chinese": "先知啊！真主是你的助佑，也是信士们的助佑。"
+    "sura_no": 8,
+    "sura_name": "Al-Anfal",
+    "ayat_no": "64",
+    "arabic": "يَـٰٓأَيُّهَا ٱلنَّبِىُّ حَسْبُكَ ٱللَّهُ وَمَنِ ٱتَّبَعَكَ مِنَ ٱلْمُؤْمِنِينَ",
+    "english": "O Prophet, sufficient for you is Allah and for whoever follows you of the believers.",
+    "bangla": "হে নবী, তোমার জন্য আল্লাহই যথেষ্ট এবং মুমিনরা যারা তোমার অনুসরণ করে।",
+    "chinese": "先知啊！真主是你的助佑，也是信士们的助佑。"
   },
   {
-    "Sura No": 9,
-    "Sura Name": "At-Tawbah",
-    "Ayat No": "40",
-    "Ayat in Arabic": "لَا تَحْزَنْ إِنَّ ٱللَّهَ مَعَنَا",
-    "English": "Do not grieve; indeed Allah is with us.",
-    "Bangla": "দুঃখ করো না; নিশ্চয়ই আল্লাহ আমাদের সঙ্গে আছেন।",
-    "Chinese": "不要忧愁，真主与我们同在。"
+    "sura_no": 9,
+    "sura_name": "At-Tawbah",
+    "ayat_no": "40",
+    "arabic": "لَا تَحْزَنْ إِنَّ ٱللَّهَ مَعَنَا",
+    "english": "Do not grieve; indeed Allah is with us.",
+    "bangla": "দুঃখ করো না; নিশ্চয়ই আল্লাহ আমাদের সঙ্গে আছেন।",
+    "chinese": "不要忧愁，真主与我们同在。"
   },
   {
-    "Sura No": 57,
-    "Sura Name": "Al-Hadid",
-    "Ayat No": "4",
-    "Ayat in Arabic": "وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ",
-    "English": "And He is with you wherever you are.",
-    "Bangla": "আর তিনি তোমাদের সঙ্গে আছেন যেখানেই থাকো।",
-    "Chinese": "他与你们同在，无论你们在哪里。"
+    "sura_no": 57,
+    "sura_name": "Al-Hadid",
+    "ayat_no": "4",
+    "arabic": "وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ",
+    "english": "And He is with you wherever you are.",
+    "bangla": "আর তিনি তোমাদের সঙ্গে আছেন যেখানেই থাকো।",
+    "chinese": "他与你们同在，无论你们在哪里。"
   },
   {
-    "Sura No": 3,
-    "Sura Name": "Al-Imran",
-    "Ayat No": "139",
-    "Ayat in Arabic": "وَلَا تَهِنُوا۟ وَلَا تَحْزَنُو۟ا وَأَنتُمُ ٱلْأَعْلَوْنَ إِن كُنتُم مُّؤْمِنِينَ",
-    "English": "Do not lose heart or despair; you will be superior if you are [true] believers.",
-    "Bangla": "দুর্বল হয়ো না এবং দুঃখিত হয়ো না; যদি তোমরা বিশ্বাসী হও, তবে তোমরাই শ্রেষ্ঠ।",
-    "Chinese": "你们不要懦弱，不要忧愁；如果你们是信士，你们就会是胜者。"
+    "sura_no": 3,
+    "sura_name": "Al-Imran",
+    "ayat_no": "139",
+    "arabic": "وَلَا تَهِنُوا۟ وَلَا تَحْزَنُو۟ا وَأَنتُمُ ٱلْأَعْلَوْنَ إِن كُنتُم مُّؤْمِنِينَ",
+    "english": "Do not lose heart or despair; you will be superior if you are [true] believers.",
+    "bangla": "দুর্বল হয়ো না এবং দুঃখিত হয়ো না; যদি তোমরা বিশ্বাসী হও, তবে তোমরাই শ্রেষ্ঠ।",
+    "chinese": "你们不要懦弱，不要忧愁；如果你们是信士，你们就会是胜者。"
   },
   {
-    "Sura No": 6,
-    "Sura Name": "Al-An'am",
-    "Ayat No": "59",
-    "Ayat in Arabic": "وَعِندَهُۥ مَفَاتِحُ ٱلْغَيْبِ لَا يَعْلَمُهَآ إِلَّا هُوَ",
-    "English": "And with Him are the keys of the unseen; none knows them except Him.",
-    "Bangla": "তাঁর কাছেই রয়েছে গায়বের চাবি। একমাত্র তিনিই তা জানেন।",
-    "Chinese": "幽玄之钥在他手中，只有他知道它们。"
+    "sura_no": 6,
+    "sura_name": "Al-An'am",
+    "ayat_no": "59",
+    "arabic": "وَعِندَهُۥ مَفَاتِحُ ٱلْغَيْبِ لَا يَعْلَمُهَآ إِلَّا هُوَ",
+    "english": "And with Him are the keys of the unseen; none knows them except Him.",
+    "bangla": "তাঁর কাছেই রয়েছে গায়বের চাবি। একমাত্র তিনিই তা জানেন।",
+    "chinese": "幽玄之钥在他手中，只有他知道它们。"
   },
   {
-    "Sura No": 29,
-    "Sura Name": "Al-Ankabut",
-    "Ayat No": "69",
-    "Ayat in Arabic": "وَٱلَّذِينَ جَـٰهَدُوا۟ فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا ۚ",
-    "English": "And those who strive for Us - We will surely guide them to Our ways.",
-    "Bangla": "যারা আমাদের পথে প্রচেষ্টা করে, আমরা তাদের অবশ্যই আমাদের পথ দেখাব।",
-    "Chinese": "那些为主奋斗者，我必指引他们正道。"
+    "sura_no": 29,
+    "sura_name": "Al-Ankabut",
+    "ayat_no": "69",
+    "arabic": "وَٱلَّذِينَ جَـٰهَدُوا۟ فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا ۚ",
+    "english": "And those who strive for Us - We will surely guide them to Our ways.",
+    "bangla": "যারা আমাদের পথে প্রচেষ্টা করে, আমরা তাদের অবশ্যই আমাদের পথ দেখাব।",
+    "chinese": "那些为主奋斗者，我必指引他们正道。"
   },
   {
-    "Sura No": 42,
-    "Sura Name": "Ash-Shura",
-    "Ayat No": "11",
-    "Ayat in Arabic": "لَيْسَ كَمِثْلِهِۦ شَىْءٌۭ ۖ وَهُوَ ٱلسَّمِيعُ ٱلْبَصِيرُ",
-    "English": "There is nothing like unto Him, and He is the Hearing, the Seeing.",
-    "Bangla": "তাঁর সমতুল্য কিছুই নেই। তিনি সর্বশ্রোতা, সর্বদ্রষ্টা।",
-    "Chinese": "没有任何事物能与他相似，他是全听的，全见的。"
+    "sura_no": 42,
+    "sura_name": "Ash-Shura",
+    "ayat_no": "11",
+    "arabic": "لَيْسَ كَمِثْلِهِۦ شَىْءٌۭ ۖ وَهُوَ ٱلسَّمِيعُ ٱلْبَصِيرُ",
+    "english": "There is nothing like unto Him, and He is the Hearing, the Seeing.",
+    "bangla": "তাঁর সমতুল্য কিছুই নেই। তিনি সর্বশ্রোতা, সর্বদ্রষ্টা।",
+    "chinese": "没有任何事物能与他相似，他是全听的，全见的。"
   },
   {
-    "Sura No": 50,
-    "Sura Name": "Qaf",
-    "Ayat No": "16",
-    "Ayat in Arabic": "وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ ٱلْوَرِيدِ",
-    "English": "And We are closer to him than [his] jugular vein.",
-    "Bangla": "আর আমরা তার ধমনী থেকেও বেশি নিকটে।",
-    "Chinese": "我们比他的颈静脉离他更近。"
+    "sura_no": 50,
+    "sura_name": "Qaf",
+    "ayat_no": "16",
+    "arabic": "وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ ٱلْوَرِيدِ",
+    "english": "And We are closer to him than [his] jugular vein.",
+    "bangla": "আর আমরা তার ধমনী থেকেও বেশি নিকটে।",
+    "chinese": "我们比他的颈静脉离他更近。"
   },
   {
-    "Sura No": 20,
-    "Sura Name": "Ta-Ha",
-    "Ayat No": "46",
-    "Ayat in Arabic": "إِنَّنِى مَعَكُمَآ أَسْمَعُ وَأَرَىٰ",
-    "English": "Indeed, I am with you both; I hear and I see.",
-    "Bangla": "নিশ্চয়ই, আমি তোমাদের সঙ্গে আছি। আমি শুনি এবং দেখি।",
-    "Chinese": "我确与你们同在，我听着，我看着。"
+    "sura_no": 20,
+    "sura_name": "Ta-Ha",
+    "ayat_no": "46",
+    "arabic": "إِنَّنِى مَعَكُمَآ أَسْمَعُ وَأَرَىٰ",
+    "english": "Indeed, I am with you both; I hear and I see.",
+    "bangla": "নিশ্চয়ই, আমি তোমাদের সঙ্গে আছি। আমি শুনি এবং দেখি।",
+    "chinese": "我确与你们同在，我听着，我看着。"
   },
   {
-    "Sura No": 4,
-    "Sura Name": "An-Nisa",
-    "Ayat No": "70",
-    "Ayat in Arabic": "وَكَفَىٰ بِٱللَّهِ عَلِيمًۭا",
-    "English": "And sufficient is Allah as Knower.",
-    "Bangla": "আল্লাহই যথেষ্ট জ্ঞানী।",
-    "Chinese": "真主是足够的全知者。"
+    "sura_no": 4,
+    "sura_name": "An-Nisa",
+    "ayat_no": "70",
+    "arabic": "وَكَفَىٰ بِٱللَّهِ عَلِيمًۭا",
+    "english": "And sufficient is Allah as Knower.",
+    "bangla": "আল্লাহই যথেষ্ট জ্ঞানী।",
+    "chinese": "真主是足够的全知者。"
   },
   {
-    "Sura No": 17,
-    "Sura Name": "Al-Isra",
-    "Ayat No": "79",
-    "Ayat in Arabic": "وَمِنَ ٱللَّيْلِ فَسَبِّحْهُ وَإِدْبَارَ ٱلْنُّجُومِ",
-    "English": "And during the night, exalt Him and at the decline of the stars.",
-    "Bangla": "এবং রাতে তাঁর তাসবীহ করো, এবং তারা যখন ডুবে যায়।",
-    "Chinese": "在夜间，要赞美他，并在星辰落下时赞美他。"
+    "sura_no": 17,
+    "sura_name": "Al-Isra",
+    "ayat_no": "79",
+    "arabic": "وَمِنَ ٱللَّيْلِ فَسَبِّحْهُ وَإِدْبَارَ ٱلْنُّجُومِ",
+    "english": "And during the night, exalt Him and at the decline of the stars.",
+    "bangla": "এবং রাতে তাঁর তাসবীহ করো, এবং তারা যখন ডুবে যায়।",
+    "chinese": "在夜间，要赞美他，并在星辰落下时赞美他。"
   },
   {
-    "Sura No": 57,
-    "Sura Name": "Al-Hadid",
-    "Ayat No": "3",
-    "Ayat in Arabic": "هُوَ ٱلْأَوَّلُ وَٱلْءَاخِرُ وَٱلظَّٰهِرُ وَٱلْبَاطِنُ وَهُوَ بِكُلِّ شَىْءٍ عَلِيمٌۭ",
-    "English": "He is the First and the Last, the Ascendant and the Intimate; and He is, of all things, Knowing.",
-    "Bangla": "তিনি শুরু এবং শেষ, তিনি প্রকাশ্য এবং গোপন, এবং তিনি সব কিছু জানেন।",
-    "Chinese": "他是最初的，也是最后的，是显现的，也是隐秘的，他是万物全知的。"
+    "sura_no": 57,
+    "sura_name": "Al-Hadid",
+    "ayat_no": "3",
+    "arabic": "هُوَ ٱلْأَوَّلُ وَٱلْءَاخِرُ وَٱلظَّٰهِرُ وَٱلْبَاطِنُ وَهُوَ بِكُلِّ شَىْءٍ عَلِيمٌۭ",
+    "english": "He is the First and the Last, the Ascendant and the Intimate; and He is, of all things, Knowing.",
+    "bangla": "তিনি শুরু এবং শেষ, তিনি প্রকাশ্য এবং গোপন, এবং তিনি সব কিছু জানেন।",
+    "chinese": "他是最初的，也是最后的，是显现的，也是隐秘的，他是万物全知的。"
   },
   {
-    "Sura No": 65,
-    "Sura Name": "At-Talaq",
-    "Ayat No": "3",
-    "Ayat in Arabic": "وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ",
-    "English": "And will provide him from where he does not expect.",
-    "Bangla": "এবং তাকে এমন জায়গা থেকে রিজিক দেবে, যা সে কল্পনাও করে না।",
-    "Chinese": "并从他没有预料到的地方为他提供。"
+    "sura_no": 65,
+    "sura_name": "At-Talaq",
+    "ayat_no": "3",
+    "arabic": "وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ",
+    "english": "And will provide him from where he does not expect.",
+    "bangla": "এবং তাকে এমন জায়গা থেকে রিজিক দেবে, যা সে কল্পনাও করে না।",
+    "chinese": "并从他没有预料到的地方为他提供。"
   },
   {
-    "Sura No": 56,
-    "Sura Name": "Al-Waqi'a",
-    "Ayat No": "89",
-    "Ayat in Arabic": "فَجَنَّتُهَا ۚ",
-    "English": "And its garden.",
-    "Bangla": "এবং এর বাগান।",
-    "Chinese": "它的花园。"
+    "sura_no": 56,
+    "sura_name": "Al-Waqi'a",
+    "ayat_no": "89",
+    "arabic": "فَجَنَّتُهَا ۚ",
+    "english": "And its garden.",
+    "bangla": "এবং এর বাগান।",
+    "chinese": "它的花园。"
   },
   {
-    "Sura No": 41,
-    "Sura Name": "Fussilat",
-    "Ayat No": "30",
-    "Ayat in Arabic": "إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَـٰمُوا۟ فَلَا خَوْفٌۭ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
-    "English": "Indeed, those who have said, 'Our Lord is Allah' and then remained steadfast - no fear will come upon them, nor will they grieve.",
-    "Bangla": "নিশ্চয়ই যারা বলেছে, 'আমাদের প্রভু আল্লাহ' এবং তারপরে অবিচল ছিল - তাদের উপর কোনো ভয় আসবে না, তারা দুঃখিত হবে না।",
-    "Chinese": "确实，那些说‘我们的主是阿拉’并坚持不懈的人，将不会有恐惧，也不会悲伤。"
+    "sura_no": 41,
+    "sura_name": "Fussilat",
+    "ayat_no": "30",
+    "arabic": "إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَـٰمُوا۟ فَلَا خَوْفٌۭ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
+    "english": "Indeed, those who have said, 'Our Lord is Allah' and then remained steadfast - no fear will come upon them, nor will they grieve.",
+    "bangla": "নিশ্চয়ই যারা বলেছে, 'আমাদের প্রভু আল্লাহ' এবং তারপরে অবিচল ছিল - তাদের উপর কোনো ভয় আসবে না, তারা দুঃখিত হবে না।",
+    "chinese": "确实，那些说‘我们的主是阿拉’并坚持不懈的人，将不会有恐惧，也不会悲伤。"
   },
   {
-    "Sura No": 20,
-    "Sura Name": "Ta-Ha",
-    "Ayat No": "25-26",
-    "Ayat in Arabic": "قَالَ رَبُّنَا ٱلَّذِىٓ ءَاتَىٰ كُلَّ شَىْءٍ خَلْقَهُۥ ثُمَّ هَدَىٰ",
-    "English": "He said, 'Our Lord is He who gave each thing its form and then guided it.'",
-    "Bangla": "তিনি বললেন, 'আমাদের প্রভু হলেন তিনি যিনি সব কিছুকে তার সঠিক রূপ দান করেছেন এবং তারপর তাকে পথ নির্দেশ করেছেন।",
-    "Chinese": "他说，‘我们的主是那位赋予万物其形状并引导它的’"
+    "sura_no": 20,
+    "sura_name": "Ta-Ha",
+    "ayat_no": "25-26",
+    "arabic": "قَالَ رَبُّنَا ٱلَّذِىٓ ءَاتَىٰ كُلَّ شَىْءٍ خَلْقَهُۥ ثُمَّ هَدَىٰ",
+    "english": "He said, 'Our Lord is He who gave each thing its form and then guided it.'",
+    "bangla": "তিনি বললেন, 'আমাদের প্রভু হলেন তিনি যিনি সব কিছুকে তার সঠিক রূপ দান করেছেন এবং তারপর তাকে পথ নির্দেশ করেছেন।",
+    "chinese": "他说，‘我们的主是那位赋予万物其形状并引导它的’"
   },
   {
-    "Sura No": 9,
-    "Sura Name": "At-Tawbah",
-    "Ayat No": "51",
-    "Ayat in Arabic": "قُل لَّن يُصِيبَنَآ إِلَّا مَا كَتَبَ ٱللَّهُ لَنَا",
-    "English": "Say, 'Never will we be struck except by what Allah has decreed for us.'",
-    "Bangla": "বলুন, 'আমাদের কেবল সেই ঘটনাই ঘটবে যা আল্লাহ আমাদের জন্য নির্ধারণ করেছেন।'",
-    "Chinese": "说：‘我们只会遭遇真主为我们注定的。’"
+    "sura_no": 9,
+    "sura_name": "At-Tawbah",
+    "ayat_no": "51",
+    "arabic": "قُل لَّن يُصِيبَنَآ إِلَّا مَا كَتَبَ ٱللَّهُ لَنَا",
+    "english": "Say, 'Never will we be struck except by what Allah has decreed for us.'",
+    "bangla": "বলুন, 'আমাদের কেবল সেই ঘটনাই ঘটবে যা আল্লাহ আমাদের জন্য নির্ধারণ করেছেন।'",
+    "chinese": "说：‘我们只会遭遇真主为我们注定的。’"
   },
   {
-    "Sura No": 29,
-    "Sura Name": "Al-Ankabut",
-    "Ayat No": "69",
-    "Ayat in Arabic": "وَٱلَّذِينَ جَـٰهَدُوا۟ فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَاۚ",
-    "English": "And those who strive for Us - We will surely guide them to Our ways.",
-    "Bangla": "যারা আমাদের পথে প্রচেষ্টা করে, আমরা তাদের অবশ্যই আমাদের পথ দেখাব।",
-    "Chinese": "那些为主奋斗者，我必指引他们正道。"
+    "sura_no": 29,
+    "sura_name": "Al-Ankabut",
+    "ayat_no": "69",
+    "arabic": "وَٱلَّذِينَ جَـٰهَدُوا۟ فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَاۚ",
+    "english": "And those who strive for Us - We will surely guide them to Our ways.",
+    "bangla": "যারা আমাদের পথে প্রচেষ্টা করে, আমরা তাদের অবশ্যই আমাদের পথ দেখাব।",
+    "chinese": "那些为主奋斗者，我必指引他们正道。"
   }
 ]

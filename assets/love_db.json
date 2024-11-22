@@ -1,109 +1,110 @@
 [
     {
-        "SuraNo": 30,
-        "SuraName": "Ar-Rum",
-        "AyatNo": 21,
-        "AyatArabic": "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا",
-        "AyatEnglish": "And of His signs is that He created for you from yourselves mates that you may find tranquility in them.",
-        "AyatBangla": "এবং তাঁর নিদর্শনাবলীর মধ্যে একটি হল, তোমাদের মধ্য হতে তোমাদের জন্য সঙ্গী সৃষ্টি করেছেন, যাতে তোমরা তাদের নিকট প্রশান্তি লাভ কর।",
-        "AyatChinese": ""
+        "sura_no": 30,
+        "sura_name": "Ar-Rum",
+        "ayat_no": 21,
+        "arabic": "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا",
+        "english": "And of His signs is that He created for you from yourselves mates that you may find tranquility in them.",
+        "bangla": "এবং তাঁর নিদর্শনাবলীর মধ্যে একটি হল, তোমাদের মধ্য হতে তোমাদের জন্য সঙ্গী সৃষ্টি করেছেন, যাতে তোমরা তাদের নিকট প্রশান্তি লাভ কর।",
+        "chinese": ""
     },
     {
-        "SuraNo": 2,
-        "SuraName": "Al-Baqarah",
-        "AyatNo": 195,
-        "AyatArabic": "إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُحْسِنِينَ",
-        "AyatEnglish": "Allah loves those who do good.",
-        "AyatBangla": "নিশ্চয় আল্লাহ্‌ মুহসীনদের ভালোবাসেন।",
-        "AyatChinese": ""
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 195,
+        "arabic": "إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُحْسِنِينَ",
+        "english": "Allah loves those who do good.",
+        "bangla": "নিশ্চয় আল্লাহ্‌ মুহসীনদের ভালোবাসেন।",
+        "chinese": ""
     },
     {
-        "SuraNo": 3,
-        "SuraName": "Aal-e-Imran",
-        "AyatNo": 92,
-        "AyatArabic": "لَن تَنَالُوا الْبِرَّ حَتَّىٰ تُنفِقُوا مِمَّا تُحِبُّونَ",
-        "AyatEnglish": "Never will you attain righteousness until you spend from that which you love.",
-        "AyatBangla": "তোমরা কখনই পূর্ণ পুণ্য লাভ করতে পারবে না যতক্ষণ না তোমরা তোমাদের প্রিয় বস্তু থেকে দান কর।",
-        "AyatChinese": ""
+        "sura_no": 3,
+        "sura_name": "Aal-e-Imran",
+        "ayat_no": 92,
+        "arabic": "لَن تَنَالُوا الْبِرَّ حَتَّىٰ تُنفِقُوا مِمَّا تُحِبُّونَ",
+        "english": "Never will you attain righteousness until you spend from that which you love.",
+        "bangla": "তোমরা কখনই পূর্ণ পুণ্য লাভ করতে পারবে না যতক্ষণ না তোমরা তোমাদের প্রিয় বস্তু থেকে দান কর।",
+        "chinese": ""
     },
     {
-        "SuraNo": 5,
-        "SuraName": "Al-Ma'idah",
-        "AyatNo": 13,
-        "AyatArabic": "إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُقْسِطِينَ",
-        "AyatEnglish": "Allah loves those who act justly.",
-        "AyatBangla": "নিশ্চয় আল্লাহ ন্যায়পরায়ণদের ভালোবাসেন।",
-        "AyatChinese": ""
+        "sura_no": 5,
+        "sura_name": "Al-Ma'idah",
+        "ayat_no": 13,
+        "arabic": "إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُقْسِطِينَ",
+        "english": "Allah loves those who act justly.",
+        "bangla": "নিশ্চয় আল্লাহ ন্যায়পরায়ণদের ভালোবাসেন।",
+        "chinese": ""
     },
     {
-        "SuraNo": 3,
-        "SuraName": "Aal-e-Imran",
-        "AyatNo": 31,
-        "AyatArabic": "فَاتَّبِعُونِي يُحْبِبْكُمُ اللَّهُ",
-        "AyatEnglish": "So follow me, [and] Allah will love you.",
-        "AyatBangla": "তাহলে আমাকে অনুসরণ করো, আল্লাহ তোমাদের ভালোবাসবেন।",
-        "AyatChinese": ""
+        "sura_no": 3,
+        "sura_name": "Aal-e-Imran",
+        "ayat_no": 31,
+        "arabic": "فَاتَّبِعُونِي يُحْبِبْكُمُ اللَّهُ",
+        "english": "So follow me, [and] Allah will love you.",
+        "bangla": "তাহলে আমাকে অনুসরণ করো, আল্লাহ তোমাদের ভালোবাসবেন।",
+        "chinese": ""
     },
     {
-        "SuraNo": 2,
-        "SuraName": "Al-Baqarah",
-        "AyatNo": 222,
-        "AyatArabic": "إِنَّ ٱللَّهَ يُحِبُّ ٱلتَّوَّٲبِينَ وَيُحِبُّ ٱلْمُتَطَهِّرِينَ",
-        "AyatEnglish": "Allah loves those who repent and those who purify themselves.",
-        "AyatBangla": "নিশ্চয় আল্লাহ তাওবাকারী ও পবিত্রতা অর্জনকারীদের ভালোবাসেন।",
-        "AyatChinese": ""
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 222,
+        "arabic": "إِنَّ ٱللَّهَ يُحِبُّ ٱلتَّوَّٲبِينَ وَيُحِبُّ ٱلْمُتَطَهِّرِينَ",
+        "english": "Allah loves those who repent and those who purify themselves.",
+        "bangla": "নিশ্চয় আল্লাহ তাওবাকারী ও পবিত্রতা অর্জনকারীদের ভালোবাসেন।",
+        "chinese": ""
     },
     {
-        "SuraNo": 3,
-        "SuraName": "Aal-e-Imran",
-        "AyatNo": 76,
-        "AyatArabic": "فَإِنَّ اللَّهَ يُحِبُّ الْمُتَّقِينَ",
-        "AyatEnglish": "Then indeed, Allah loves the righteous.",
-        "AyatBangla": "নিশ্চয় আল্লাহ পরহেযগারদের ভালোবাসেন।",
-        "AyatChinese": ""
+        "sura_no": 3,
+        "sura_name": "Aal-e-Imran",
+        "ayat_no": 76,
+        "arabic": "فَإِنَّ اللَّهَ يُحِبُّ الْمُتَّقِينَ",
+        "english": "Then indeed, Allah loves the righteous.",
+        "bangla": "নিশ্চয় আল্লাহ পরহেযগারদের ভালোবাসেন।",
+        "chinese": ""
     },
     {
-        "SuraNo": 60,
-        "SuraName": "Al-Mumtahina",
-        "AyatNo": 7,
-        "AyatArabic": "عَسَى ٱللَّهُ أَن يَجْعَلَ بَيْنَكُمْ وَبَيْنَ ٱلَّذِينَ عَادَيْتُم مِّنْهُم مَّوَدَّةً",
-        "AyatEnglish": "Perhaps Allah will put, between you and those to whom you have been enemies, affection.",
-        "AyatBangla": "আশা করা যায় যে আল্লাহ তোমাদের মধ্যে এবং তাদের মধ্যে প্রীতি স্থাপন করবেন, যাদের সাথে তোমাদের শত্রুতা ছিল।",
-        "AyatChinese": ""
+        "sura_no": 60,
+        "sura_name": "Al-Mumtahina",
+        "ayat_no": 7,
+        "arabic": "عَسَى ٱللَّهُ أَن يَجْعَلَ بَيْنَكُمْ وَبَيْنَ ٱلَّذِينَ عَادَيْتُم مِّنْهُم مَّوَدَّةً",
+        "english": "Perhaps Allah will put, between you and those to whom you have been enemies, affection.",
+        "bangla": "আশা করা যায় যে আল্লাহ তোমাদের মধ্যে এবং তাদের মধ্যে প্রীতি স্থাপন করবেন, যাদের সাথে তোমাদের শত্রুতা ছিল।",
+        "chinese": ""
     },
     {
-        "SuraNo": 2,
-        "SuraName": "Al-Baqarah",
-        "AyatNo": 286,
-        "AyatArabic": "لَا يُكَلِّفُ ٱللَّهُ نَفْسًۭا إِلَّا وُسْعَهَا",
-        "AyatEnglish": "Allah does not burden a soul beyond that it can bear.",
-        "AyatBangla": "আল্লাহ্‌ কাউকে তার সাধ্যের অধিক ভার প্রদান করেন না।",
-        "AyatChinese": ""
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 286,
+        "arabic": "لَا يُكَلِّفُ ٱللَّهُ نَفْسًۭا إِلَّا وُسْعَهَا",
+        "english": "Allah does not burden a soul beyond that it can bear.",
+        "bangla": "আল্লাহ্‌ কাউকে তার সাধ্যের অধিক ভার প্রদান করেন না।",
+        "chinese": ""
     },
     {
-        "SuraNo": 49,
-        "SuraName": "Al-Hujurat",
-        "AyatNo": 10,
-        "AyatArabic": "إِنَّمَا ٱلْمُؤْمِنُونَ إِخْوَةٌۭ",
-        "AyatEnglish": "The believers are but brothers.",
-        "AyatBangla": "মুমিনরা তো পরস্পরের ভাই।",
-        "AyatChinese": ""
+        "sura_no": 49,
+        "sura_name": "Al-Hujurat",
+        "ayat_no": 10,
+        "arabic": "إِنَّمَا ٱلْمُؤْمِنُونَ إِخْوَةٌۭ",
+        "english": "The believers are but brothers.",
+        "bangla": "মুমিনরা তো পরস্পরের ভাই।",
+        "chinese": ""
     },
     {
-        "SuraNo": 8,
-        "SuraName": "Al-Anfal",
-        "AyatNo": 1,
-        "AyatArabic": "فَأَصْلِحُوا بَيْنَ أَخَوَيْكُمْ",
-        "AyatEnglish": "So make settlement between your brothers.",
-        "AyatBangla": "অতএব তোমরা তোমাদের দুই ভাইয়ের মধ্যে মিল-মিশ করিয়ে দাও।",
-        "AyatChinese": ""
+        "sura_no": 8,
+        "sura_name": "Al-Anfal",
+        "ayat_no": 1,
+        "arabic": "فَأَصْلِحُوا بَيْنَ أَخَوَيْكُمْ",
+        "english": "So make settlement between your brothers.",
+        "bangla": "অতএব তোমরা তোমাদের দুই ভাইয়ের মধ্যে মিল-মিশ করিয়ে দাও।",
+        "chinese": ""
     },
     {
-        "SuraNo": 42,
-        "SuraName": "Ash-Shura",
-        "AyatNo": 23,
-        "AyatArabic": "قُل لَّآ أَسْـَٔلُكُمْ عَلَيْهِ أَجْرًا إِلَّا ٱلْمَوَدَّةَ فِى ٱلْقُرْبَىٰ",
-        "AyatEnglish": "Say, 'I do not ask you for it any payment - only good will through kinship.'",
-        "AyatBangla": "বলুন, 'আমি এর বিনিময়ে কোন প্রতিদান চাই না - কেবল আত্মীয়তার প্রীতি।'"
+        "sura_no": 42,
+        "sura_name": "Ash-Shura",
+        "ayat_no": 23,
+        "arabic": "قُل لَّآ أَسْـَٔلُكُمْ عَلَيْهِ أَجْرًا إِلَّا ٱلْمَوَدَّةَ فِى ٱلْقُرْبَىٰ",
+        "english": "Say, 'I do not ask you for it any payment - only good will through kinship.'",
+        "bangla": "বলুন, 'আমি এর বিনিময়ে কোন প্রতিদান চাই না - কেবল আত্মীয়তার প্রীতি।'",
+        "chinese": ""
     }
 ]
