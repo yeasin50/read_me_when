@@ -45,7 +45,7 @@ class QuranicVerse extends Equatable {
       return QuranicVerse(
         suraNo: map['sura_no']?.toInt() ?? 0,
         suraName: map['sura_name'] ?? '',
-        ayatNo: map['ayat_no'] ?? '',
+        ayatNo: map['ayat_no']?.toString() ?? '',
         ayatInArabic: map['arabic'] ?? '',
         englishTranslation: map['english'] ?? '',
         banglaTranslation: map['bangla'] ?? '',
