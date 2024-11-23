@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../insfrastructure/db/quranic_verse_repo.dart';
+import '../../infrastructure/db/quranic_verse_repo.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

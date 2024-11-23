@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:read_me_when/src/insfrastructure/db/quranic_verse_repo.dart';
-import 'package:read_me_when/src/insfrastructure/enum/mood.dart';
-import 'package:read_me_when/src/insfrastructure/models/quranic_verse.dart';
+import 'package:read_me_when/src/infrastructure/db/quranic_verse_repo.dart';
+import 'package:read_me_when/src/infrastructure/enum/mood.dart';
+import 'package:read_me_when/src/infrastructure/models/quranic_verse.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
