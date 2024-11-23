@@ -1,111 +1,111 @@
 [
     {
-      "suraNo": 3,
-      "suraName": "Al-Imran",
-      "ayatNo": "134",
-      "Ayat in Arabic": "وَٱلْكَـٰظِمِينَ ٱلْغَيْظَ وَٱلْعَافِينَ عَنِ ٱلنَّاسِ ۗ وَٱللَّهُ يُحِبُّ ٱلْمُحْسِنِينَ",
-      "English": "And those who restrain anger and who pardon the people - and Allah loves the doers of good.",
-      "Bangla": "যারা রাগ সংবরণ করে এবং মানুষের প্রতি ক্ষমাশীল থাকে, আল্লাহ তাদের ভালোবাসেন।",
-      "Chinese": "那些压抑怒火，宽恕他人者，真主喜爱行善的人。"
+      "sura_no": 3,
+      "sura_name": "Al-Imran",
+      "ayat_no": "134",
+      "arabic": "وَٱلْكَـٰظِمِينَ ٱلْغَيْظَ وَٱلْعَافِينَ عَنِ ٱلنَّاسِ ۗ وَٱللَّهُ يُحِبُّ ٱلْمُحْسِنِينَ",
+      "english": "And those who restrain anger and who pardon the people - and Allah loves the doers of good.",
+      "bangla": "যারা রাগ সংবরণ করে এবং মানুষের প্রতি ক্ষমাশীল থাকে, আল্লাহ তাদের ভালোবাসেন।",
+      "chinese": "那些压抑怒火，宽恕他人者，真主喜爱行善的人。"
     },
     {
-      "suraNo": 41,
-      "suraName": "Fussilat",
-      "ayatNo": "34",
-      "Ayat in Arabic": "وَلَا تَسْتَوِى ٱلْحَسَنَةُ وَلَا ٱلسَّيِّئَةُ ٱدْفَعْ بِٱلَّتِى هِىَ أَحْسَنُ",
-      "English": "And not equal are the good deed and the bad. Repel [evil] by that [deed] which is better.",
-      "Bangla": "ভালো ও মন্দ সমান হতে পারে না। উত্তম দ্বারা মন্দ প্রতিহত করো।",
-      "Chinese": "善与恶不相等；你应以更好的方式回击。"
+      "sura_no": 41,
+      "sura_name": "Fussilat",
+      "ayat_no": "34",
+      "arabic": "وَلَا تَسْتَوِى ٱلْحَسَنَةُ وَلَا ٱلسَّيِّئَةُ ٱدْفَعْ بِٱلَّتِى هِىَ أَحْسَنُ",
+      "english": "And not equal are the good deed and the bad. Repel [evil] by that [deed] which is better.",
+      "bangla": "ভালো ও মন্দ সমান হতে পারে না। উত্তম দ্বারা মন্দ প্রতিহত করো।",
+      "chinese": "善与恶不相等；你应以更好的方式回击。"
     },
     {
-      "suraNo": 16,
-      "suraName": "An-Nahl",
-      "ayatNo": "126",
-      "Ayat in Arabic": "وَإِنْ عَاقَبْتُمْ فَعَاقِبُوا۟ بِمِثْلِ مَا عُوقِبْتُم بِهِۦ ۖ وَلَئِن صَبَرْتُمْ لَهُوَ خَيْرٌۭ لِّلصَّـٰبِرِينَ",
-      "English": "And if you punish [an enemy, O believers], punish with an equivalent of that with which you were harmed. But if you are patient - it is better for those who are patient.",
-      "Bangla": "যদি প্রতিশোধ নাও, তবে সমানভাবে নাও। আর যদি ধৈর্য ধরো, তবে তা ধৈর্যশীলদের জন্য উত্তম।",
-      "Chinese": "如果你们报复，那么只报复与你们所受的损害相当；如果你们忍耐，那对忍耐者更好。"
+      "sura_no": 16,
+      "sura_name": "An-Nahl",
+      "ayat_no": "126",
+      "arabic": "وَإِنْ عَاقَبْتُمْ فَعَاقِبُوا۟ بِمِثْلِ مَا عُوقِبْتُم بِهِۦ ۖ وَلَئِن صَبَرْتُمْ لَهُوَ خَيْرٌۭ لِّلصَّـٰبِرِينَ",
+      "english": "And if you punish [an enemy, O believers], punish with an equivalent of that with which you were harmed. But if you are patient - it is better for those who are patient.",
+      "bangla": "যদি প্রতিশোধ নাও, তবে সমানভাবে নাও। আর যদি ধৈর্য ধরো, তবে তা ধৈর্যশীলদের জন্য উত্তম।",
+      "chinese": "如果你们报复，那么只报复与你们所受的损害相当；如果你们忍耐，那对忍耐者更好。"
     },
     {
-      "suraNo": 7,
-      "suraName": "Al-A'raf",
-      "ayatNo": "199",
-      "Ayat in Arabic": "خُذِ ٱلْعَفْوَ وَأْمُرْ بِٱلْعُرْفِ وَأَعْرِضْ عَنِ ٱلْجَـٰهِلِينَ",
-      "English": "Show forgiveness, enjoin what is good, and turn away from the ignorant.",
-      "Bangla": "ক্ষমা করো, সৎকাজের নির্দেশ দাও এবং মূর্খদের এড়িয়ে চলো।",
-      "Chinese": "你应当原谅，应当劝善，应当避开愚昧者。"
+      "sura_no": 7,
+      "sura_name": "Al-A'raf",
+      "ayat_no": "199",
+      "arabic": "خُذِ ٱلْعَفْوَ وَأْمُرْ بِٱلْعُرْفِ وَأَعْرِضْ عَنِ ٱلْجَـٰهِلِينَ",
+      "english": "Show forgiveness, enjoin what is good, and turn away from the ignorant.",
+      "bangla": "ক্ষমা করো, সৎকাজের নির্দেশ দাও এবং মূর্খদের এড়িয়ে চলো।",
+      "chinese": "你应当原谅，应当劝善，应当避开愚昧者。"
     },
     {
-      "suraNo": 42,
-      "suraName": "Ash-Shura",
-      "ayatNo": "37",
-      "Ayat in Arabic": "وَإِذَا مَا غَضِبُوا۟ هُمْ يَغْفِرُونَ",
-      "English": "And when they are angry, they forgive.",
-      "Bangla": "তারা যখন রাগান্বিত হয়, তখন ক্ষমা করে।",
-      "Chinese": "当他们生气时，他们原谅。"
+      "sura_no": 42,
+      "sura_name": "Ash-Shura",
+      "ayat_no": "37",
+      "arabic": "وَإِذَا مَا غَضِبُوا۟ هُمْ يَغْفِرُونَ",
+      "english": "And when they are angry, they forgive.",
+      "bangla": "তারা যখন রাগান্বিত হয়, তখন ক্ষমা করে।",
+      "chinese": "当他们生气时，他们原谅。"
     },
     {
-      "suraNo": 2,
-      "suraName": "Al-Baqarah",
-      "ayatNo": "153",
-      "Ayat in Arabic": "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱسْتَعِينُوا۟ بِٱلصَّبْرِ وَٱلصَّلَوٰةِۚ إِنَّ ٱللَّهَ مَعَ ٱلصَّـٰبِرِينَ",
-      "English": "O you who have believed, seek help through patience and prayer. Indeed, Allah is with the patient.",
-      "Bangla": "হে মুমিনগণ, ধৈর্য ও নামাজের মাধ্যমে সাহায্য প্রার্থনা করো। আল্লাহ ধৈর্যশীলদের সঙ্গে আছেন।",
-      "Chinese": "信士们啊！你们要通过忍耐和礼拜寻求援助，真主确实与忍耐者同在。"
+      "sura_no": 2,
+      "sura_name": "Al-Baqarah",
+      "ayat_no": "153",
+      "arabic": "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱسْتَعِينُوا۟ بِٱلصَّبْرِ وَٱلصَّلَوٰةِۚ إِنَّ ٱللَّهَ مَعَ ٱلصَّـٰبِرِينَ",
+      "english": "O you who have believed, seek help through patience and prayer. Indeed, Allah is with the patient.",
+      "bangla": "হে মুমিনগণ, ধৈর্য ও নামাজের মাধ্যমে সাহায্য প্রার্থনা করো। আল্লাহ ধৈর্যশীলদের সঙ্গে আছেন।",
+      "chinese": "信士们啊！你们要通过忍耐和礼拜寻求援助，真主确实与忍耐者同在。"
     },
     {
-      "suraNo": 4,
-      "suraName": "An-Nisa",
-      "ayatNo": "149",
-      "Ayat in Arabic": "إِن تُبْدُوا۟ خَيْرًا أَوْ تُخْفُوهُ أَوْ تَعْفُوا۟ عَن سُوٓءٍۢ فَإِنَّ ٱللَّهَ كَانَ عَفُوًّۭا قَدِيرًا",
-      "English": "If [instead] you show [some] good or conceal it or pardon an offense - indeed, Allah is ever Pardoning and Competent.",
-      "Bangla": "যদি কোনো ভালো কাজ প্রকাশ করো বা গোপন রাখো কিংবা কোনো দোষ ক্ষমা করো, আল্লাহ সর্বদা ক্ষমাশীল ও সর্বশক্তিমান।",
-      "Chinese": "如果你们显露善行或隐瞒它，或宽恕过失，真主确实是宽容的，万能的。"
+      "sura_no": 4,
+      "sura_name": "An-Nisa",
+      "ayat_no": "149",
+      "arabic": "إِن تُبْدُوا۟ خَيْرًا أَوْ تُخْفُوهُ أَوْ تَعْفُوا۟ عَن سُوٓءٍۢ فَإِنَّ ٱللَّهَ كَانَ عَفُوًّۭا قَدِيرًا",
+      "english": "If [instead] you show [some] good or conceal it or pardon an offense - indeed, Allah is ever Pardoning and Competent.",
+      "bangla": "যদি কোনো ভালো কাজ প্রকাশ করো বা গোপন রাখো কিংবা কোনো দোষ ক্ষমা করো, আল্লাহ সর্বদা ক্ষমাশীল ও সর্বশক্তিমান।",
+      "chinese": "如果你们显露善行或隐瞒它，或宽恕过失，真主确实是宽容的，万能的。"
     },
     {
-      "suraNo": 31,
-      "suraName": "Luqman",
-      "ayatNo": "17",
-      "Ayat in Arabic": "وَٱصْبِرْ عَلَىٰ مَآ أَصَابَكَ ۖ إِنَّ ذَٰلِكَ مِنْ عَزْمِ ٱلْأُمُورِ",
-      "English": "And be patient over what befalls you. Indeed, [all] that is of the matters [requiring] determination.",
-      "Bangla": "তোমার ওপর যা আসে, তার প্রতি ধৈর্যশীল হও। এটা দৃঢ়তার লক্ষণ।",
-      "Chinese": "你应当忍受你所遭受的一切；那是需要坚毅的事务之一。"
+      "sura_no": 31,
+      "sura_name": "Luqman",
+      "ayat_no": "17",
+      "arabic": "وَٱصْبِرْ عَلَىٰ مَآ أَصَابَكَ ۖ إِنَّ ذَٰلِكَ مِنْ عَزْمِ ٱلْأُمُورِ",
+      "english": "And be patient over what befalls you. Indeed, [all] that is of the matters [requiring] determination.",
+      "bangla": "তোমার ওপর যা আসে, তার প্রতি ধৈর্যশীল হও। এটা দৃঢ়তার লক্ষণ।",
+      "chinese": "你应当忍受你所遭受的一切；那是需要坚毅的事务之一。"
     },
     {
-      "suraNo": 25,
-      "suraName": "Al-Furqan",
-      "ayatNo": "63",
-      "Ayat in Arabic": "وَعِبَادُ ٱلرَّحْمَـٰنِ ٱلَّذِينَ يَمْشُونَ عَلَى ٱلْأَرْضِ هَوْنًۭا وَإِذَا خَاطَبَهُمُ ٱلْجَـٰهِلُونَ قَالُوا۟ سَلَـٰمًۭا",
-      "English": "And the servants of the Most Merciful are those who walk upon the earth humbly, and when the ignorant address them [harshly], they say [words of] peace.",
-      "Bangla": "রহমানের বান্দারা পৃথিবীতে নম্রভাবে চলে এবং যখন মূর্খরা তাদের সঙ্গে কথা বলে, তারা বলে 'শান্তি।'",
-      "Chinese": "至仁主的仆人是那些谦逊地行走于大地的人，当愚昧者与他们讲话时，他们说：平安！"
+      "sura_no": 25,
+      "sura_name": "Al-Furqan",
+      "ayat_no": "63",
+      "arabic": "وَعِبَادُ ٱلرَّحْمَـٰنِ ٱلَّذِينَ يَمْشُونَ عَلَى ٱلْأَرْضِ هَوْنًۭا وَإِذَا خَاطَبَهُمُ ٱلْجَـٰهِلُونَ قَالُوا۟ سَلَـٰمًۭا",
+      "english": "And the servants of the Most Merciful are those who walk upon the earth humbly, and when the ignorant address them [harshly], they say [words of] peace.",
+      "bangla": "রহমানের বান্দারা পৃথিবীতে নম্রভাবে চলে এবং যখন মূর্খরা তাদের সঙ্গে কথা বলে, তারা বলে 'শান্তি।'",
+      "chinese": "至仁主的仆人是那些谦逊地行走于大地的人，当愚昧者与他们讲话时，他们说：平安！"
     },
     {
-      "suraNo": 13,
-      "suraName": "Ar-Ra'd",
-      "ayatNo": "22",
-      "Ayat in Arabic": "وَٱلَّذِينَ صَبَرُوا۟ ٱبْتِغَآءَ وَجْهِ رَبِّهِمْ",
-      "English": "And those who are patient, seeking the countenance of their Lord.",
-      "Bangla": "যারা তাদের রবের সন্তুষ্টির জন্য ধৈর্য ধারণ করে।",
-      "Chinese": "那些为主的喜悦而忍耐的人。"
+      "sura_no": 13,
+      "sura_name": "Ar-Ra'd",
+      "ayat_no": "22",
+      "arabic": "وَٱلَّذِينَ صَبَرُوا۟ ٱبْتِغَآءَ وَجْهِ رَبِّهِمْ",
+      "english": "And those who are patient, seeking the countenance of their Lord.",
+      "bangla": "যারা তাদের রবের সন্তুষ্টির জন্য ধৈর্য ধারণ করে।",
+      "chinese": "那些为主的喜悦而忍耐的人。"
     },
     {
-      "suraNo": 23,
-      "suraName": "Al-Mu’minun",
-      "ayatNo": "96",
-      "Ayat in Arabic": "ٱدْفَعْ بِٱلَّتِى هِىَ أَحْسَنُ ٱلسَّيِّئَةَ ۚ",
-      "English": "Repel, by [means of] what is best, [their] evil.",
-      "Bangla": "মন্দ প্রতিহত করো উত্তম পন্থায়।",
-      "Chinese": "用最好的方式反击邪恶。"
+      "sura_no": 23,
+      "sura_name": "Al-Mu’minun",
+      "ayat_no": "96",
+      "arabic": "ٱدْفَعْ بِٱلَّتِى هِىَ أَحْسَنُ ٱلسَّيِّئَةَ ۚ",
+      "english": "Repel, by [means of] what is best, [their] evil.",
+      "bangla": "মন্দ প্রতিহত করো উত্তম পন্থায়।",
+      "chinese": "用最好的方式反击邪恶。"
     },
     {
-      "suraNo": 5,
-      "suraName": "Al-Ma'idah",
-      "ayatNo": "13",
-      "Ayat in Arabic": "فَٱعْفُ عَنْهُمْ وَٱصْفَحْ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُحْسِنِينَ",
-      "English": "So pardon them and overlook [their misdeeds]. Indeed, Allah loves the doers of good.",
-      "Bangla": "তাদের ক্ষমা করো এবং তাদের দোষ উপেক্ষা করো। নিশ্চয়ই, আল্লাহ সৎকর্মপরায়ণদের ভালোবাসেন।",
-      "Chinese": "你应当宽恕他们，并原谅他们的过失；真主喜爱行善的人。"
+      "sura_no": 5,
+      "sura_name": "Al-Ma'idah",
+      "ayat_no": "13",
+      "arabic": "فَٱعْفُ عَنْهُمْ وَٱصْفَحْ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُحْسِنِينَ",
+      "english": "So pardon them and overlook [their misdeeds]. Indeed, Allah loves the doers of good.",
+      "bangla": "তাদের ক্ষমা করো এবং তাদের দোষ উপেক্ষা করো। নিশ্চয়ই, আল্লাহ সৎকর্মপরায়ণদের ভালোবাসেন।",
+      "chinese": "你应当宽恕他们，并原谅他们的过失；真主喜爱行善的人。"
     }
   ]
   
