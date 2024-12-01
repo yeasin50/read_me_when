@@ -31,6 +31,7 @@ class _ReadMeWhenState extends State<ReadMeWhen> {
         return AppRepoInheritedWidget(
           repo: snapshot.requireData,
           child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
             routerConfig: AppRoute.router(),
           ),
         );

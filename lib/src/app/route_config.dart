@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/presentation/bottom_nav/app_bottom_nav_bar.dart';
-import 'package:read_me_when/src/presentation/home/home_page.dart';
+
+import '../presentation/bottom_nav/app_bottom_nav_bar.dart';
+import '../presentation/home/home_page.dart';
 
 class AppRoute {
   static String home = "/";
@@ -16,31 +17,41 @@ class AppRoute {
       navigatorKey: _rootNavigatorKey,
       initialLocation: home,
       routes: [
-        ShellRoute(
-          navigatorKey: shellNavigatorKey,
-          builder: (context, state, child) {
-            return AppBottomNavBar(
-              child: child,
-            );
+        StatefulShellRoute.indexedStack(
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state, shell) {
+            return AppBottomNavBar(shell: shell);
           },
-          routes: [
-            GoRoute(
-              path: home,
-              pageBuilder: (context, state) => const NoTransitionPage(
-                child: HomePage(),
-              ),
+          branches: [
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: home,
+                  pageBuilder: (context, state) => const NoTransitionPage(
+                    child: HomePage(),
+                  ),
+                ),
+              ],
             ),
-            GoRoute(
-              path: favorite,
-              pageBuilder: (context, state) => const NoTransitionPage(
-                child: Text("Favorite"),
-              ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: favorite,
+                  pageBuilder: (context, state) => const NoTransitionPage(
+                    child: Text("Favorite"),
+                  ),
+                ),
+              ],
             ),
-            GoRoute(
-              path: story,
-              pageBuilder: (context, state) => const NoTransitionPage(
-                child: Text("Story"),
-              ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: story,
+                  pageBuilder: (context, state) => const NoTransitionPage(
+                    child: Text("Story"),
+                  ),
+                ),
+              ],
             ),
           ],
         )

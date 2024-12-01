@@ -13,11 +13,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () async {
-        final repo = QuranicVerseRepo();
-        final result = await repo.load();
-        print(repo.data.entries.first.value.first);
-      }),
+      floatingActionButton: FloatingActionButton(
+        heroTag: "fab-check",
+        onPressed: () async {
+          final repo = QuranicVerseRepo();
+          final result = await repo.load();
+          print(repo.data.entries.first.value.first);
+        },
+      ),
     );
   }
 }

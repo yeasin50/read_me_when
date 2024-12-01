@@ -6,9 +6,9 @@ import '../../app/route_config.dart';
 class AppBottomNavBar extends StatefulWidget {
   const AppBottomNavBar({
     super.key,
-    required this.child,
+    required this.shell,
   });
-  final Widget child;
+  final StatefulNavigationShell shell;
 
   @override
   State<AppBottomNavBar> createState() => _AppBottomNavBarState();
@@ -34,10 +34,10 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.child,
+      body: widget.shell,
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTap,
-        currentIndex: currentIndex,
+        currentIndex: widget.shell.currentIndex,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
