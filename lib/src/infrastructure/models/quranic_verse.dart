@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 class QuranicVerse extends Equatable {
   const QuranicVerse({
@@ -40,15 +41,20 @@ class QuranicVerse extends Equatable {
   }
 
   factory QuranicVerse.fromMap(Map<String, dynamic> map) {
-    return QuranicVerse(
-      suraNo: map['suraNo']?.toInt() ?? map['Sura No']?.toInt() ?? 0,
-      suraName: map['suraName'] ?? '',
-      ayatNo: map['ayatNo'] ?? '',
-      ayatInArabic: map['ayatInArabic'] ?? '',
-      englishTranslation: map['englishTranslation'] ?? '',
-      banglaTranslation: map['banglaTranslation'] ?? '',
-      chineseTranslation: map['chineseTranslation'] ?? '',
-      isFavorite: map["isFavorite"] ?? false,
-    );
+    try {
+      return QuranicVerse(
+        suraNo: map['sura_no']?.toInt() ?? 0,
+        suraName: map['sura_name'] ?? '',
+        ayatNo: map['ayat_no']?.toString() ?? '',
+        ayatInArabic: map['arabic'] ?? '',
+        englishTranslation: map['english'] ?? '',
+        banglaTranslation: map['bangla'] ?? '',
+        chineseTranslation: map['chinese'] ?? '',
+        isFavorite: map["is_favorite"] ?? false,
+      );
+    } catch (e) {
+      debugPrint("QuranicVerse.fromMap $map");
+      rethrow;
+    }
   }
 }

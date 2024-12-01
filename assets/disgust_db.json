@@ -1,161 +1,182 @@
 [
     {
-        "SuraNo": 16,
-        "SuraName": "An-Nahl",
-        "AyatNo": 23,
-        "AyatArabic": "إِنَّهُۥ لَا يُحِبُّ ٱلْمُسْتَكْبِرِينَ",
-        "AyatEnglish": "Indeed, He does not like the arrogant.",
-        "AyatChinese": ""
+        "sura_no": 16,
+        "sura_name": "An-Nahl",
+        "ayat_no": 23,
+        "arabic": "إِنَّهُۥ لَا يُحِبُّ ٱلْمُسْتَكْبِرِينَ",
+        "english": "Indeed, He does not like the arrogant.",
+        "bangla": "নিশ্চয়ই তিনি অহংকারীকে পছন্দ করেন না।",
+        "chinese": "确实，他不喜欢骄傲的人。"
     },
     {
-        "SuraNo": 31,
-        "SuraName": "Luqman",
-        "AyatNo": 18,
-        "AyatArabic": "وَٱللَّهُ لَا يُحِبُّ كُلَّ مُخْتَالٍۢ فَخُورٍ",
-        "AyatEnglish": "And Allah does not like every arrogant boaster.",
-        "AyatChinese": ""
+        "sura_no": 31,
+        "sura_name": "Luqman",
+        "ayat_no": 18,
+        "arabic": "وَٱللَّهُ لَا يُحِبُّ كُلَّ مُخْتَالٍۢ فَخُورٍ",
+        "english": "And Allah does not like every arrogant boaster.",
+        "bangla": "আল্লাহ কোন অহংকারী ও গর্বিতকে পছন্দ করেন না।",
+        "chinese": "真主不喜欢任何自大和自夸的人。"
     },
     {
-        "SuraNo": 83,
-        "SuraName": "Al-Mutaffifin",
-        "AyatNo": 1,
-        "AyatArabic": "وَيْلٌۭ لِّلْمُطَفِّفِينَ",
-        "AyatEnglish": "Woe to those who give less [than due].",
-        "AyatChinese": ""
+        "sura_no": 83,
+        "sura_name": "Al-Mutaffifin",
+        "ayat_no": 1,
+        "arabic": "وَيْلٌۭ لِّلْمُطَفِّفِينَ",
+        "english": "Woe to those who give less [than due].",
+        "bangla": "ধ্বংস তাদের জন্য যারা কম দেয়।",
+        "chinese": "祸哉，那些少给的人。"
     },
     {
-        "SuraNo": 3,
-        "SuraName": "Aal-e-Imran",
-        "AyatNo": 57,
-        "AyatArabic": "وَٱللَّهُ لَا يُحِبُّ ٱلظَّـٰلِمِينَ",
-        "AyatEnglish": "And Allah does not like the wrongdoers.",
-        "AyatChinese": ""
+        "sura_no": 3,
+        "sura_name": "Aal-e-Imran",
+        "ayat_no": 57,
+        "arabic": "وَٱللَّهُ لَا يُحِبُّ ٱلظَّـٰلِمِينَ",
+        "english": "And Allah does not like the wrongdoers.",
+        "bangla": "আল্লাহ অন্যায়কারীদের পছন্দ করেন না।",
+        "chinese": "真主不喜欢不义之人。"
     },
     {
-        "SuraNo": 9,
-        "SuraName": "At-Tawbah",
-        "AyatNo": 77,
-        "AyatArabic": "فَأَعْقَبَهُمْ نِفَاقًۭا فِى قُلُوبِهِمْ إِلَىٰ يَوْمِ يَلْقَوْنَهُۥ بِمَآ أَخْلَفُوا۟ ٱللَّهَ مَا وَعَدُوهُ",
-        "AyatEnglish": "So Allah caused hypocrisy to settle in their hearts until the Day they will meet Him because they failed Allah in what they promised.",
-        "AyatChinese": ""
+        "sura_no": 9,
+        "sura_name": "At-Tawbah",
+        "ayat_no": 77,
+        "arabic": "فَأَعْقَبَهُمْ نِفَاقًۭا فِى قُلُوبِهِمْ إِلَىٰ يَوْمِ يَلْقَوْنَهُۥ بِمَآ أَخْلَفُوا۟ ٱللَّهَ مَا وَعَدُوهُ",
+        "english": "So Allah caused hypocrisy to settle in their hearts until the Day they will meet Him because they failed Allah in what they promised.",
+        "bangla": "তাদের প্রতিশ্রুতি ভঙ্গ করার কারণে আল্লাহ তাদের অন্তরে কিয়ামত পর্যন্ত মুনাফিকী স্থাপন করেছেন।",
+        "chinese": "因为他们违背了真主的诺言，真主使伪信在他们心中一直持续到与真主相会之日。"
     },
     {
-        "SuraNo": 2,
-        "SuraName": "Al-Baqarah",
-        "AyatNo": 60,
-        "AyatArabic": "وَلَا تَعْثَوْا۟ فِى ٱلْأَرْضِ مُفْسِدِينَ",
-        "AyatEnglish": "And do not commit abuse on the earth, spreading corruption.",
-        "AyatChinese": ""
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 60,
+        "arabic": "وَلَا تَعْثَوْا۟ فِى ٱلْأَرْضِ مُفْسِدِينَ",
+        "english": "And do not commit abuse on the earth, spreading corruption.",
+        "bangla": "এবং পৃথিবীতে অনাচার ছড়িয়ে দিও না।",
+        "chinese": "不要在大地上作恶，传播腐败。"
     },
     {
-        "SuraNo": 5,
-        "SuraName": "Al-Ma’idah",
-        "AyatNo": 8,
-        "AyatArabic": "وَٱعْدِلُوا۟ هُوَ أَقْرَبُ لِلتَّقْوَىٰ",
-        "AyatEnglish": "Be just; that is nearer to righteousness.",
-        "AyatChinese": ""
+        "sura_no": 5,
+        "sura_name": "Al-Ma’idah",
+        "ayat_no": 8,
+        "arabic": "وَٱعْدِلُوا۟ هُوَ أَقْرَبُ لِلتَّقْوَىٰ",
+        "english": "Be just; that is nearer to righteousness.",
+        "bangla": "ন্যায়পরায়ণ হও, যা ধার্মিকতার কাছাকাছি।",
+        "chinese": "要公正，这是更接近敬畏的行为。"
     },
     {
-        "SuraNo": 2,
-        "SuraName": "Al-Baqarah",
-        "AyatNo": 190,
-        "AyatArabic": "إِنَّ ٱللَّهَ لَا يُحِبُّ ٱلْمُعْتَدِينَ",
-        "AyatEnglish": "Verily, Allah does not like transgressors.",
-        "AyatChinese": ""
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 190,
+        "arabic": "إِنَّ ٱللَّهَ لَا يُحِبُّ ٱلْمُعْتَدِينَ",
+        "english": "Verily, Allah does not like transgressors.",
+        "bangla": "নিশ্চয়ই আল্লাহ সীমালঙ্ঘনকারীদের পছন্দ করেন না।",
+        "chinese": "确实，真主不喜欢过分的人。"
     },
     {
-        "SuraNo": 4,
-        "SuraName": "An-Nisa",
-        "AyatNo": 107,
-        "AyatArabic": "إِنَّ ٱللَّهَ لَا يُحِبُّ كُلَّ خَوَّانٍۢ أَثِيمٍۢ",
-        "AyatEnglish": "Indeed, Allah does not like those who are treacherous and sinful.",
-        "AyatChinese": ""
+        "sura_no": 4,
+        "sura_name": "An-Nisa",
+        "ayat_no": 107,
+        "arabic": "إِنَّ ٱللَّهَ لَا يُحِبُّ كُلَّ خَوَّانٍۢ أَثِيمٍۢ",
+        "english": "Indeed, Allah does not like those who are treacherous and sinful.",
+        "bangla": "নিশ্চয়ই আল্লাহ প্রতারণাকারী ও পাপীকে পছন্দ করেন না।",
+        "chinese": "确实，真主不喜欢叛徒和罪人。"
     },
     {
-        "SuraNo": 17,
-        "SuraName": "Al-Isra",
-        "AyatNo": 34,
-        "AyatArabic": "وَلَا تَقْرَبُوا۟ مَالَ ٱلْيَتِيمِ إِلَّا بِٱلَّتِى هِىَ أَحْسَنُ",
-        "AyatEnglish": "And do not approach the property of an orphan, except in a way that is best.",
-        "AyatChinese": ""
+        "sura_no": 17,
+        "sura_name": "Al-Isra",
+        "ayat_no": 34,
+        "arabic": "وَلَا تَقْرَبُوا۟ مَالَ ٱلْيَتِيمِ إِلَّا بِٱلَّتِى هِىَ أَحْسَنُ",
+        "english": "And do not approach the property of an orphan, except in a way that is best.",
+        "bangla": "এবং এতিমের সম্পত্তির ধারে কাছে যেয়ো না, শুধুমাত্র উত্তম উদ্দেশ্যে।",
+        "chinese": "不要接近孤儿的财产，除非是以最好的方式。"
     },
     {
-        "SuraNo": 10,
-        "SuraName": "Yunus",
-        "AyatNo": 74,
-        "AyatArabic": "وَلَقَدْ أَرْسَلْنَا رُسُلًا إِلَىٰ قَوْمِهِمْ فَجَآءُوهُم بِٱلْبَيِّنَـٰتِ فَمَا كَانُوا۟ لِيُؤْمِنُوا۟",
-        "AyatEnglish": "And We had certainly sent messengers to [their] people before you, and they came to them with clear proofs, but they were not to believe.",
-        "AyatChinese": ""
+        "sura_no": 10,
+        "sura_name": "Yunus",
+        "ayat_no": 74,
+        "arabic": "وَلَقَدْ أَرْسَلْنَا رُسُلًا إِلَىٰ قَوْمِهِمْ فَجَآءُوهُم بِٱلْبَيِّنَـٰتِ فَمَا كَانُوا۟ لِيُؤْمِنُوا۟",
+        "english": "And We had certainly sent messengers to [their] people before you, and they came to them with clear proofs, but they were not to believe.",
+        "bangla": "এবং আমরা তোমার পূর্বে বিভিন্ন সম্প্রদায়ের কাছে রসূলগণ প্রেরণ করেছিলাম; তারা তাদের কাছে স্পষ্ট প্রমাণ নিয়ে এসেছিল, তবুও তারা বিশ্বাস করল না।",
+        "chinese": "在你之前，我们确已派使者去他们的民族中，他们带来了明确的证据，但他们仍不信服。"
     },
     {
-        "SuraNo": 2,
-        "SuraName": "Al-Baqarah",
-        "AyatNo": 79,
-        "AyatArabic": "فَوَيْلٌۭ لِّلَّذِينَ يَكْتُبُونَ ٱلْكِتَـٰبَ بِأَيْدِيهِمْ ثُمَّ يَقُولُونَ هَـٰذَا مِنْ عِندِ ٱللَّهِ",
-        "AyatEnglish": "So woe to those who write the 'scripture' with their own hands, then say, 'This is from Allah.'",
-        "AyatChinese": ""
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 79,
+        "arabic": "فَوَيْلٌۭ لِّلَّذِينَ يَكْتُبُونَ ٱلْكِتَـٰبَ بِأَيْدِيهِمْ ثُمَّ يَقُولُونَ هَـٰذَا مِنْ عِندِ ٱللَّهِ",
+        "english": "So woe to those who write the 'scripture' with their own hands, then say, 'This is from Allah.'",
+        "bangla": "তাদের জন্য দুর্ভোগ, যারা নিজেদের হাতে গ্রন্থ লিখে বলে, 'এটি আল্লাহর পক্ষ থেকে।'",
+        "chinese": "那些用自己双手编写经典然后说“这是来自真主”的人，有祸了！"
     },
     {
-        "SuraNo": 2,
-        "SuraName": "Al-Baqarah",
-        "AyatNo": 13,
-        "AyatArabic": "وَإِذَا قِيلَ لَهُمْ ءَامِنُوا۟ كَمَآ ءَامَنَ ٱلنَّاسُ قَالُوٓا۟ أَنُؤْمِنُ كَمَآ ءَامَنَ ٱلسُّفَهَآءُ",
-        "AyatEnglish": "And when they are told, 'Believe as the people have believed,' they say, 'Should we believe as the foolish have believed?'",
-        "AyatChinese": ""
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 13,
+        "arabic": "وَإِذَا قِيلَ لَهُمْ ءَامِنُوا۟ كَمَآ ءَامَنَ ٱلنَّاسُ قَالُوٓا۟ أَنُؤْمِنُ كَمَآ ءَامَنَ ٱلسُّفَهَآءُ",
+        "english": "And when they are told, 'Believe as the people have believed,' they say, 'Should we believe as the foolish have believed?'",
+        "bangla": "যখন তাদের বলা হয়, 'লোকেরা যেমন বিশ্বাস করেছে, তুমিও তেমনি বিশ্বাস করো,' তারা বলে, 'আমরা কি মূর্খদের মতো বিশ্বাস করব?'",
+        "chinese": "当有人对他们说：“你们要像人们那样信仰”时，他们说：“难道我们要像愚昧的人那样信仰吗？”"
     },
     {
-        "SuraNo": 21,
-        "SuraName": "Al-Anbiya",
-        "AyatNo": 37,
-        "AyatArabic": "خُلِقَ ٱلْإِنسَـٰنُ مِنْ عَجَلٍ",
-        "AyatEnglish": "Indeed, man was created of haste.",
-        "AyatChinese": ""
+        "sura_no": 21,
+        "sura_name": "Al-Anbiya",
+        "ayat_no": 37,
+        "arabic": "خُلِقَ ٱلْإِنسَـٰنُ مِنْ عَجَلٍ",
+        "english": "Indeed, man was created of haste.",
+        "bangla": "মানুষ তো তাড়াহুড়ো স্বভাব নিয়ে সৃষ্টি হয়েছে।",
+        "chinese": "人确是由急躁被创造的。"
     },
     {
-        "SuraNo": 22,
-        "SuraName": "Al-Hajj",
-        "AyatNo": 31,
-        "AyatArabic": "وَمَن يُشْرِكْ بِٱللَّهِ فَكَأَنَّمَا خَرَّ مِنَ ٱلسَّمَآءِ",
-        "AyatEnglish": "And whoever associates with Allah – it is as though he had fallen from the sky.",
-        "AyatChinese": ""
+        "sura_no": 22,
+        "sura_name": "Al-Hajj",
+        "ayat_no": 31,
+        "arabic": "وَمَن يُشْرِكْ بِٱللَّهِ فَكَأَنَّمَا خَرَّ مِنَ ٱلسَّمَآءِ",
+        "english": "And whoever associates with Allah – it is as though he had fallen from the sky.",
+        "bangla": "আর যে আল্লাহর সঙ্গে শরিক করে, সে যেন আকাশ থেকে পড়ে যায়।",
+        "chinese": "谁以物与真主配，他就像从天空坠落一般。"
     },
     {
-        "SuraNo": 24,
-        "SuraName": "An-Nur",
-        "AyatNo": 19,
-        "AyatArabic": "إِنَّ ٱلَّذِينَ يُحِبُّونَ أَن تَشِيعَ ٱلْفَـٰحِشَةُ فِى ٱلَّذِينَ ءَامَنُوا۟ لَهُمْ عَذَابٌ أَلِيمٌۭ",
-        "AyatEnglish": "Indeed, those who like that immorality should be spread among those who have believed will have a painful punishment.",
-        "AyatChinese": ""
+        "sura_no": 24,
+        "sura_name": "An-Nur",
+        "ayat_no": 19,
+        "arabic": "إِنَّ ٱلَّذِينَ يُحِبُّونَ أَن تَشِيعَ ٱلْفَـٰحِشَةُ فِى ٱلَّذِينَ ءَامَنُوا۟ لَهُمْ عَذَابٌ أَلِيمٌۭ",
+        "english": "Indeed, those who like that immorality should be spread among those who have believed will have a painful punishment.",
+        "bangla": "যারা চায় যে, মুমিনদের মধ্যে অশ্লীলতা ছড়িয়ে পড়ুক, তাদের জন্য রয়েছে কঠিন শাস্তি।",
+        "chinese": "喜欢在信士之间传播淫秽行为的人，将受到痛苦的惩罚。"
     },
     {
-        "SuraNo": 17,
-        "SuraName": "Al-Isra",
-        "AyatNo": 24,
-        "AyatArabic": "وَٱخْفِضْ لَهُمَا جَنَاحَ ٱلذُّلِّ مِنَ ٱلرَّحْمَةِ",
-        "AyatEnglish": "And lower to them the wing of humility out of mercy.",
-        "AyatChinese": ""
+        "sura_no": 17,
+        "sura_name": "Al-Isra",
+        "ayat_no": 24,
+        "arabic": "وَٱخْفِضْ لَهُمَا جَنَاحَ ٱلذُّلِّ مِنَ ٱلرَّحْمَةِ",
+        "english": "And lower to them the wing of humility out of mercy.",
+        "bangla": "এবং দয়া করে তাদের জন্য বিনয় প্রকাশ কর।",
+        "chinese": "因怜悯而向他们谦逊地低下你的翅膀。"
     },
     {
-        "SuraNo": 83,
-        "SuraName": "Al-Mutaffifin",
-        "AyatNo": 2,
-        "AyatArabic": "ٱلَّذِينَ إِذَا ٱكْتَالُوا۟ عَلَى ٱلنَّاسِ يَسْتَوْفُونَ",
-        "AyatEnglish": "Those who, when they have to receive by measure from men, demand full measure.",
-        "AyatChinese": ""
+        "sura_no": 83,
+        "sura_name": "Al-Mutaffifin",
+        "ayat_no": 2,
+        "arabic": "ٱلَّذِينَ إِذَا ٱكْتَالُوا۟ عَلَى ٱلنَّاسِ يَسْتَوْفُونَ",
+        "english": "Those who, when they have to receive by measure from men, demand full measure.",
+        "bangla": "যারা মানুষ থেকে মাপে পূর্ণ নেয়।",
+        "chinese": "那些当从人们那里取得分量时，总是索取得足足的。"
     },
     {
-        "SuraNo": 107,
-        "SuraName": "Al-Ma’un",
-        "AyatNo": 7,
-        "AyatArabic": "وَيَمْنَعُونَ ٱلْمَاعُونَ",
-        "AyatEnglish": "And they prevent [others] from helping.",
-        "AyatChinese": ""
+        "sura_no": 107,
+        "sura_name": "Al-Ma’un",
+        "ayat_no": 7,
+        "arabic": "وَيَمْنَعُونَ ٱلْمَاعُونَ",
+        "english": "And they prevent [others] from helping.",
+        "bangla": "এবং তারা অন্যকে সাহায্য থেকে বিরত রাখে।",
+        "chinese": "他们阻止他人提供帮助。"
     },
     {
-        "SuraNo": 85,
-        "SuraName": "Al-Buruj",
-        "AyatNo": 10,
-        "AyatArabic": "إِنَّ ٱلَّذِينَ فَتَنُوا۟ ٱلْمُؤْمِنِينَ وَٱلْمُؤْمِنَـٰتِ ثُمَّ لَمْ يَتُوبُوا۟ فَلَهُمْ عَذَابُ جَهَنَّمَ",
-        "AyatEnglish": "Indeed, those who have tortured the believing men and believing women and then have not repented will have the punishment of Hell."
+        "sura_no": 85,
+        "sura_name": "Al-Buruj",
+        "ayat_no": 10,
+        "arabic": "إِنَّ ٱلَّذِينَ فَتَنُوا۟ ٱلْمُؤْمِنِينَ وَٱلْمُؤْمِنَـٰتِ ثُمَّ لَمْ يَتُوبُوا۟ فَلَهُمْ عَذَابُ جَهَنَّمَ",
+        "english": "Indeed, those who have tortured the believing men and believing women and then have not repented will have the punishment of Hell.",
+        "bangla": "যারা বিশ্বাসী পুরুষ ও নারীদের নির্যাতন করেছে এবং পরে তওবা করেনি, তাদের জন্য রয়েছে জাহান্নামের শাস্তি।",
+        "chinese": "那些折磨信男和信女却未悔改的人，将受到火狱的惩罚。"
     }
 ]
