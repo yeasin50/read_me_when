@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:read_me_when/src/presentation/home/widget/mood_selection_view.dart';
 
 import '../../infrastructure/db/quranic_verse_repo.dart';
 
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
           print(repo.data.entries.first.value.first);
         },
       ),
+      body: const MoodSelectionView(),
     );
   }
 }
