@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_me_when/src/app/route_config.dart';
-import 'package:read_me_when/src/presentation/qoute/qoute_page.dart';
 
 import '../../../infrastructure/enum/mood.dart';
 import 'mood_item_builder.dart';

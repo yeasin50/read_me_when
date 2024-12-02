@@ -1,9 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:read_me_when/src/infrastructure/models/quranic_verse.dart';
-import 'package:read_me_when/src/presentation/qoute/widgets/ayah_in_native_view.dart';
+import '../../application/mood_session.dart';
+import '../../infrastructure/app_repo.dart';
+import '../../infrastructure/models/quranic_verse.dart';
+import 'widgets/app_bar.dart';
+import 'widgets/ayah_in_native_view.dart';
 
 import '../../infrastructure/enum/mood.dart';
 
@@ -32,13 +32,23 @@ class _QuotePageState extends State<QuotePage> {
 
   bool isSaved = false;
 
-  String get surahName => "${verse.suraName}(${verse.suraNo})";
-  String get ayat => "Ayah-${verse.ayatNo}";
+  MoodSession? session;
+  void nextVerse() async {
+    session?.nextVerse();
+  }
 
-  //todo: load ayah based on mood
-  QuranicVerse verse = QuranicVerse.ui;
-
-  void nextVerse() async {}
+  @override
+  void initState() {
+    super.initState();
+    MoodSession.createSession(
+      mood: widget.mood,
+      verses: verseRepo.data[widget.mood] ?? [],
+    ).then((value) => setState(
+          () {
+            session = value;
+          },
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,65 +61,56 @@ class _QuotePageState extends State<QuotePage> {
         onPressed: () {},
         child: const Icon(Icons.share_outlined),
       ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              const BackButton(),
-              Expanded(
-                child: Column(
+      body: session == null
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : StreamBuilder<QuranicVerse>(
+              stream: session!.stream,
+              builder: (context, snapshot) {
+                QuranicVerse? verse = snapshot.data;
+                String surahName = "${verse?.suraName ?? ""}(${verse?.suraNo ?? ""})";
+                String ayah = "Ayah-${verse?.ayatNo ?? ""}";
+                return Column(
                   children: [
-                    Text(
-                      surahName,
-                      style: textTheme.headlineLarge?.copyWith(color: textColor),
+                    QuotePageAppBar(
+                      surahName: surahName,
+                      textTheme: textTheme,
+                      textColor: textColor,
+                      ayah: ayah,
+                      isSaved: isSaved,
                     ),
-                    Text(
-                      ayat,
-                      style: textTheme.titleSmall?.copyWith(color: textColor),
+                    Expanded(
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          if (verse == null) {
+                            return const Center(child: CircularProgressIndicator());
+                          }
+                          return Center(
+                            child: SingleChildScrollView(
+                              padding: const EdgeInsets.all(24),
+                              child: AyahInNativeView(
+                                mood: widget.mood,
+                                verse: verse,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
                     ),
+                    const SizedBox(height: 64),
+                    SizedBox(
+                      width: 250,
+                      child: OutlinedButton(
+                        onPressed: nextVerse,
+                        iconAlignment: IconAlignment.end,
+                        child: const Text("Next Verse"),
+                      ),
+                    ),
+                    const SizedBox(height: 72),
                   ],
-                ),
-              ),
-              IconButton.outlined(
-                onPressed: () {},
-                icon: Icon(
-                  isSaved ? Icons.favorite : Icons.favorite_outline,
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return Center(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(24),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AyahInNativeView(
-                          mood: widget.mood,
-                          verse: verse,
-                        ),
-                        const SizedBox(height: 64),
-                        SizedBox(
-                          width: 250,
-                          child: OutlinedButton(
-                            onPressed: nextVerse,
-                            // icon: Icon(Icons.arrow_forward_ios),
-                            child: Text("Next Verse"),
-                            iconAlignment: IconAlignment.end,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                 );
-              },
-            ),
-          ),
-        ],
-      ),
+              }),
     );
   }
 }

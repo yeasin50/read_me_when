@@ -23,6 +23,8 @@ class QuranicVerse extends Equatable {
 
   final bool isFavorite;
 
+  String get id => "$suraNo-$ayatNo";
+
   static const QuranicVerse ui = QuranicVerse(
     suraNo: 1,
     suraName: "Al-Fatiha",

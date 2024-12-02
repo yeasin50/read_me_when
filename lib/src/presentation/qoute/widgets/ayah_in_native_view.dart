@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:read_me_when/src/infrastructure/enum/mood.dart';
-import 'package:read_me_when/src/infrastructure/models/quranic_verse.dart';
+
+import '../../../infrastructure/enum/mood.dart';
+import '../../../infrastructure/models/quranic_verse.dart';
+import 'translation_selection_view.dart';
 
 class AyahInNativeView extends StatefulWidget {
   const AyahInNativeView({super.key, required this.verse, required this.mood});
@@ -15,9 +17,24 @@ class AyahInNativeView extends StatefulWidget {
 class _AyahInNativeViewState extends State<AyahInNativeView> {
   Color get textColor => widget.mood.quoteTextColor;
 
-  String get nativeAyat => widget.verse.banglaTranslation;
+  QuranicVerse get verse => widget.verse;
 
-  void onNativeChanged() {}
+  //todo: get device language/local from DateTime
+  int currentNativeIndex = 1;
+  void onNativeChanged(int index) {
+    currentNativeIndex = index;
+    setState(() {});
+  }
+
+  String get nativeAyat => switch (currentNativeIndex) {
+        0 => verse.banglaTranslation,
+        1 => verse.englishTranslation,
+        2 => verse.chineseTranslation,
+        _ => () {
+            assert(false, "Missing language ");
+            return "";
+          }()
+      };
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +50,16 @@ class _AyahInNativeViewState extends State<AyahInNativeView> {
             textAlign: TextAlign.center,
           ),
           Align(
-            alignment: Alignment.centerRight,
-            child: IconButton(
-              onPressed: onNativeChanged,
-              icon: const Icon(Icons.g_translate),
-            ),
-          ),
+              alignment: Alignment.centerRight,
+              child: TranslationSelectionView(
+                onChanged: onNativeChanged,
+                currentIndex: currentNativeIndex,
+              )
+              // IconButton(
+              //   onPressed: onNativeChanged,
+              //   icon: const Icon(Icons.g_translate),
+              // ),
+              ),
           const SizedBox(height: 8),
           Text(
             widget.verse.ayatInArabic,

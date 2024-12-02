@@ -44,4 +44,5 @@ class QuranicVerseRepo {
       return "Failed to load ${e.toString()}";
     }
   }
+
 }
