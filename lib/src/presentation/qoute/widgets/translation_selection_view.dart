@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../infrastructure/enum/ayah_langage.dart';
+
 /// show  a popup to select-update the ayah in native language
 class TranslationSelectionView extends StatelessWidget {
   const TranslationSelectionView({
@@ -8,14 +10,14 @@ class TranslationSelectionView extends StatelessWidget {
     required this.currentIndex,
   });
 
-  final int currentIndex;
+  final AyahLanguage currentIndex;
 
   /// selected Language index
-  final ValueChanged<int> onChanged;
+  final ValueChanged<AyahLanguage> onChanged;
 
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton<int>(
+    return PopupMenuButton<AyahLanguage>(
       icon: const Material(
         child: Icon(Icons.translate),
       ),
@@ -24,15 +26,15 @@ class TranslationSelectionView extends StatelessWidget {
       itemBuilder: (context) {
         return const [
           PopupMenuItem(
-            value: 0,
+            value: AyahLanguage.bangla,
             child: Text("Bangla"),
           ),
           PopupMenuItem(
-            value: 1,
+            value: AyahLanguage.english,
             child: Text("English"),
           ),
           PopupMenuItem(
-            value: 2,
+            value: AyahLanguage.chines,
             child: Text("China"),
           ),
           // PopupMenuItem(

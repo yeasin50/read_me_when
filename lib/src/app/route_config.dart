@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/infrastructure/enum/mood.dart';
-import 'package:read_me_when/src/presentation/qoute/qoute_page.dart';
 
+import '../infrastructure/enum/mood.dart';
 import '../presentation/bottom_nav/app_bottom_nav_bar.dart';
 import '../presentation/home/home_page.dart';
+import '../presentation/qoute/qoute_page.dart';
 
 class AppRoute {
   static String home = "/";
@@ -19,7 +19,7 @@ class AppRoute {
   static GoRouter router() {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: quote,
+      initialLocation: home,
       routes: [
         GoRoute(
             path: quote,

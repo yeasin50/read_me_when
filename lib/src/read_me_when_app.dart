@@ -12,7 +12,9 @@ class ReadMeWhen extends StatefulWidget {
 }
 
 class _ReadMeWhenState extends State<ReadMeWhen> {
-  final Future<AppRepo> future = AppRepo.init();
+  // get lang => ui.window.locale;
+  //FIXME: get the initial local
+  late final Future<AppRepo> future = AppRepo.init(language: "");
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
