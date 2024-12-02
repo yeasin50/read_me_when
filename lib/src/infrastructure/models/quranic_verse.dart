@@ -23,6 +23,15 @@ class QuranicVerse extends Equatable {
 
   final bool isFavorite;
 
+  static const QuranicVerse ui = QuranicVerse(
+    suraNo: 1,
+    suraName: "Al-Fatiha",
+    ayatNo: "1",
+    ayatInArabic: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ",
+    englishTranslation: "In the name of Allah, the Most Gracious, the Most Merciful",
+    banglaTranslation: "আল্লাহর নামে, যিনি পরম দয়ালু, পরম করুণাময়",
+    chineseTranslation: "奉普慈、全能的真主的名",
+  );
   @override
   List<Object?> get props => [
         suraNo,

@@ -12,6 +12,16 @@ enum Mood {
   love,
   surprise,
   disgust,
+  ;
+
+  static Mood fromName(String? name) {
+    try {
+      return Mood.values.byName(name?.toLowerCase() ?? "");
+    } catch (e) {
+      final items = [...Mood.values]..shuffle();
+      return items.first;
+    }
+  }
 }
 
 extension MoodExt on Mood {
@@ -71,5 +81,33 @@ extension MoodExt on Mood {
         Mood.love => Icon(FontAwesomeIcons.heart, color: iconColor, size: 40.0),
         Mood.surprise => Icon(FontAwesomeIcons.faceSurprise, color: iconColor, size: 40.0),
         Mood.disgust => Icon(FontAwesomeIcons.skull, color: iconColor, size: 40.0), // Changed to Skull
+      };
+
+  // Complementary background color for the scaffold on the quote page (muted and calming tones)
+  Color get scaffoldBackgroundColor => switch (this) {
+        Mood.sad => Color(0xFFFFF9C4), // Soft yellow for sad mood (Hex: #FFF9C4)
+        Mood.happy => Color(0xFFBBDEFB), // Light blue for happy mood (Hex: #BBDEFB)
+        Mood.anger => Color(0xFFFFAB91), // Muted orange for anger (Hex: #FFAB91)
+        Mood.disappointment => Color(0xFFFFE0B2), // Warm peach for disappointment (Hex: #FFE0B2)
+        Mood.loneliness => Color(0xFFE1BEE7), // Soft lavender for loneliness (Hex: #E1BEE7)
+        Mood.fear => Color(0xFF388E3C), // Muted dark green for fear (Hex: #388E3C)
+        Mood.trust => Color(0xFFC8E6C9), // Soft green for trust (Hex: #C8E6C9)
+        Mood.love => Color(0xFFF48FB1), // Muted warm red for love (Hex: #F48FB1)
+        Mood.surprise => Color(0xFFE0F2F1), // Light minty blue for surprise (Hex: #E0F2F1)
+        Mood.disgust => Color(0xFFD7CCC8), // Soft light brown for disgust (Hex: #D7CCC8)
+      };
+
+  // Text color for the quote text (soft, neutral tones for better contrast and readability)
+  Color get quoteTextColor => switch (this) {
+        Mood.sad => Color(0xFF212121), // Dark grey text for yellow background (Hex: #212121)
+        Mood.happy => Color(0xFF212121), // Dark grey text for light blue background (Hex: #212121)
+        Mood.anger => Colors.white, // White text for orange background
+        Mood.disappointment => Color(0xFF212121), // Dark grey text for peach background (Hex: #212121)
+        Mood.loneliness => Color(0xFF212121), // Dark grey text for lavender background (Hex: #212121)
+        Mood.fear => Colors.white, // White text for dark green background
+        Mood.trust => Color(0xFF212121), // Dark grey text for green background (Hex: #212121)
+        Mood.love => Color(0xFF212121), // Dark grey text for muted warm red background (Hex: #212121)
+        Mood.surprise => Color(0xFF212121), // Dark grey text for minty blue background (Hex: #212121)
+        Mood.disgust => Color(0xFF212121), // Dark grey text for light brown background (Hex: #212121)
       };
 }

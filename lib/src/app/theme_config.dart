@@ -43,7 +43,7 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white, // White text on primary buttons
           backgroundColor: const Color(0xFF54B684), // Soft Emerald
-          textStyle: GoogleFonts.lora(fontSize: 16.0, fontWeight: FontWeight.bold),
+          textStyle: GoogleFonts.lora(fontSize: 24.0, fontWeight: FontWeight.bold),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
           ),
