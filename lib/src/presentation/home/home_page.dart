@@ -22,7 +22,12 @@ class _HomePageState extends State<HomePage> {
           print(repo.data.entries.first.value.first);
         },
       ),
-      body: const MoodSelectionView(),
+      body: const Center(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(24),
+          child: MoodSelectionView(),
+        ),
+      ),
     );
   }
 }

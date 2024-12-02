@@ -14,13 +14,12 @@ class MoodItemBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: mood.color,
-          borderRadius: BorderRadius.circular(12.0),
-        ),
+    return Material(
+      borderRadius: BorderRadius.circular(12.0),
+      clipBehavior: Clip.hardEdge,
+      color: mood.color,
+      child: InkWell(
+        onTap: onTap,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:read_me_when/src/presentation/home/widget/mood_item_builder.dart';
 
 import '../../../infrastructure/enum/mood.dart';
+import 'mood_item_builder.dart';
 
+/// show the [Mood] selection view to navigate to
+///
 class MoodSelectionView extends StatelessWidget {
   const MoodSelectionView({super.key});
 
@@ -11,47 +13,33 @@ class MoodSelectionView extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
           'Select Your Mood',
           style: textTheme.titleLarge,
+          textAlign: TextAlign.center,
         ),
-        //toDO: pageView
-        Expanded(
-          child: RotatedBox(
-            quarterTurns: 3,
-            child: ListWheelScrollView(
-              itemExtent: 120,
-              children: Mood.values
-                  .map((e) => RotatedBox(
-                        quarterTurns: 1,
-                        child: MoodItemBuilder(
-                          mood: e,
-                          onTap: () {},
-                        ),
-                      ))
-                  .toList(),
-            ),
-          ),
+        const SizedBox(height: 24),
+        Wrap(
+          spacing: 16,
+          runSpacing: 16,
+          alignment: WrapAlignment.center,
+          runAlignment: WrapAlignment.center,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: Mood.values
+              .map(
+                (e) => SizedBox.square(
+                  dimension: 200,
+                  child: MoodItemBuilder(
+                    mood: e,
+                    onTap: () {},
+                  ),
+                ),
+              )
+              .toList(),
         ),
-        // Expanded(
-        //   child: GridView.builder(
-        //     padding: const EdgeInsets.all(16.0),
-        //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        //       crossAxisCount: 3,
-        //       mainAxisSpacing: 16.0,
-        //       crossAxisSpacing: 16.0,
-        //     ),
-        //     itemCount: Mood.values.length,
-        //     itemBuilder: (context, index) {
-        //       final mood = Mood.values[index];
-        //       return MoodItemBuilder(
-        //         mood: mood,
-        //         onTap: () {},
-        //       );
-        //     },
-        //   ),
-        // ),
       ],
     );
   }
