@@ -28,15 +28,7 @@ class _AyahInNativeViewState extends State<AyahInNativeView> {
     setState(() {});
   }
 
-  String get nativeAyat => switch (nativeLang) {
-        AyahLanguage.bangla => verse.banglaTranslation,
-        AyahLanguage.english => verse.englishTranslation,
-        AyahLanguage.chines => verse.chineseTranslation,
-        _ => () {
-            assert(false, "Missing language ");
-            return "";
-          }()
-      };
+  String get nativeAyat => verse.nativeAyah(nativeLang);
 
   @override
   Widget build(BuildContext context) {

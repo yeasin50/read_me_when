@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:read_me_when/src/presentation/saved/saved_page.dart';
 
 import '../infrastructure/enum/mood.dart';
 import '../presentation/bottom_nav/app_bottom_nav_bar.dart';
@@ -19,7 +20,7 @@ class AppRoute {
   static GoRouter router() {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: home,
+      initialLocation: favorite,
       routes: [
         GoRoute(
             path: quote,
@@ -50,7 +51,7 @@ class AppRoute {
                 GoRoute(
                   path: favorite,
                   pageBuilder: (context, state) => const NoTransitionPage(
-                    child: Text("Favorite"),
+                    child: SavedPage(),
                   ),
                 ),
               ],

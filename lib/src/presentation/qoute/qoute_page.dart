@@ -69,16 +69,12 @@ class _QuotePageState extends State<QuotePage> {
               stream: session!.stream,
               builder: (context, snapshot) {
                 QuranicVerse? verse = snapshot.data;
-                String surahName = "${verse?.suraName ?? ""}(${verse?.suraNo ?? ""})";
-                String ayah = "Ayah-${verse?.ayatNo ?? ""}";
                 return Column(
                   children: [
                     QuotePageAppBar(
-                      surahName: surahName,
                       textTheme: textTheme,
                       textColor: textColor,
-                      ayah: ayah,
-                      isSaved: isSaved,
+                      verse: verse,
                     ),
                     Expanded(
                       child: LayoutBuilder(

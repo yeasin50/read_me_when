@@ -9,6 +9,20 @@ class QuranicVerseRepo {
   final Map<Mood, List<QuranicVerse>> _data = {};
   Map<Mood, List<QuranicVerse>> get data => _data;
 
+  List<QuranicVerse> getMoodForVerse(Mood m) => data[m] ?? [];
+
+  List<QuranicVerse> getFromIds(List<String> ids) {
+    final List<QuranicVerse> verses = [];
+    for (final key in data.keys) {
+      for (final item in data[key] ?? <QuranicVerse>[]) {
+        if (ids.contains(item.id)) {
+          verses.add(item);
+        }
+      }
+    }
+    return verses;
+  }
+
   /// hold from assets
   final Map<Mood, String> _moodFiles = {
     Mood.sad: "sadness_db",
@@ -30,7 +44,7 @@ class QuranicVerseRepo {
       List<Future> futures = [];
 
       for (final m in _moodFiles.entries) {
-        futures.add(loadVerseFromFile(m.value));
+        futures.add(loadVerseFromFile(m.key, m.value));
       }
 
       final results = await Future.wait(futures);
@@ -44,5 +58,4 @@ class QuranicVerseRepo {
       return "Failed to load ${e.toString()}";
     }
   }
-
 }

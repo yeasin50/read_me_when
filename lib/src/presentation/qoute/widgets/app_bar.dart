@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import '../../../infrastructure/app_repo.dart';
+import '../../../infrastructure/db/user_preference_repo.dart';
+
+import '../../../infrastructure/models/quranic_verse.dart';
 
 class QuotePageAppBar extends StatelessWidget {
   const QuotePageAppBar({
     super.key,
-    required this.surahName,
+    required this.verse,
     required this.textTheme,
     required this.textColor,
-    required this.ayah,
-    required this.isSaved,
   });
 
-  final String surahName;
+  final QuranicVerse? verse;
+
   final TextTheme textTheme;
   final Color textColor;
-  final String ayah;
-  final bool isSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +26,32 @@ class QuotePageAppBar extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                surahName,
+                verse?.suraName ?? "...",
                 style: textTheme.headlineLarge?.copyWith(color: textColor),
               ),
               Text(
-                ayah,
+                verse?.ayatNo ?? "...",
                 style: textTheme.titleSmall?.copyWith(color: textColor),
               ),
             ],
           ),
         ),
-        IconButton.outlined(
-          onPressed: () {},
-          icon: Icon(
-            isSaved ? Icons.favorite : Icons.favorite_outline,
-          ),
-        ),
+        StreamBuilder<UserPreferenceState>(
+            stream: context.userPreference.savedStream,
+            builder: (context, snapshot) {
+              bool isSaved = snapshot.data?.savedAyahIds.contains(verse?.id) ?? false;
+              return IconButton.outlined(
+                onPressed: () async {
+                  if (verse?.id == null) return;
+                  isSaved
+                      ? await context.userPreference.removeFavorite(verse!.id)
+                      : await context.userPreference.saveFavorite(verse!.id);
+                },
+                icon: Icon(
+                  isSaved ? Icons.favorite : Icons.favorite_outline,
+                ),
+              );
+            }),
       ],
     );
   }

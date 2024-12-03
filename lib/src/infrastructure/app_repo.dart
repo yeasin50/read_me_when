@@ -20,7 +20,6 @@ class AppRepo {
     final userRepo = await UserPreferenceRepo.create(localLanguageCode: language);
 
     final repo = AppRepo._(verseRepo, userRepo);
-
     return repo;
   }
 }
