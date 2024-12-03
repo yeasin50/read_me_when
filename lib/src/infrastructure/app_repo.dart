@@ -10,18 +10,16 @@ class AppRepo {
   final QuranicVerseRepo verseRepo;
   final UserPreferenceRepo preferenceRepo;
 
-  static Future<AppRepo> init() async {
+  static Future<AppRepo> init({required String language}) async {
     final verseRepo = QuranicVerseRepo();
     final err = await verseRepo.load();
     if (err != null) {
       throw err;
     }
 
-    final repo = AppRepo._(
-      verseRepo,
-      UserPreferenceRepo(),
-    );
+    final userRepo = await UserPreferenceRepo.create(localLanguageCode: language);
 
+    final repo = AppRepo._(verseRepo, userRepo);
     return repo;
   }
 }
