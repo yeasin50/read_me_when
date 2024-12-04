@@ -20,12 +20,12 @@ class AppRoute {
   static GoRouter router() {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: favorite,
+      initialLocation: home,
       routes: [
         GoRoute(
             path: quote,
             pageBuilder: (context, state) {
-              final moodName = (state.extra as Map? ?? {})["mood_name"];
+              final moodName = "happy"; //(state.extra as Map? ?? {})["mood_name"];
 
               final mood = Mood.fromName(moodName);
               return NoTransitionPage(child: QuotePage(mood: mood));
