@@ -40,6 +40,7 @@ class QuotePageAppBar extends StatelessWidget {
             stream: context.userPreference.savedStream,
             builder: (context, snapshot) {
               bool isSaved = snapshot.data?.savedAyahIds.contains(verse?.id) ?? false;
+              debugPrint("isSaved ${snapshot.data?.savedAyahIds}");
               return IconButton.outlined(
                 onPressed: () async {
                   if (verse?.id == null) return;

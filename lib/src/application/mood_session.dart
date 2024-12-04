@@ -52,7 +52,7 @@ class MoodSession {
   }
 
   void nextVerse() {
-    if (_activeIndex > _verses.length) _activeIndex = 0;
+    if (_activeIndex >= _verses.length) _activeIndex = 0;
     _update(_verses[_activeIndex]);
   }
 

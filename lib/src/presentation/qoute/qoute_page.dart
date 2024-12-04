@@ -30,8 +30,6 @@ class _QuotePageState extends State<QuotePage> {
   Color get textColor => widget.mood.quoteTextColor;
   Color get scaffoldBG => widget.mood.scaffoldBackgroundColor;
 
-  bool isSaved = false;
-
   MoodSession? session;
   void nextVerse() async {
     session?.nextVerse();
