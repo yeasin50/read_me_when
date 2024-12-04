@@ -14,17 +14,23 @@ class MoodSession {
   late StreamController<QuranicVerse> _streamController;
   Stream<QuranicVerse> get stream => _streamController.stream;
 
+  late int _activeIndex;
+
   static Future<MoodSession> createSession({
     required Mood mood,
     required List<QuranicVerse> verses,
+    int? selectedIndex,
   }) async {
-    final data = verses..shuffle();
+    var data = verses;
+    if (selectedIndex == null) data.shuffle();
+
     final repo = MoodSession._(data);
-    await repo._init();
+    await repo._init(selectedIndex);
     return repo;
   }
 
   /// hold current mood for a specific session to prevent repeated ayah
+  @Deprecated("every time gonna create session, so not needed, use [_activeIndex]")
   final List<String> _alreadyShowedAyah = [];
 
   //update the stream
@@ -33,26 +39,24 @@ class MoodSession {
     _alreadyShowedAyah.add(_currentVerse!.id);
 
     _streamController.add(_currentVerse!);
+    _activeIndex++;
   }
 
-  Future<void> _init() async {
+  Future<void> _init(int? selectedIdex) async {
+    if (_verses.isEmpty) return;
+    _activeIndex = selectedIdex ?? 0;
+    final verse = selectedIdex == null ? _verses[_activeIndex] : _verses[_activeIndex];
     _streamController = StreamController(
-      onListen: () => _update(_verses.first),
+      onListen: () => _update(verse),
     );
   }
 
   void nextVerse() {
-    if (_alreadyShowedAyah.length >= _verses.length) {
-      _verses.shuffle();
-      _alreadyShowedAyah.clear();
-    }
-
-    _alreadyShowedAyah.add(_verses[_alreadyShowedAyah.length].id);
-    _update(_verses[_alreadyShowedAyah.length]);
+    if (_activeIndex > _verses.length) _activeIndex = 0;
+    _update(_verses[_activeIndex]);
   }
 
   void dispose() {
-    _alreadyShowedAyah.clear();
     _streamController.close();
   }
 }

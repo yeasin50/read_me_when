@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/presentation/saved/saved_page.dart';
 
 import '../infrastructure/enum/mood.dart';
+import '../infrastructure/models/quranic_verse.dart';
 import '../presentation/bottom_nav/app_bottom_nav_bar.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/qoute/qoute_page.dart';
+import '../presentation/saved/saved_page.dart';
 
 class AppRoute {
   static String home = "/";
@@ -25,10 +26,20 @@ class AppRoute {
         GoRoute(
             path: quote,
             pageBuilder: (context, state) {
-              final moodName = "happy"; //(state.extra as Map? ?? {})["mood_name"];
+              final moodName = (state.extra as Map? ?? {})["mood_name"];
+              final verseItem = (state.extra as Map? ?? {})["verse"];
+              final index = (state.extra as Map? ?? {})["index"];
+              Mood mood;
 
-              final mood = Mood.fromName(moodName);
-              return NoTransitionPage(child: QuotePage(mood: mood));
+              if (verseItem != null && verseItem is QuranicVerse) {
+                mood = verseItem.mood;
+              } else {
+                mood = Mood.fromName(moodName);
+              }
+
+              return CupertinoPage(
+                child: QuotePage(mood: mood, verse: verseItem, selectedVerseIndex: index),
+              );
             }),
         StatefulShellRoute.indexedStack(
           parentNavigatorKey: _rootNavigatorKey,

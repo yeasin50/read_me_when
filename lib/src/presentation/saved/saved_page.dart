@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:read_me_when/src/app/route_config.dart';
 
 import '../../infrastructure/app_repo.dart';
 import '../../infrastructure/enum/mood.dart';
@@ -36,6 +38,12 @@ class SavedPage extends StatelessWidget {
                       verse.nativeAyah(nativeLang),
                       style: TextStyle(color: verse.mood.quoteTextColor),
                     ),
+                    onTap: () {
+                      context.push(AppRoute.quote, extra: {
+                        "verse": verse,
+                        "index": index,
+                      });
+                    },
                   ),
                 );
               },

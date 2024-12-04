@@ -11,15 +11,15 @@ class QuotePage extends StatefulWidget {
   const QuotePage({
     super.key,
     required this.mood,
+    this.verse,
+    this.selectedVerseIndex,
   });
 
   final Mood mood;
 
-  static MaterialPageRoute route({required Mood mood}) {
-    return MaterialPageRoute(
-      builder: (context) => QuotePage(mood: mood),
-    );
-  }
+  /// if from saved, theses wont be null
+  final QuranicVerse? verse;
+  final int? selectedVerseIndex;
 
   @override
   State<QuotePage> createState() => _QuotePageState();
@@ -37,12 +37,17 @@ class _QuotePageState extends State<QuotePage> {
     session?.nextVerse();
   }
 
+  bool get fromSaved => widget.verse != null && widget.selectedVerseIndex != null;
+
   @override
   void initState() {
     super.initState();
     MoodSession.createSession(
       mood: widget.mood,
-      verses: verseRepo.data[widget.mood] ?? [],
+      verses: fromSaved //
+          ? verseRepo.getFromIds(userPreference.state.savedAyahIds)
+          : verseRepo.data[widget.mood] ?? [],
+      selectedIndex: widget.selectedVerseIndex,
     ).then((value) => setState(
           () {
             session = value;

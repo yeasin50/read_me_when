@@ -46,7 +46,7 @@ class _AyahInNativeViewState extends State<AyahInNativeView> with SingleTickerPr
               style: textTheme.headlineLarge?.copyWith(color: textColor),
               textAlign: TextAlign.center,
             )
-                .animate(target: 0, value: 1) //
+                .animate(delay: 300.ms, target: 0, value: 1) //
                 .blurXY(end: 16, duration: 500.ms)
                 .tint(color: const Color(0xFF80DDFF)),
           ),
@@ -64,7 +64,7 @@ class _AyahInNativeViewState extends State<AyahInNativeView> with SingleTickerPr
             style: textTheme.titleLarge?.copyWith(color: textColor),
             textAlign: TextAlign.center,
           )
-                  .animate(delay: 400.ms)
+                  .animate(delay: 700.ms)
                   .fadeIn(duration: 900.ms, delay: 400.ms) //
                   .shimmer(blendMode: BlendMode.exclusion, color: verse.mood.color.withAlpha(150))
                   .move(begin: const Offset(16, 0), curve: Curves.easeOutQuad)),
