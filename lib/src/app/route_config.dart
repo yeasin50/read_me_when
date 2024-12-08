@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../infrastructure/enum/mood.dart';
 import '../infrastructure/models/quranic_verse.dart';
 import '../presentation/bottom_nav/app_bottom_nav_bar.dart';
+import '../presentation/graph/user_activity_page.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/qoute/qoute_page.dart';
 import '../presentation/saved/saved_page.dart';
@@ -11,7 +13,7 @@ import '../presentation/saved/saved_page.dart';
 class AppRoute {
   static String home = "/";
   static String favorite = "/favorite";
-  static String story = "/story";
+  static String history = "/history";
 
   static String quote = "/quote";
 
@@ -21,7 +23,7 @@ class AppRoute {
   static GoRouter router() {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: favorite,
+      initialLocation: home,
       routes: [
         GoRoute(
             path: quote,
@@ -37,8 +39,12 @@ class AppRoute {
                 mood = Mood.fromName(moodName);
               }
 
-              return CupertinoPage(
-                child: QuotePage(mood: mood, verse: verseItem, selectedVerseIndex: index),
+              return MaterialPage(
+                child: QuotePage(
+                  mood: mood,
+                  verse: verseItem,
+                  selectedVerseIndex: index,
+                ),
               );
             }),
         StatefulShellRoute.indexedStack(
@@ -67,16 +73,16 @@ class AppRoute {
                 ),
               ],
             ),
-            StatefulShellBranch(
-              routes: [
-                GoRoute(
-                  path: story,
-                  pageBuilder: (context, state) => const NoTransitionPage(
-                    child: Text("Story"),
-                  ),
-                ),
-              ],
-            ),
+            // StatefulShellBranch(
+            //   routes: [
+            //     GoRoute(
+            //       path: history,
+            //       pageBuilder: (context, state) => const NoTransitionPage(
+            //         child: MoodTrackerPage(),
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ],
         )
       ],

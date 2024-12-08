@@ -64,52 +64,57 @@ class _QuotePageState extends State<QuotePage> {
         onPressed: () {},
         child: const Icon(Icons.share_outlined),
       ),
-      body: session == null
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : StreamBuilder<QuranicVerse>(
-              stream: session!.stream,
-              builder: (context, snapshot) {
-                QuranicVerse? verse = snapshot.data;
-                return Column(
-                  children: [
-                    QuotePageAppBar(
-                      textTheme: textTheme,
-                      textColor: textColor,
-                      verse: verse,
-                    ),
-                    Expanded(
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          if (verse == null) {
-                            return const Center(child: CircularProgressIndicator());
-                          }
-                          return Center(
-                            child: SingleChildScrollView(
-                              padding: const EdgeInsets.all(24),
-                              child: AyahInNativeView(
-                                mood: widget.mood,
-                                verse: verse,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: 64),
-                    SizedBox(
-                      width: 250,
-                      child: OutlinedButton(
-                        onPressed: nextVerse,
-                        iconAlignment: IconAlignment.end,
-                        child: const Text("Next Verse"),
-                      ),
-                    ),
-                    const SizedBox(height: 72),
-                  ],
-                );
-              }),
+      body: Hero(
+        tag: widget.mood,
+        child: SafeArea(
+          child: session == null
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : StreamBuilder<QuranicVerse>(
+                  stream: session!.stream,
+                  builder: (context, snapshot) {
+                    QuranicVerse? verse = snapshot.data;
+                    return Column(
+                      children: [
+                        QuotePageAppBar(
+                          textTheme: textTheme,
+                          textColor: textColor,
+                          verse: verse,
+                        ),
+                        Expanded(
+                          child: LayoutBuilder(
+                            builder: (context, constraints) {
+                              if (verse == null) {
+                                return const Center(child: CircularProgressIndicator());
+                              }
+                              return Center(
+                                child: SingleChildScrollView(
+                                  padding: const EdgeInsets.all(24),
+                                  child: AyahInNativeView(
+                                    mood: widget.mood,
+                                    verse: verse,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 64),
+                        SizedBox(
+                          width: 250,
+                          child: OutlinedButton(
+                            onPressed: nextVerse,
+                            iconAlignment: IconAlignment.end,
+                            child: const Text("Next Verse"),
+                          ),
+                        ),
+                        const SizedBox(height: 72),
+                      ],
+                    );
+                  }),
+        ),
+      ),
     );
   }
 }
