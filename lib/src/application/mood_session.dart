@@ -25,7 +25,7 @@ class MoodSession {
     if (selectedIndex == null) data.shuffle();
 
     final repo = MoodSession._(data);
-    await repo._init(selectedIndex);
+     repo._init(selectedIndex);
     return repo;
   }
 
@@ -42,7 +42,7 @@ class MoodSession {
     _activeIndex++;
   }
 
-  Future<void> _init(int? selectedIdex) async {
+  void _init(int? selectedIdex)  {
     if (_verses.isEmpty) return;
     _activeIndex = selectedIdex ?? 0;
     final verse = selectedIdex == null ? _verses[_activeIndex] : _verses[_activeIndex];

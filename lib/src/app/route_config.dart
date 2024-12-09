@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../infrastructure/enum/mood.dart';
 import '../infrastructure/models/quranic_verse.dart';
 import '../presentation/bottom_nav/app_bottom_nav_bar.dart';
-import '../presentation/graph/user_activity_page.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/qoute/qoute_page.dart';
 import '../presentation/saved/saved_page.dart';

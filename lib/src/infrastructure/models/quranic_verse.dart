@@ -89,4 +89,28 @@ class QuranicVerse extends Equatable {
       rethrow;
     }
   }
+
+  QuranicVerse copyWith({
+    int? suraNo,
+    String? suraName,
+    String? ayatNo,
+    String? ayatInArabic,
+    String? englishTranslation,
+    String? banglaTranslation,
+    String? chineseTranslation,
+    bool? isFavorite,
+    Mood? mood,
+  }) {
+    return QuranicVerse(
+      suraNo: suraNo ?? this.suraNo,
+      suraName: suraName ?? this.suraName,
+      ayatNo: ayatNo ?? this.ayatNo,
+      ayatInArabic: ayatInArabic ?? this.ayatInArabic,
+      englishTranslation: englishTranslation ?? this.englishTranslation,
+      banglaTranslation: banglaTranslation ?? this.banglaTranslation,
+      chineseTranslation: chineseTranslation ?? this.chineseTranslation,
+      isFavorite: isFavorite ?? this.isFavorite,
+      mood: mood ?? this.mood,
+    );
+  }
 }

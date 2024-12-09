@@ -15,8 +15,9 @@ class ReadMeWhen extends StatefulWidget {
 
 class _ReadMeWhenState extends State<ReadMeWhen> {
   // get lang => ui.window.locale;
-  //FIXME: get the initial local
+
   late final Future<AppRepo> future = AppRepo.init(language: "");
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -35,12 +36,9 @@ class _ReadMeWhenState extends State<ReadMeWhen> {
         return AppRepoInheritedWidget(
           repo: snapshot.requireData,
           child: MaterialApp.router(
-            scrollBehavior: ScrollBehavior().copyWith(
+            scrollBehavior: const ScrollBehavior().copyWith(
               scrollbars: false,
-              dragDevices: {
-                PointerDeviceKind.mouse,
-                PointerDeviceKind.touch,
-              },
+              dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
             ),
             debugShowCheckedModeBanner: false,
             routerConfig: AppRoute.router(),
