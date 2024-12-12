@@ -1,16 +1,19 @@
 import 'dart:async';
 
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../enum/ayah_langage.dart';
 import '../enum/mood.dart';
 import '../models/quranic_verse.dart';
 import 'load_from_asset_json.dart';
-import 'user_preference_repo.dart';
+import 'local_db.dart';
+import 'quranic_verse_state.dart';
+
+export 'quranic_verse_state.dart';
 
 class QuranicVerseRepo {
-  QuranicVerseRepo._();
+  QuranicVerseRepo._(this._localDatabase);
+
+  final LocalDatabase _localDatabase;
 
   QuranicVerseState _state = QuranicVerseState.none;
   QuranicVerseState get state => _state;
@@ -18,37 +21,49 @@ class QuranicVerseRepo {
   late StreamController<QuranicVerseState> _controller;
   Stream<QuranicVerseState> get verseStream => _controller.stream;
 
-  static Future<QuranicVerseRepo> create(UserPreferenceState userPrefState) async {
-    final repo = QuranicVerseRepo._();
-    await repo._init(userPrefState);
+  Stream<Map<Mood, List<QuranicVerse>>> get savedItems {
+    return _controller.stream.map(
+      (event) {
+        Map<Mood, List<QuranicVerse>> filteredData = {};
+        for (final entry in event.data.entries) {
+          for (final verse in entry.value) {
+            if (verse.isFavorite) {
+              filteredData[entry.key] = [...filteredData[entry.key] ?? [], verse];
+            }
+          }
+        }
+
+        return Map.from(filteredData);
+      },
+    );
+  }
+
+  static Future<QuranicVerseRepo> create(LocalDatabase db) async {
+    final repo = QuranicVerseRepo._(db);
+    final savedAyah = await db.getSavedAyahIds();
+
+    print("savedAyah ${savedAyah}");
+    await repo._init(savedAyah);
     return repo;
   }
 
-  Future<void> _init(UserPreferenceState userPrefState) async {
+  Future<void> _init(List<String> savedAyahIds) async {
     final verses = await _load();
 
     Map<Mood, List<QuranicVerse>> refineData = {};
-    Map<Mood, List<QuranicVerse>> savedItem = {};
     //refine if saved or not
     for (final k in verses.keys) {
       List<QuranicVerse> data = [];
-      savedItem[k] = [];
       for (int i = 0; i < verses[k]!.length; i++) {
         QuranicVerse verse = verses[k]![i];
-        if (userPrefState.savedAyahIds.contains(verse.id)) {
-          verse = verse.copyWith(isFavorite: true);
-          savedItem[k] = [...savedItem[k] ?? [], verse];
-        }
-        data.add(verse);
+        data.add(verse.copyWith(isFavorite: savedAyahIds.contains(verse.id)));
       }
       refineData[k] = data;
     }
 
     _state = QuranicVerseState(
       data: refineData,
-      savedItemIds: userPrefState.savedAyahIds,
-      savedItems: savedItem,
-      nativeLang: userPrefState.ayahLanguage,
+      savedItemIds: savedAyahIds,
     );
 
     _controller = StreamController.broadcast(onListen: () => _update(_state));
@@ -61,6 +76,38 @@ class QuranicVerseRepo {
 
   void dispose() {
     _controller.close();
+  }
+
+  Future<void> addFavorite(QuranicVerse verse) async {
+    await _localDatabase.addAyahId(verse.id);
+    _update(state.copyWith(
+      savedItemIds: [..._state.savedItemIds, verse.id],
+      data: {
+        ..._state.data,
+        verse.mood: [
+          ..._state.data[verse.mood] ?? [],
+          verse.copyWith(isFavorite: true),
+        ]
+      },
+    ));
+  }
+
+  Future<void> removeFavorite(QuranicVerse verse) async {
+    await _localDatabase.removeAyahSavedId(verse.id);
+    print("savedAyah removeFavorite ${verse.id}");
+
+    final moodData = _state.data[verse.mood];
+    moodData?.removeWhere((element) => element.id == verse.id);
+    moodData?.add(verse.copyWith(isFavorite: false));
+
+    _update(state.copyWith(
+      savedItemIds: [..._state.savedItemIds..remove(verse.id)],
+      data: {..._state.data, verse.mood: moodData ?? []},
+    ));
+  }
+
+  Future<void> clearPref() async {
+    await _localDatabase.removeAyahSavedId("", true);
   }
 
   /// hold from assets
@@ -98,57 +145,4 @@ class QuranicVerseRepo {
       rethrow;
     }
   }
-}
-
-class QuranicVerseState extends Equatable {
-  const QuranicVerseState({
-    required this.data,
-    required this.savedItemIds,
-    required this.savedItems,
-    required this.nativeLang,
-  });
-
-  final Map<Mood, List<QuranicVerse>> data;
-  final Map<Mood, List<QuranicVerse>> savedItems;
-  final List<String> savedItemIds;
-
-  final AyahLanguage nativeLang;
-
-  static QuranicVerseState none = const QuranicVerseState(
-    data: {},
-    savedItemIds: [],
-    savedItems: {},
-    nativeLang: AyahLanguage.bangla,
-  );
-
-  List<QuranicVerse> getMoodForVerse(Mood m) => data[m] ?? [];
-
-  List<QuranicVerse> getFromIds(List<String> ids) {
-    final List<QuranicVerse> verses = [];
-    for (final key in data.keys) {
-      for (final item in data[key] ?? <QuranicVerse>[]) {
-        if (ids.contains(item.id)) {
-          verses.add(item);
-        }
-      }
-    }
-    return verses;
-  }
-
-  QuranicVerseState copyWith({
-    Map<Mood, List<QuranicVerse>>? data,
-    Map<Mood, List<QuranicVerse>>? savedItems,
-    List<String>? savedItemIds,
-    AyahLanguage? nativeLang,
-  }) {
-    return QuranicVerseState(
-      data: data ?? this.data,
-      savedItems: savedItems ?? this.savedItems,
-      savedItemIds: savedItemIds ?? this.savedItemIds,
-      nativeLang: nativeLang ?? this.nativeLang,
-    );
-  }
-
-  @override
-  List<Object?> get props => [data, savedItemIds, savedItems, nativeLang];
 }

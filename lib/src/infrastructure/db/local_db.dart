@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:collection/collection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,7 +10,7 @@ class LocalDatabase {
   LocalDatabase._(this.db);
   final SharedPreferences db;
 
- static Future<LocalDatabase> init() async {
+  static Future<LocalDatabase> init() async {
     final pref = await SharedPreferences.getInstance();
     return LocalDatabase._(pref);
   }
@@ -33,16 +35,18 @@ class LocalDatabase {
 
   Future<bool> addAyahId(String id) async {
     final ids = db.getStringList("get_saved_ayahs_ids") ?? [];
-    await db.setStringList("get_saved_ayahs_ids", [...ids, id]);
+    ids.add(id);
+    await db.setStringList("get_saved_ayahs_ids", ids);
+    log("addAyahId ${ids}");
     return true;
   }
 
-  Future<bool> removeAyahSavedId(String id) async {
+  Future<bool> removeAyahSavedId(String id, [bool clearAll = false]) async {
     final ids = db.getStringList("get_saved_ayahs_ids") ?? [];
     if (ids.contains(id)) {
       ids.remove(id);
     }
-    await db.setStringList("get_saved_ayahs_ids", [...ids]);
+    await db.setStringList("get_saved_ayahs_ids", clearAll ? [] : [...ids]);
 
     return true;
   }

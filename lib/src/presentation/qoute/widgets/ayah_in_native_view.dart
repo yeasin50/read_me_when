@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../../infrastructure/app_repo.dart';
+import '../../../infrastructure/db/user_preference_repo.dart';
 import '../../../infrastructure/enum/ayah_langage.dart';
 import '../../../infrastructure/enum/mood.dart';
 import '../../../infrastructure/models/quranic_verse.dart';
@@ -22,16 +25,34 @@ class _AyahInNativeViewState extends State<AyahInNativeView> with SingleTickerPr
 
   QuranicVerse get verse => widget.verse;
 
-  late AyahLanguage nativeLang = userPreference.ayahNativeLang;
-  void onNativeChanged(AyahLanguage lang) {
+  late StreamSubscription<UserPreferenceState> nativeLangAyahSubs;
+  AyahLanguage nativeLang = AyahLanguage.bangla;
+
+  void onNativeChanged(AyahLanguage lang) async {
     nativeLang = lang;
-    userPreference.setLocal(lang);
+    await userPreference.setLocal(lang);
     setState(() {});
   }
 
   String get nativeAyat => verse.nativeAyah(nativeLang);
 
-  double value = 1;
+  @override
+  void initState() {
+    super.initState();
+
+    nativeLangAyahSubs = userPreference.savedStream.listen(
+      (event) {
+        nativeLang = event.ayahLanguage;
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    nativeLangAyahSubs.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -46,7 +67,7 @@ class _AyahInNativeViewState extends State<AyahInNativeView> with SingleTickerPr
               style: textTheme.headlineLarge?.copyWith(color: textColor),
               textAlign: TextAlign.center,
             )
-                .animate(delay: 100.ms, target: 0, value: 1) //
+                .animate(delay: 200.ms, target: 0, value: 1) //
                 .blurXY(end: 16, duration: 300.ms)
                 .tint(color: const Color(0xFF80DDFF)),
           ),

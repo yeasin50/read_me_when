@@ -6,36 +6,10 @@ import 'package:equatable/equatable.dart';
 import '../enum/ayah_langage.dart';
 import 'local_db.dart';
 
-class UserPreferenceState extends Equatable {
-  const UserPreferenceState({
-    required this.ayahLanguage,
-    this.savedAyahIds = const [],
-  });
-
-  final AyahLanguage ayahLanguage;
-  final List<String> savedAyahIds;
-
-  static const UserPreferenceState none = UserPreferenceState(ayahLanguage: AyahLanguage.bangla, savedAyahIds: []);
-
-  @override
-  List<Object?> get props => [ayahLanguage, savedAyahIds];
-
-  UserPreferenceState copyWith({
-    AyahLanguage? ayahLanguage,
-    List<String>? savedAyahIds,
-  }) {
-    return UserPreferenceState(
-      ayahLanguage: ayahLanguage ?? this.ayahLanguage,
-      savedAyahIds: savedAyahIds ?? this.savedAyahIds,
-    );
-  }
-}
-
 ///- [ ] language support
-///- [ ] handle bookMark/Favorite
 ///- [ ] theme Setting
 ///- [ ] suggestion Quote -> use Analytic repo for mood tracking
-///- [ ]
+///
 class UserPreferenceRepo {
   UserPreferenceRepo._(this.localDB);
 
@@ -59,14 +33,17 @@ class UserPreferenceRepo {
 
   Future<void> _init() async {
     final lang = await localDB.getUserAyahPreferLanguage();
-    final ids = await localDB.getSavedAyahIds();
-    _state = _state.copyWith(ayahLanguage: lang, savedAyahIds: ids);
+    _state = _state.copyWith(ayahLanguage: lang);
     _controller = StreamController.broadcast(onListen: () => _update(_state));
   }
 
   void _update(UserPreferenceState state) {
     _state = state;
     _controller.add(_state);
+  }
+
+  Future<void> dispose() async {
+    await _controller.close();
   }
 
   ///  the one user prefer to show other than arabic
@@ -78,15 +55,21 @@ class UserPreferenceRepo {
     _ayahNativeTranslation = lang;
     _update(state.copyWith(ayahLanguage: lang));
   }
+}
 
-  Future<void> saveFavorite(String ayahId) async {
-    await localDB.addAyahId(ayahId);
-    _update(state.copyWith(savedAyahIds: [...state.savedAyahIds, ayahId]));
-  }
+class UserPreferenceState extends Equatable {
+  const UserPreferenceState({required this.ayahLanguage});
 
-  Future<void> removeFavorite(String ayahId) async {
-    await localDB.removeAyahSavedId(ayahId);
-    final ids = _state.savedAyahIds..remove(ayahId);
-    _update(state.copyWith(savedAyahIds: [...ids]));
+  final AyahLanguage ayahLanguage;
+
+  static const UserPreferenceState none = UserPreferenceState(ayahLanguage: AyahLanguage.bangla);
+
+  @override
+  List<Object?> get props => [ayahLanguage];
+
+  UserPreferenceState copyWith({
+    AyahLanguage? ayahLanguage,
+  }) {
+    return UserPreferenceState(ayahLanguage: ayahLanguage ?? this.ayahLanguage);
   }
 }

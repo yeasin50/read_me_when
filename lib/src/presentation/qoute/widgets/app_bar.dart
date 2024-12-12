@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../infrastructure/app_repo.dart';
-import '../../../infrastructure/db/user_preference_repo.dart';
 
 import '../../../infrastructure/models/quranic_verse.dart';
 
-class QuotePageAppBar extends StatelessWidget {
+class QuotePageAppBar extends StatefulWidget {
   const QuotePageAppBar({
     super.key,
     required this.verse,
@@ -18,6 +17,21 @@ class QuotePageAppBar extends StatelessWidget {
   final Color textColor;
 
   @override
+  State<QuotePageAppBar> createState() => _QuotePageAppBarState();
+}
+
+class _QuotePageAppBarState extends State<QuotePageAppBar> {
+  late bool isSaved = widget.verse?.isFavorite ?? false;
+
+  void toggleSaved() async {
+    isSaved = !isSaved;
+    setState(() {});
+    isSaved
+        ? await context.verseRepo.addFavorite(widget.verse!)
+        : await context.verseRepo.removeFavorite(widget.verse!);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       children: [
@@ -26,33 +40,22 @@ class QuotePageAppBar extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                verse?.suraName ?? "...",
-                style: textTheme.headlineLarge?.copyWith(color: textColor),
+                widget.verse?.suraName ?? "...",
+                style: widget.textTheme.headlineLarge?.copyWith(color: widget.textColor),
               ),
               Text(
-                verse?.ayatNo ?? "...",
-                style: textTheme.titleSmall?.copyWith(color: textColor),
+                widget.verse?.ayatNo ?? "...",
+                style: widget.textTheme.titleSmall?.copyWith(color: widget.textColor),
               ),
             ],
           ),
         ),
-        StreamBuilder<UserPreferenceState>(
-            stream: context.userPreference.savedStream,
-            builder: (context, snapshot) {
-              bool isSaved = snapshot.data?.savedAyahIds.contains(verse?.id) ?? false;
-              debugPrint("isSaved ${snapshot.data?.savedAyahIds}");
-              return IconButton.outlined(
-                onPressed: () async {
-                  if (verse?.id == null) return;
-                  isSaved
-                      ? await context.userPreference.removeFavorite(verse!.id)
-                      : await context.userPreference.saveFavorite(verse!.id);
-                },
-                icon: Icon(
-                  isSaved ? Icons.favorite : Icons.favorite_outline,
-                ),
-              );
-            }),
+        IconButton.outlined(
+          onPressed: toggleSaved,
+          icon: Icon(
+            isSaved ? Icons.favorite : Icons.favorite_outline,
+          ),
+        ),
       ],
     );
   }

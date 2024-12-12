@@ -29,21 +29,24 @@ class AppRoute {
               final moodName = (state.extra as Map? ?? {})["mood_name"];
               final verseItem = (state.extra as Map? ?? {})["verse"];
               final index = (state.extra as Map? ?? {})["index"];
-              Mood mood;
 
               if (verseItem != null && verseItem is QuranicVerse) {
-                mood = verseItem.mood;
+                debugPrint("from Saved page");
+                return MaterialPage(
+                  child: QuotePage.fromSaved(
+                    mood: verseItem.mood,
+                    verse: verseItem,
+                    selectedVerseIndex: index,
+                  ),
+                );
               } else {
-                mood = Mood.fromName(moodName);
+                return MaterialPage(
+                  child: QuotePage(
+                    key: ValueKey("From home page $moodName"),
+                    mood: Mood.fromName(moodName),
+                  ),
+                );
               }
-
-              return MaterialPage(
-                child: QuotePage(
-                  mood: mood,
-                  verse: verseItem,
-                  selectedVerseIndex: index,
-                ),
-              );
             }),
         StatefulShellRoute.indexedStack(
           parentNavigatorKey: _rootNavigatorKey,

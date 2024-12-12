@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'db/local_db.dart';
 import 'db/quranic_verse_repo.dart';
 import 'db/user_preference_repo.dart';
 
@@ -12,7 +13,8 @@ class AppRepo {
 
   static Future<AppRepo> init({required String language}) async {
     final userRepo = await UserPreferenceRepo.create(localLanguageCode: language);
-    final verseRepo = await QuranicVerseRepo.create(userRepo.state);
+    final pref = await LocalDatabase.init();
+    final verseRepo = await QuranicVerseRepo.create(pref);
 
     final repo = AppRepo._(verseRepo, userRepo);
     return repo;

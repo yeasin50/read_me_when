@@ -1,5 +1,7 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:read_me_when/src/infrastructure/db/quranic_verse_repo.dart';
 import '../../app/route_config.dart';
 import 'widgets/mood_visibility_ensure_view.dart';
 
@@ -14,7 +16,7 @@ class SavedPage extends StatefulWidget {
   State<SavedPage> createState() => _SavedPageState();
 }
 
-class _SavedPageState extends State<SavedPage> {
+class _SavedPageState extends State<SavedPage> with AutomaticKeepAliveClientMixin {
   final ScrollController _scrollController = ScrollController();
   @override
   void dispose() {
@@ -24,17 +26,20 @@ class _SavedPageState extends State<SavedPage> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: context.verseRepo.verseStream,
+    super.build(context);
+    return StreamBuilder<QuranicVerseState>(
+      stream: verseRepo.verseStream,
       builder: (context, snapshot) {
-        final ids = snapshot.data?.savedItems ?? {};
-        if (ids.isEmpty) {
+        final response = snapshot.data ?? QuranicVerseState.none;
+
+        if (response.data.isEmpty) {
           return const Center(child: Text("You have not saved any"));
         }
 
-        final groupData = snapshot.requireData.savedItems;
-
+        final groupData = groupBy(snapshot.requireData.getSavedItems, (p0) => p0.mood);
+        print(response.toString() + " e  ${groupData.entries.length}");
         return SafeArea(
+          key: ValueKey(response.hashCode),
           child: CustomScrollView(
             controller: _scrollController,
             slivers: [
@@ -66,7 +71,7 @@ class _SavedPageState extends State<SavedPage> {
                               child: ListTile(
                                 tileColor: verse.mood.scaffoldBackgroundColor,
                                 title: Text(
-                                  verse.nativeAyah(snapshot.requireData.nativeLang),
+                                  verse.nativeAyah(userPreference.ayahNativeLang),
                                   style: TextStyle(color: verse.mood.quoteTextColor),
                                 ),
                                 onTap: () {
@@ -89,4 +94,7 @@ class _SavedPageState extends State<SavedPage> {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

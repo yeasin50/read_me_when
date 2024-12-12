@@ -41,7 +41,7 @@ class QuranicVerse extends Equatable {
 
   final Mood mood;
 
-  String get id => "$suraNo-$ayatNo";
+  String get id => "$suraNo-$ayatNo-$suraName";
 
   static const QuranicVerse ui = QuranicVerse(
     suraNo: 1,

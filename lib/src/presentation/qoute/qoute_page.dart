@@ -6,13 +6,19 @@ import '../../infrastructure/models/quranic_verse.dart';
 import 'widgets/app_bar.dart';
 import 'widgets/ayah_in_native_view.dart';
 
-class QuotePage extends StatelessWidget {
+class QuotePage extends StatefulWidget {
   const QuotePage({
     super.key,
     required this.mood,
-    this.verse,
-    this.selectedVerseIndex,
-  });
+  })  : verse = null,
+        selectedVerseIndex = null;
+
+  const QuotePage.fromSaved({
+    super.key,
+    required this.mood,
+    required this.verse,
+    required this.selectedVerseIndex,
+  }) : assert(selectedVerseIndex != null, "selectedVerseIndex can't be null");
 
   final Mood mood;
 
@@ -21,52 +27,31 @@ class QuotePage extends StatelessWidget {
   final int? selectedVerseIndex;
 
   @override
-  Widget build(BuildContext context) {
-    final List<QuranicVerse> data = verse != null //
-        ? context.verseRepo.state.savedItems.values.expand((e) => e).toList()
-        : context.verseRepo.state.data[mood] ?? [];
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        shape: const CircleBorder(),
-        onPressed: () {},
-        child: const Icon(Icons.share_outlined),
-      ),
-      body: Hero(
-          tag: verse ?? mood,
-          child: MoodSessionView(
-            verses: data,
-            selectedIndex: selectedVerseIndex ?? 0,
-          )),
-    );
-  }
+  State<QuotePage> createState() => _QuotePageState();
 }
 
-///
-class MoodSessionView extends StatefulWidget {
-  const MoodSessionView({
-    super.key,
-    required this.verses,
-    required this.selectedIndex,
-  });
+class _QuotePageState extends State<QuotePage> {
+  late int selectedIndex = widget.selectedVerseIndex ?? 0;
 
-  final List<QuranicVerse> verses;
-  final int selectedIndex;
+  late List<QuranicVerse> verses = //
+      widget.selectedVerseIndex == null //
+          ? verseRepo.state.getMoodForVerse(widget.mood)
+          : verseRepo.state.getSavedItems;
 
-  @override
-  State<MoodSessionView> createState() => _MoodSessionViewState();
-}
+  String get moodName => verses[selectedIndex].mood.name;
+  Color get textColor => verses[selectedIndex].mood.quoteTextColor;
 
-class _MoodSessionViewState extends State<MoodSessionView> {
-  late int selectedIndex = widget.selectedIndex;
-
-  String get moodName => widget.verses[selectedIndex].mood.name;
-  Color get textColor => widget.verses[selectedIndex].mood.quoteTextColor;
-
-  QuranicVerse get verse => widget.verses[selectedIndex];
+  QuranicVerse get verse => verses[selectedIndex];
 
   void nextVerse() {
     selectedIndex++;
-    if (selectedIndex >= widget.verses.length) selectedIndex = 0;
+    if (selectedIndex >= verses.length) selectedIndex = 0;
+    setState(() {});
+  }
+
+  void onPreviousBack() {
+    selectedIndex--;
+    if (selectedIndex < 0) selectedIndex = verses.length - 1;
     setState(() {});
   }
 
@@ -74,40 +59,55 @@ class _MoodSessionViewState extends State<MoodSessionView> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return AnimatedContainer(
-      duration: Durations.medium1,
-      color: verse.mood.scaffoldBackgroundColor,
-      padding: MediaQuery.paddingOf(context),
-      child: Column(
-        children: [
-          QuotePageAppBar(
-            textTheme: textTheme,
-            textColor: textColor,
-            verse: verse,
-          ),
-          Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return Center(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(24),
-                    child: AyahInNativeView(mood: verse.mood, verse: verse),
-                  ),
-                );
-              },
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        shape: const CircleBorder(),
+        onPressed: () {},
+        child: const Icon(Icons.share_outlined),
+      ),
+      body: AnimatedContainer(
+        duration: Durations.medium1,
+        color: verse.mood.scaffoldBackgroundColor,
+        padding: MediaQuery.paddingOf(context),
+        child: Column(
+          children: [
+            QuotePageAppBar(
+              textTheme: textTheme,
+              textColor: textColor,
+              verse: verse,
             ),
-          ),
-          const SizedBox(height: 64),
-          SizedBox(
-            width: 250,
-            child: OutlinedButton(
-              onPressed: nextVerse,
-              iconAlignment: IconAlignment.end,
-              child: const Text("Next Verse"),
+            Expanded(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return Center(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(24),
+                      child: AyahInNativeView(mood: verse.mood, verse: verse),
+                    ),
+                  );
+                },
+              ),
             ),
-          ),
-          const SizedBox(height: 72),
-        ],
+            const SizedBox(height: 64),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton.outlined(
+                  onPressed: onPreviousBack,
+                  icon: const Icon(Icons.arrow_back_ios_new),
+                ),
+                const SizedBox(width: 24),
+                ElevatedButton.icon(
+                  onPressed: nextVerse,
+                  iconAlignment: IconAlignment.end,
+                  label: const Text("Next verse"),
+                  icon: const Icon(Icons.arrow_forward_ios),
+                ),
+              ],
+            ),
+            const SizedBox(height: 72),
+          ],
+        ),
       ),
     );
   }

@@ -18,6 +18,8 @@ class _ReadMeWhenState extends State<ReadMeWhen> {
 
   late final Future<AppRepo> future = AppRepo.init(language: "");
 
+  final routeConfig = AppRoute.router();
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -41,7 +43,7 @@ class _ReadMeWhenState extends State<ReadMeWhen> {
               dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
             ),
             debugShowCheckedModeBanner: false,
-            routerConfig: AppRoute.router(),
+            routerConfig: routeConfig,
           ),
         );
       },
