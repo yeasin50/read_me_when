@@ -65,48 +65,53 @@ class _QuotePageState extends State<QuotePage> {
         onPressed: () {},
         child: const Icon(Icons.share_outlined),
       ),
-      body: AnimatedContainer(
-        duration: Durations.medium1,
-        color: verse.mood.scaffoldBackgroundColor,
-        padding: MediaQuery.paddingOf(context),
-        child: Column(
-          children: [
-            QuotePageAppBar(
-              textTheme: textTheme,
-              textColor: textColor,
-              verse: verse,
-            ),
-            Expanded(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  return Center(
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.all(24),
-                      child: AyahInNativeView(mood: verse.mood, verse: verse),
-                    ),
-                  );
-                },
+      body: Hero(
+        tag: widget.verse ?? widget.mood,
+        child: AnimatedContainer(
+          duration: Durations.medium1,
+          width: double.infinity,
+          color: verse.mood.scaffoldBackgroundColor,
+          padding: MediaQuery.paddingOf(context),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              QuotePageAppBar(
+                textTheme: textTheme,
+                textColor: textColor,
+                verse: verse,
               ),
-            ),
-            const SizedBox(height: 64),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton.outlined(
-                  onPressed: onPreviousBack,
-                  icon: const Icon(Icons.arrow_back_ios_new),
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Center(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.all(24),
+                        child: AyahInNativeView(mood: verse.mood, verse: verse),
+                      ),
+                    );
+                  },
                 ),
-                const SizedBox(width: 24),
-                ElevatedButton.icon(
-                  onPressed: nextVerse,
-                  iconAlignment: IconAlignment.end,
-                  label: const Text("Next verse"),
-                  icon: const Icon(Icons.arrow_forward_ios),
-                ),
-              ],
-            ),
-            const SizedBox(height: 72),
-          ],
+              ),
+              const SizedBox(height: 64),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton.outlined(
+                    onPressed: onPreviousBack,
+                    icon: const Icon(Icons.arrow_back_ios_new),
+                  ),
+                  const SizedBox(width: 24),
+                  ElevatedButton.icon(
+                    onPressed: nextVerse,
+                    iconAlignment: IconAlignment.end,
+                    label: const Text("Next verse"),
+                    icon: const Icon(Icons.arrow_forward_ios),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 72),
+            ],
+          ),
         ),
       ),
     );
