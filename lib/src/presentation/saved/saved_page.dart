@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_me_when/src/infrastructure/db/quranic_verse_repo.dart';
+import 'package:read_me_when/src/presentation/saved/widgets/saved_list_tile.dart';
 import '../../app/route_config.dart';
 import 'widgets/mood_visibility_ensure_view.dart';
 
@@ -37,7 +38,6 @@ class _SavedPageState extends State<SavedPage> with AutomaticKeepAliveClientMixi
         }
 
         final groupData = groupBy(snapshot.requireData.getSavedItems, (p0) => p0.mood);
-        print(response.toString() + " e  ${groupData.entries.length}");
         return SafeArea(
           key: ValueKey(response.hashCode),
           child: CustomScrollView(
@@ -65,23 +65,14 @@ class _SavedPageState extends State<SavedPage> with AutomaticKeepAliveClientMixi
                         separatorBuilder: (context, index) => const SizedBox(height: 4),
                         itemBuilder: (context, index) {
                           final verse = moodData.value[index];
-                          return Hero(
-                            tag: verse,
-                            child: Card(
-                              child: ListTile(
-                                tileColor: verse.mood.scaffoldBackgroundColor,
-                                title: Text(
-                                  verse.nativeAyah(userPreference.ayahNativeLang),
-                                  style: TextStyle(color: verse.mood.quoteTextColor),
-                                ),
-                                onTap: () {
-                                  context.push(AppRoute.quote, extra: {
-                                    "verse": verse,
-                                    "index": index,
-                                  });
-                                },
-                              ),
-                            ),
+                          return SavedListTile(
+                            verse: verse,
+                            onTap: () {
+                              context.push(AppRoute.quote, extra: {
+                                "verse": verse,
+                                "index": index,
+                              });
+                            },
                           );
                         },
                       )

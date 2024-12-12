@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -10,87 +8,66 @@ import '../../../infrastructure/enum/mood.dart';
 import '../../../infrastructure/models/quranic_verse.dart';
 import 'translation_selection_view.dart';
 
-class AyahInNativeView extends StatefulWidget {
+class AyahInNativeView extends StatelessWidget {
   const AyahInNativeView({super.key, required this.verse, required this.mood});
 
   final QuranicVerse verse;
   final Mood mood;
 
-  @override
-  State<AyahInNativeView> createState() => _AyahInNativeViewState();
-}
-
-class _AyahInNativeViewState extends State<AyahInNativeView> with SingleTickerProviderStateMixin {
-  Color get textColor => widget.mood.quoteTextColor;
-
-  QuranicVerse get verse => widget.verse;
-
-  late StreamSubscription<UserPreferenceState> nativeLangAyahSubs;
-  AyahLanguage nativeLang = AyahLanguage.bangla;
-
-  void onNativeChanged(AyahLanguage lang) async {
-    nativeLang = lang;
-    await userPreference.setLocal(lang);
-    setState(() {});
-  }
-
-  String get nativeAyat => verse.nativeAyah(nativeLang);
-
-  @override
-  void initState() {
-    super.initState();
-
-    nativeLangAyahSubs = userPreference.savedStream.listen(
-      (event) {
-        nativeLang = event.ayahLanguage;
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    nativeLangAyahSubs.cancel();
-    super.dispose();
-  }
+  Color get textColor => mood.quoteTextColor;
 
   @override
   Widget build(BuildContext context) {
+    void onNativeChanged(AyahLanguage lang) async {
+      await context.userPreference.setLocal(lang);
+    }
+
     final textTheme = Theme.of(context).textTheme;
 
-    return IntrinsicWidth(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          RepaintBoundary(
-            child: Text(
-              nativeAyat,
-              style: textTheme.headlineLarge?.copyWith(color: textColor),
-              textAlign: TextAlign.center,
-            )
-                .animate(delay: 200.ms, target: 0, value: 1) //
-                .blurXY(end: 16, duration: 300.ms)
-                .tint(color: const Color(0xFF80DDFF)),
+    return StreamBuilder<UserPreferenceState>(
+      stream: context.userPreference.savedStream,
+      // initialData: UserPreferenceState.none,
+      builder: (context, snapshot) {
+        var ayahLang = snapshot.data?.ayahLanguage;
+
+        print(ayahLang);
+        ayahLang ??= AyahLanguage.english;
+
+        return IntrinsicWidth(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              RepaintBoundary(
+                  child: Text(
+                verse.nativeAyah(ayahLang),
+                style: textTheme.headlineLarge?.copyWith(color: textColor),
+                textAlign: TextAlign.center,
+              )
+                      .animate(delay: 200.ms, target: 0, value: 1) //
+                      .blurXY(end: 16, duration: 300.ms)
+                      .tint(color: const Color(0xFF80DDFF))),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TranslationSelectionView(
+                  onChanged: onNativeChanged,
+                  currentIndex: ayahLang,
+                ),
+              ),
+              const SizedBox(height: 8),
+              RepaintBoundary(
+                  child: Text(
+                verse.ayatInArabic,
+                style: textTheme.titleLarge?.copyWith(color: textColor),
+                textAlign: TextAlign.center,
+              )
+                      .animate(delay: 500.ms)
+                      .fadeIn(duration: 600.ms, delay: 400.ms) //
+                      .shimmer(blendMode: BlendMode.exclusion, color: verse.mood.color.withAlpha(150))
+                      .move(begin: const Offset(16, 0), curve: Curves.easeOutQuad)),
+            ],
           ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: TranslationSelectionView(
-              onChanged: onNativeChanged,
-              currentIndex: nativeLang,
-            ),
-          ),
-          const SizedBox(height: 8),
-          RepaintBoundary(
-              child: Text(
-            widget.verse.ayatInArabic,
-            style: textTheme.titleLarge?.copyWith(color: textColor),
-            textAlign: TextAlign.center,
-          )
-                  .animate(delay: 500.ms)
-                  .fadeIn(duration: 600.ms, delay: 400.ms) //
-                  .shimmer(blendMode: BlendMode.exclusion, color: verse.mood.color.withAlpha(150))
-                  .move(begin: const Offset(16, 0), curve: Curves.easeOutQuad)),
-        ],
-      ),
+        );
+      },
     );
   }
 }

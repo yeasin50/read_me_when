@@ -46,14 +46,10 @@ class UserPreferenceRepo {
     await _controller.close();
   }
 
-  ///  the one user prefer to show other than arabic
-  AyahLanguage? _ayahNativeTranslation;
-  AyahLanguage get ayahNativeLang => _ayahNativeTranslation ?? AyahLanguage.bangla;
-
   Future<void> setLocal(AyahLanguage lang) async {
     await localDB.saveUserAyahPreferLanguage(lang);
-    _ayahNativeTranslation = lang;
     _update(state.copyWith(ayahLanguage: lang));
+    
   }
 }
 
