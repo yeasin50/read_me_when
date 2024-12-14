@@ -1,13 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+import 'package:flutter/services.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+
+import '../../application/mood_session.dart';
 import '../../infrastructure/app_repo.dart';
 import '../../infrastructure/enum/mood.dart';
 import '../../infrastructure/models/quranic_verse.dart';
+import '../qoute_share/generate_image.dart';
 import 'widgets/app_bar.dart';
 import 'widgets/ayah_in_native_view.dart';
 
 class QuotePage extends StatefulWidget {
-  const QuotePage({
+  ValueNotifier<bool> isDialOpen = ValueNotifier(false);
+
+  QuotePage({
     super.key,
     required this.mood,
   })  : verse = null,
@@ -60,10 +68,70 @@ class _QuotePageState extends State<QuotePage> {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        shape: const CircleBorder(),
-        onPressed: () {},
-        child: const Icon(Icons.share_outlined),
+      backgroundColor: scaffoldBG,
+      // floatingActionButton: FloatingActionButton(
+      //   shape: const CircleBorder(),
+      //   onPressed: () {},
+      //   child: const Icon(Icons.share_outlined),
+      // ),
+      floatingActionButton: SpeedDial(
+        icon: Icons.share_outlined,
+        activeIcon: Icons.close,
+        spacing: 3,
+        openCloseDial: widget.isDialOpen,
+        childPadding: const EdgeInsets.all(4),
+        spaceBetweenChildren: 3,
+        buttonSize: const Size.fromRadius(30),
+        visible: true,
+        direction: SpeedDialDirection.up,
+        animationDuration: const Duration(milliseconds: 500),
+        switchLabelPosition: false,
+        closeManually: false,
+        // onOpen: () {
+        //   widget.isDialOpen.value = true;
+        // },
+        useRotationAnimation: true,
+        animationCurve: Curves.elasticInOut,
+        isOpenOnStart: false,
+        children: [
+          SpeedDialChild(
+            child: const Icon(Icons.copy_all_outlined),
+            label: 'Copy Quote',
+            labelStyle: const TextStyle(fontSize: 18.0),
+            onTap: () {
+              // debugPrint('Copy Quote');
+              Clipboard.setData(const ClipboardData(text: 'Copied Text'));
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Copied to Clipboard'),
+                ),
+              );
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(Icons.link_outlined),
+            label: 'Copy Link',
+            labelStyle: const TextStyle(fontSize: 18.0),
+            onTap: () {
+              // debugPrint('Copy Link');
+              Clipboard.setData(const ClipboardData(text: 'Copied Link'));
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Copied to Clipboard'),
+                ),
+              );
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(Icons.image_outlined),
+            label: 'Generate Image',
+            labelStyle: const TextStyle(fontSize: 18.0),
+            onTap: () {
+              // debugPrint('Generate Image');
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const GenerateImageToShare()));  
+            },
+          ),
+        ],
       ),
       body: Hero(
         tag: widget.verse ?? widget.mood,

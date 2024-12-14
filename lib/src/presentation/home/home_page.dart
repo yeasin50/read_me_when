@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import 'widget/mood_selection_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -43,6 +42,11 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ],
+    return const Scaffold(
+      body: Center(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(24),
+          child: MoodSelectionView(),
         ),
       ),
     );

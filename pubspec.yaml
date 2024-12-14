@@ -16,6 +16,8 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   shared_preferences: ^2.3.3
   flutter_animate: ^4.5.2
+  flutter_speed_dial: ^7.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -27,3 +29,4 @@ flutter:
 
   assets:
     - assets/
+    - assets/share_bg_img/
