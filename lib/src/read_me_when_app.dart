@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -19,6 +20,11 @@ class _ReadMeWhenState extends State<ReadMeWhen> {
   late final Future<AppRepo> future = AppRepo.init(language: "");
 
   final routeConfig = AppRoute.router();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,21 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
 import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:go_router/go_router.dart';
+import 'package:read_me_when/src/app/route_config.dart';
 
-import '../../application/mood_session.dart';
 import '../../infrastructure/app_repo.dart';
 import '../../infrastructure/enum/mood.dart';
 import '../../infrastructure/models/quranic_verse.dart';
-import '../qoute_share/generate_image.dart';
 import 'widgets/app_bar.dart';
 import 'widgets/ayah_in_native_view.dart';
 
 class QuotePage extends StatefulWidget {
-  ValueNotifier<bool> isDialOpen = ValueNotifier(false);
-
-  QuotePage({
+  const QuotePage({
     super.key,
     required this.mood,
   })  : verse = null,
@@ -39,6 +36,8 @@ class QuotePage extends StatefulWidget {
 }
 
 class _QuotePageState extends State<QuotePage> {
+  final ValueNotifier<bool> isDialOpen = ValueNotifier(false);
+
   late int selectedIndex = widget.selectedVerseIndex ?? 0;
 
   late List<QuranicVerse> verses = //
@@ -68,7 +67,7 @@ class _QuotePageState extends State<QuotePage> {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      backgroundColor: scaffoldBG,
+      // backgroundColor: scaffoldBG,
       // floatingActionButton: FloatingActionButton(
       //   shape: const CircleBorder(),
       //   onPressed: () {},
@@ -78,7 +77,7 @@ class _QuotePageState extends State<QuotePage> {
         icon: Icons.share_outlined,
         activeIcon: Icons.close,
         spacing: 3,
-        openCloseDial: widget.isDialOpen,
+        openCloseDial: isDialOpen,
         childPadding: const EdgeInsets.all(4),
         spaceBetweenChildren: 3,
         buttonSize: const Size.fromRadius(30),
@@ -127,8 +126,12 @@ class _QuotePageState extends State<QuotePage> {
             label: 'Generate Image',
             labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () {
-              // debugPrint('Generate Image');
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const GenerateImageToShare()));  
+              context.push(
+                AppRoute.quoteShare,
+                extra: {
+                  "verse": verse,
+                },
+              );
             },
           ),
         ],

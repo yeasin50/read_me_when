@@ -1,32 +1,40 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+import '../../infrastructure/models/quranic_verse.dart';
+
+/// only image generator to share the quote
+///
 class GenerateImageToShare extends StatelessWidget {
-  const GenerateImageToShare({super.key});
+  const GenerateImageToShare({
+    super.key,
+    required this.verse,
+  });
+
+  final QuranicVerse verse;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // background image
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/share_bg_img/1.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              flex: 8,
-              child: Center(
-                child: Container(
+      backgroundColor: Colors.green,
+      appBar: AppBar(),
+      body: SafeArea(
+        child: Container(
+          decoration: const BoxDecoration(
+              // image: DecorationImage(
+              //   image: AssetImage('assets/share_bg_img/1.jpg'),
+              //   fit: BoxFit.cover,
+              // ),
+              ),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 8,
+                child: Center(
+                    child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.blueGrey.withOpacity(0.8),
+                    // color: Colors.blueGrey.withOpacity(0.8),
                     borderRadius: const BorderRadius.all(Radius.circular(12)),
                   ),
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  height: MediaQuery.of(context).size.height * 0.2,
                   child: const Text(
                     'verse',
                     style: TextStyle(
@@ -34,52 +42,59 @@ class GenerateImageToShare extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                )
+                )),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey.withOpacity(0.8),
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(18),
-                    topRight: Radius.circular(18),
+              const Spacer(),
+              Container(
+                  decoration: BoxDecoration(
+                    // color: Colors.blueGrey.withAlpha(150),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
                   ),
-                ),
-                margin: const EdgeInsets.all(8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.download, color: Colors.white,),
-                      onPressed: () {
-                        // download image
-                      },
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.share, color: Colors.white,),
-                      onPressed: () {
-                        // share image
-                      },
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.image, color: Colors.white,),
-                      onPressed: () {
-                        // change background image
-                      },
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.color_lens, color: Colors.white,),
-                      onPressed: () {
-                        // change text color
-                      },
-                    ),
-                  ],
-                ),
-              )
-            ),
-          ],
+                  // margin: const EdgeInsets.all(24),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.download,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          print("tapped");
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.share,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          // share image
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.image,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          // change background image
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.color_lens,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          // change text color
+                        },
+                      ),
+                    ],
+                  )),
+            ],
+          ),
         ),
       ),
     );

@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:read_me_when/src/presentation/qoute_share/generate_image.dart';
 
 import '../infrastructure/enum/mood.dart';
 import '../infrastructure/models/quranic_verse.dart';
@@ -14,6 +16,7 @@ class AppRoute {
   static String history = "/history";
 
   static String quote = "/quote";
+  static String quoteShare = "/shared";
 
   static final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -23,6 +26,16 @@ class AppRoute {
       navigatorKey: _rootNavigatorKey,
       initialLocation: home,
       routes: [
+        GoRoute(
+          path: quoteShare,
+          pageBuilder: (context, state) {
+            final verse = (state.extra as Map)["verse"];
+
+            return MaterialPage(
+              child: GenerateImageToShare(verse: verse),
+            );
+          },
+        ),
         GoRoute(
             path: quote,
             pageBuilder: (context, state) {
