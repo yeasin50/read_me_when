@@ -20,7 +20,7 @@ class AppRoute {
   static GoRouter router() {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: favorite,
+      initialLocation: home,
       routes: [
         GoRoute(
             path: quote,
