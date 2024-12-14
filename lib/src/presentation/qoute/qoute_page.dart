@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
@@ -17,43 +18,49 @@ class QuotePage extends StatefulWidget {
   QuotePage({
     super.key,
     required this.mood,
-  });
+  })  : verse = null,
+        selectedVerseIndex = null;
+
+  const QuotePage.fromSaved({
+    super.key,
+    required this.mood,
+    required this.verse,
+    required this.selectedVerseIndex,
+  }) : assert(selectedVerseIndex != null, "selectedVerseIndex can't be null");
 
   final Mood mood;
 
-  static MaterialPageRoute route({required Mood mood}) {
-    return MaterialPageRoute(
-      builder: (context) => QuotePage(mood: mood),
-    );
-  }
+  /// if from saved, theses wont be null
+  final QuranicVerse? verse;
+  final int? selectedVerseIndex;
 
   @override
   State<QuotePage> createState() => _QuotePageState();
 }
 
 class _QuotePageState extends State<QuotePage> {
-  String get moodName => widget.mood.name;
-  Color get textColor => widget.mood.quoteTextColor;
-  Color get scaffoldBG => widget.mood.scaffoldBackgroundColor;
+  late int selectedIndex = widget.selectedVerseIndex ?? 0;
 
-  bool isSaved = false;
+  late List<QuranicVerse> verses = //
+      widget.selectedVerseIndex == null //
+          ? verseRepo.state.getMoodForVerse(widget.mood)
+          : verseRepo.state.getSavedItems;
 
-  MoodSession? session;
-  void nextVerse() async {
-    session?.nextVerse();
+  String get moodName => verses[selectedIndex].mood.name;
+  Color get textColor => verses[selectedIndex].mood.quoteTextColor;
+
+  QuranicVerse get verse => verses[selectedIndex];
+
+  void nextVerse() {
+    selectedIndex++;
+    if (selectedIndex >= verses.length) selectedIndex = 0;
+    setState(() {});
   }
 
-  @override
-  void initState() {
-    super.initState();
-    MoodSession.createSession(
-      mood: widget.mood,
-      verses: verseRepo.data[widget.mood] ?? [],
-    ).then((value) => setState(
-          () {
-            session = value;
-          },
-        ));
+  void onPreviousBack() {
+    selectedIndex--;
+    if (selectedIndex < 0) selectedIndex = verses.length - 1;
+    setState(() {});
   }
 
   @override
@@ -126,52 +133,55 @@ class _QuotePageState extends State<QuotePage> {
           ),
         ],
       ),
-      body: session == null
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : StreamBuilder<QuranicVerse>(
-              stream: session!.stream,
-              builder: (context, snapshot) {
-                QuranicVerse? verse = snapshot.data;
-                return Column(
-                  children: [
-                    QuotePageAppBar(
-                      textTheme: textTheme,
-                      textColor: textColor,
-                      verse: verse,
-                    ),
-                    Expanded(
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          if (verse == null) {
-                            return const Center(child: CircularProgressIndicator());
-                          }
-                          return Center(
-                            child: SingleChildScrollView(
-                              padding: const EdgeInsets.all(24),
-                              child: AyahInNativeView(
-                                mood: widget.mood,
-                                verse: verse,
-                              ),
-                            ),
-                          );
-                        },
+      body: Hero(
+        tag: widget.verse ?? widget.mood,
+        child: AnimatedContainer(
+          duration: Durations.medium1,
+          width: double.infinity,
+          color: verse.mood.scaffoldBackgroundColor,
+          padding: MediaQuery.paddingOf(context),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              QuotePageAppBar(
+                textTheme: textTheme,
+                textColor: textColor,
+                verse: verse,
+              ),
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Center(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.all(24),
+                        child: AyahInNativeView(mood: verse.mood, verse: verse),
                       ),
-                    ),
-                    const SizedBox(height: 64),
-                    SizedBox(
-                      width: 250,
-                      child: OutlinedButton(
-                        onPressed: nextVerse,
-                        iconAlignment: IconAlignment.end,
-                        child: const Text("Next Verse"),
-                      ),
-                    ),
-                    const SizedBox(height: 72),
-                  ],
-                );
-              }),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 64),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton.outlined(
+                    onPressed: onPreviousBack,
+                    icon: const Icon(Icons.arrow_back_ios_new),
+                  ),
+                  const SizedBox(width: 24),
+                  ElevatedButton.icon(
+                    onPressed: nextVerse,
+                    iconAlignment: IconAlignment.end,
+                    label: const Text("Next verse"),
+                    icon: const Icon(Icons.arrow_forward_ios),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 72),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

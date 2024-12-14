@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/route_config.dart';
+import 'animated_body_transition.dart';
 
 class AppBottomNavBar extends StatefulWidget {
   const AppBottomNavBar({
@@ -27,7 +28,7 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
     } else if (value == 1) {
       context.go(AppRoute.favorite);
     } else if (value == 2) {
-      context.go(AppRoute.story);
+      context.go(AppRoute.history);
     }
   }
 
@@ -47,10 +48,10 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
             icon: Icon(Icons.favorite),
             label: "Favorite",
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.article),
-            label: "Story",
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.article),
+          //   label: "Story",
+          // ),
         ],
       ),
     );

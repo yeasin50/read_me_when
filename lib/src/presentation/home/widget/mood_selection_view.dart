@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/app/route_config.dart';
 
+import '../../../app/route_config.dart';
 import '../../../infrastructure/enum/mood.dart';
 import 'mood_item_builder.dart';
 
@@ -12,18 +13,10 @@ class MoodSelectionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          'Select Your Mood',
-          style: textTheme.titleLarge,
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 24),
         Wrap(
           spacing: 16,
           runSpacing: 16,
@@ -33,19 +26,24 @@ class MoodSelectionView extends StatelessWidget {
           children: Mood.values
               .map(
                 (e) => SizedBox.square(
-                  dimension: 200,
-                  child: MoodItemBuilder(
-                    mood: e,
-                    onTap: () {
-                      context.push(
-                        AppRoute.quote,
-                        extra: {"mood_name": e.name},
-                      );
-                    },
+                  dimension: 150,
+                  child: Hero(
+                    tag: e,
+                    child: MoodItemBuilder(
+                      mood: e,
+                      onTap: () {
+                        context.push(
+                          AppRoute.quote,
+                          extra: {"mood_name": e.name},
+                        );
+                      },
+                    ),
                   ),
                 ),
               )
-              .toList(),
+              .toList()
+              .animate(interval: 100.ms)
+              .scale(delay: 50.ms),
         ),
       ],
     );

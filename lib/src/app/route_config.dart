@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/presentation/saved/saved_page.dart';
 
 import '../infrastructure/enum/mood.dart';
+import '../infrastructure/models/quranic_verse.dart';
 import '../presentation/bottom_nav/app_bottom_nav_bar.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/qoute/qoute_page.dart';
+import '../presentation/saved/saved_page.dart';
 
 class AppRoute {
   static String home = "/";
   static String favorite = "/favorite";
-  static String story = "/story";
+  static String history = "/history";
 
   static String quote = "/quote";
 
@@ -26,9 +27,26 @@ class AppRoute {
             path: quote,
             pageBuilder: (context, state) {
               final moodName = (state.extra as Map? ?? {})["mood_name"];
+              final verseItem = (state.extra as Map? ?? {})["verse"];
+              final index = (state.extra as Map? ?? {})["index"];
 
-              final mood = Mood.fromName(moodName);
-              return NoTransitionPage(child: QuotePage(mood: mood));
+              if (verseItem != null && verseItem is QuranicVerse) {
+                debugPrint("from Saved page");
+                return MaterialPage(
+                  child: QuotePage.fromSaved(
+                    mood: verseItem.mood,
+                    verse: verseItem,
+                    selectedVerseIndex: index,
+                  ),
+                );
+              } else {
+                return MaterialPage(
+                  child: QuotePage(
+                    key: ValueKey("From home page $moodName"),
+                    mood: Mood.fromName(moodName),
+                  ),
+                );
+              }
             }),
         StatefulShellRoute.indexedStack(
           parentNavigatorKey: _rootNavigatorKey,
@@ -56,16 +74,16 @@ class AppRoute {
                 ),
               ],
             ),
-            StatefulShellBranch(
-              routes: [
-                GoRoute(
-                  path: story,
-                  pageBuilder: (context, state) => const NoTransitionPage(
-                    child: Text("Story"),
-                  ),
-                ),
-              ],
-            ),
+            // StatefulShellBranch(
+            //   routes: [
+            //     GoRoute(
+            //       path: history,
+            //       pageBuilder: (context, state) => const NoTransitionPage(
+            //         child: MoodTrackerPage(),
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ],
         )
       ],
