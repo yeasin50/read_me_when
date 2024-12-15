@@ -1,15 +1,39 @@
 import 'package:flutter/services.dart';
-import 'package:read_me_when/src/infrastructure/enum/ayah_langage.dart';
-import 'package:read_me_when/src/infrastructure/models/quranic_verse.dart';
+
+import 'db/user_preference_repo.dart';
+import 'models/quranic_verse.dart';
 
 class QuoteShareService {
-  
+  const QuoteShareService._(
+    this._userPref,
+    this._deployUri,
+  );
 
-  static Future<void> copyQuote(QuranicVerse verse) async {
-    await Clipboard.setData(ClipboardData(text: "${verse.nativeAyah(AyahLanguage.bangla)}"));
+  final UserPreferenceRepo _userPref;
+  final Uri _deployUri;
+
+  static Future<QuoteShareService> create({
+    required UserPreferenceRepo pref,
+    required Uri hostUri,
+  }) async {
+    ///
+    return QuoteShareService._(pref, hostUri);
   }
 
-  static Future<void> copyLink(QuranicVerse verse) async {
-    await Clipboard.setData(ClipboardData(text: verse.id));
+  Future<void> copyQuote(QuranicVerse verse) async {
+    final lang = _userPref.state.ayahLanguage;
+
+    final String quoteText = """
+${verse.nativeAyah(lang)}
+
+${verse.ayatInArabic} (${verse.suraName},${verse.ayatNo})
+""";
+
+    await Clipboard.setData(ClipboardData(text: quoteText));
+  }
+
+  Future<void> copyLink(QuranicVerse verse) async {
+    final quoteLink = _deployUri.replace(query: verse.id).toString();
+    await Clipboard.setData(ClipboardData(text: quoteLink));
   }
 }

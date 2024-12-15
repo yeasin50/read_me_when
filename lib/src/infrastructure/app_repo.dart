@@ -3,20 +3,32 @@ import 'package:flutter/material.dart';
 import 'db/local_db.dart';
 import 'db/quranic_verse_repo.dart';
 import 'db/user_preference_repo.dart';
+import 'quote_share_service.dart';
 
 /// base class to provide db across the app
 class AppRepo {
-  const AppRepo._(this.verseRepo, this.preferenceRepo);
+  const AppRepo._(this.verseRepo, this.preferenceRepo, this.shareService);
 
   final QuranicVerseRepo verseRepo;
   final UserPreferenceRepo preferenceRepo;
 
+  //! might replace  in a repo in future
+  final QuoteShareService shareService;
+
   static Future<AppRepo> init({required String language}) async {
-    final userRepo = await UserPreferenceRepo.create(localLanguageCode: language);
+    final userRepo =
+        await UserPreferenceRepo.create(localLanguageCode: language);
     final pref = await LocalDatabase.init();
     final verseRepo = await QuranicVerseRepo.create(pref);
 
-    final repo = AppRepo._(verseRepo, userRepo);
+    final uri = Uri.parse("www.google.com");
+
+    final quoteShareService = await QuoteShareService.create(
+      pref: userRepo,
+      hostUri: uri,
+    );
+
+    final repo = AppRepo._(verseRepo, userRepo, quoteShareService);
     return repo;
   }
 }
@@ -33,9 +45,13 @@ class AppRepoInheritedWidget extends InheritedWidget {
 
   static AppRepo of(BuildContext context, {bool listen = true}) {
     if (listen) {
-      return context.dependOnInheritedWidgetOfExactType<AppRepoInheritedWidget>()!.repo;
+      return context
+          .dependOnInheritedWidgetOfExactType<AppRepoInheritedWidget>()!
+          .repo;
     } else {
-      return context.getInheritedWidgetOfExactType<AppRepoInheritedWidget>()!.repo;
+      return context
+          .getInheritedWidgetOfExactType<AppRepoInheritedWidget>()!
+          .repo;
     }
   }
 
@@ -50,9 +66,11 @@ extension AppRepoBuildContext on BuildContext {
 
   QuranicVerseRepo get verseRepo => repo.verseRepo;
   UserPreferenceRepo get userPreference => repo.preferenceRepo;
+  QuoteShareService get shareService => repo.shareService;
 }
 
 extension AppRepoState<T extends StatefulWidget> on State<T> {
   QuranicVerseRepo get verseRepo => context.verseRepo;
   UserPreferenceRepo get userPreference => context.userPreference;
+  QuoteShareService get shareService => context.shareService;
 }

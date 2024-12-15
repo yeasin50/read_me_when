@@ -1,8 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_me_when/src/app/route_config.dart';
-import 'package:read_me_when/src/infrastructure/quote_share_service.dart';
 
 import '../../infrastructure/app_repo.dart';
 import '../../infrastructure/enum/mood.dart';
@@ -68,42 +66,44 @@ class _QuotePageState extends State<QuotePage> {
 
     return Scaffold(
       floatingActionButton: ExpandableFab(
-      distance: 60,
-      children: [
-        ActionButton(
-          onPressed: (){
-            QuoteShareService.copyQuote(verse);
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text("Verse copied to clipboard"),
-              ),
-            );
-          },
-          label: "Copy Quote",
-          icon: const Icon(Icons.copy_all_outlined),
-        ),
-        ActionButton(
-          onPressed: (){
-            QuoteShareService.copyLink(verse);
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text("Link copied to clipboard"),
-              ),
-            );
-          },
-          label: "Copy Link",
-          icon: const Icon(Icons.link_outlined),
-        ),
-        ActionButton(
-          // onPressed: () => _showAction(context, 2),
-          onPressed: () {
-            context.push(AppRoute.quoteShare, extra: {"verse": verse});
-          },
-          label: "Generate Image",
-          icon: const Icon(Icons.image_outlined),
-        ),
-      ],
-    ),
+        distance: 60,
+        children: [
+          ActionButton(
+            onPressed: () async {
+              await shareService.copyQuote(verse);
+              if (context.mounted == false) return;
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Verse copied to clipboard"),
+                ),
+              );
+            },
+            label: "Copy Quote",
+            icon: const Icon(Icons.copy_all_outlined),
+          ),
+          ActionButton(
+            onPressed: () async {
+              await shareService.copyLink(verse);
+              if (context.mounted == false) return;
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Link copied to clipboard"),
+                ),
+              );
+            },
+            label: "Copy Link",
+            icon: const Icon(Icons.link_outlined),
+          ),
+          ActionButton(
+            onPressed: () {
+              context.push(AppRoute.quoteShare, extra: {"verse": verse});
+            },
+            label: "Generate Image",
+            icon: const Icon(Icons.image_outlined),
+          ),
+        ],
+      ),
       body: Hero(
         tag: widget.verse ?? widget.mood,
         child: AnimatedContainer(
