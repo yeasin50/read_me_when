@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_me_when/src/app/route_config.dart';
+import 'package:read_me_when/src/infrastructure/quote_share_service.dart';
 
 import '../../infrastructure/app_repo.dart';
 import '../../infrastructure/enum/mood.dart';
@@ -72,7 +72,7 @@ class _QuotePageState extends State<QuotePage> {
       children: [
         ActionButton(
           onPressed: (){
-            Clipboard.setData(ClipboardData(text: verse.ayatInArabic));
+            QuoteShareService.copyQuote(verse);
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text("Verse copied to clipboard"),
@@ -84,7 +84,7 @@ class _QuotePageState extends State<QuotePage> {
         ),
         ActionButton(
           onPressed: (){
-            Clipboard.setData(ClipboardData(text: verse.id));
+            QuoteShareService.copyLink(verse);
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text("Link copied to clipboard"),
