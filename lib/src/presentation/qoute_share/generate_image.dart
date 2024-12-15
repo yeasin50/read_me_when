@@ -16,42 +16,46 @@ class GenerateImageToShare extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.green,
-      appBar: AppBar(),
+      // appBar: AppBar(),
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
-              // image: DecorationImage(
-              //   image: AssetImage('assets/share_bg_img/1.jpg'),
-              //   fit: BoxFit.cover,
-              // ),
-              ),
+            image: DecorationImage(
+              image: AssetImage('assets/share_bg_img/1.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
           child: Column(
             children: [
               Expanded(
                 flex: 8,
                 child: Center(
                     child: Container(
-                  decoration: BoxDecoration(
-                    // color: Colors.blueGrey.withOpacity(0.8),
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                  ),
-                  child: const Text(
-                    'verse',
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
+                    margin: const EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey.withOpacity(0.8),
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
                     ),
-                  ),
-                )),
+                    child: Text(
+                      '$verse',
+                      style: const TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                ),
               ),
               const Spacer(),
               Container(
+                margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
                   decoration: BoxDecoration(
-                    // color: Colors.blueGrey.withAlpha(150),
+                    color: Colors.blueGrey.withAlpha(150),
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                   ),
                   // margin: const EdgeInsets.all(24),
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  // padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

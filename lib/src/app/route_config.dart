@@ -16,7 +16,7 @@ class AppRoute {
   static String history = "/history";
 
   static String quote = "/quote";
-  static String quoteShare = "/shared";
+  static String quoteShare = "/quoteShare";
 
   static final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final shellNavigatorKey = GlobalKey<NavigatorState>();
