@@ -1,24 +1,24 @@
-
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class ExpandableFab extends StatefulWidget {
   const ExpandableFab({
     super.key,
-    this.initialOpen,
+    required this.onToggle,
     required this.distance,
     required this.children,
   });
 
-  final bool? initialOpen;
   final double distance;
   final List<Widget> children;
+  final ValueChanged<bool> onToggle;
 
   @override
   State<ExpandableFab> createState() => _ExpandableFabState();
 }
 
-class _ExpandableFabState extends State<ExpandableFab> with SingleTickerProviderStateMixin {
+class _ExpandableFabState extends State<ExpandableFab>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
   late final Animation<double> _expandAnimation;
   bool _open = false;
@@ -26,7 +26,7 @@ class _ExpandableFabState extends State<ExpandableFab> with SingleTickerProvider
   @override
   void initState() {
     super.initState();
-    _open = widget.initialOpen ?? false;
+
     _animationController = AnimationController(
       value: _open ? 1.0 : 0.0,
       duration: const Duration(milliseconds: 250),
@@ -53,6 +53,7 @@ class _ExpandableFabState extends State<ExpandableFab> with SingleTickerProvider
       } else {
         _animationController.reverse();
       }
+      widget.onToggle(_open);
     });
   }
 
@@ -99,44 +100,41 @@ class _ExpandableFabState extends State<ExpandableFab> with SingleTickerProvider
     final children = <Widget>[];
     final count = widget.children.length;
     for (var i = 0; i < count; i++) {
-    children.add(
-      _ExpandingActionButton(
-        directionInDegrees: 90.0, // Always expand vertically upwards
-        maxDistance: widget.distance * (i + 1), // Distance increases for each button
-        progress: _expandAnimation,
-        child: widget.children[i],
-      ),
-    );
-  }
+      children.add(
+        _ExpandingActionButton(
+          directionInDegrees: 90.0, // Always expand vertically upwards
+          maxDistance:
+              widget.distance * (i + 1), // Distance increases for each button
+          progress: _expandAnimation,
+          child: widget.children[i],
+        ),
+      );
+    }
     return children;
   }
 
   Widget _buildTapToOpenFab() {
-    return IgnorePointer(
-      ignoring: _open,
-      child: AnimatedContainer(
-        transformAlignment: Alignment.center,
-        transform: Matrix4.diagonal3Values(
-          _open ? 0.7 : 1.0,
-          _open ? 0.7 : 1.0,
-          1.0,
-        ),
+    return AnimatedContainer(
+      transformAlignment: Alignment.center,
+      transform: Matrix4.diagonal3Values(
+        _open ? 0.7 : 1.0,
+        _open ? 0.7 : 1.0,
+        1.0,
+      ),
+      duration: const Duration(milliseconds: 250),
+      curve: const Interval(0.0, 0.5, curve: Curves.easeOut),
+      child: AnimatedOpacity(
+        opacity: _open ? 0.0 : 1.0,
+        curve: const Interval(0.25, 1.0, curve: Curves.easeInOut),
         duration: const Duration(milliseconds: 250),
-        curve: const Interval(0.0, 0.5, curve: Curves.easeOut),
-        child: AnimatedOpacity(
-          opacity: _open ? 0.0 : 1.0,
-          curve: const Interval(0.25, 1.0, curve: Curves.easeInOut),
-          duration: const Duration(milliseconds: 250),
-          child: FloatingActionButton(
-            onPressed: _toggle,
-            child: const Icon(Icons.share_outlined),
-          ),
+        child: FloatingActionButton(
+          onPressed: _toggle,
+          child: const Icon(Icons.share_outlined),
         ),
       ),
     );
   }
 }
-
 
 class ActionButton extends StatelessWidget {
   const ActionButton({
@@ -153,39 +151,42 @@ class ActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Row(
-      mainAxisSize: MainAxisSize.min, // Adjust to fit content
-      children: [
-        // Label on the left
-        if (label.isNotEmpty)
-          Padding(
-            padding: const EdgeInsets.only(right: 12.0), // Space between label and icon
-            child: Text(
-              label,
-              style: TextStyle(
-                color: theme.colorScheme.secondary,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.black26,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        children: [
+          // Label on the left
+          if (label.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: Text(
+                label,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
+          // Icon Button
+          Material(
+            shape: const CircleBorder(),
+            clipBehavior: Clip.antiAlias,
+            color: Colors.transparent,
+            child: IconButton(
+              onPressed: onPressed,
+              icon: icon,
+              color: theme.colorScheme.onSecondary,
+            ),
           ),
-        // Icon Button
-        Material(
-          shape: const CircleBorder(),
-          clipBehavior: Clip.antiAlias,
-          color: theme.colorScheme.secondary,
-          elevation: 4,
-          child: IconButton(
-            onPressed: onPressed,
-            icon: icon,
-            color: theme.colorScheme.onSecondary,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
-
 
 @immutable
 class _ExpandingActionButton extends StatelessWidget {

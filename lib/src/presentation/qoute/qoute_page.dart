@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/app/route_config.dart';
+
+import 'widgets/share_button.dart';
 
 import '../../infrastructure/app_repo.dart';
 import '../../infrastructure/enum/mood.dart';
 import '../../infrastructure/models/quranic_verse.dart';
 import 'widgets/app_bar.dart';
 import 'widgets/ayah_in_native_view.dart';
-import 'widgets/expandable_fab.dart';
 
 class QuotePage extends StatefulWidget {
   const QuotePage({
@@ -34,8 +33,6 @@ class QuotePage extends StatefulWidget {
 }
 
 class _QuotePageState extends State<QuotePage> {
-  final ValueNotifier<bool> isDialOpen = ValueNotifier(false);
-
   late int selectedIndex = widget.selectedVerseIndex ?? 0;
 
   late List<QuranicVerse> verses = //
@@ -60,49 +57,18 @@ class _QuotePageState extends State<QuotePage> {
     setState(() {});
   }
 
+  bool isSharedOpen = false;
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      floatingActionButton: ExpandableFab(
-        distance: 60,
-        children: [
-          ActionButton(
-            onPressed: () async {
-              await shareService.copyQuote(verse);
-              if (context.mounted == false) return;
-
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("Verse copied to clipboard"),
-                ),
-              );
-            },
-            label: "Copy Quote",
-            icon: const Icon(Icons.copy_all_outlined),
-          ),
-          ActionButton(
-            onPressed: () async {
-              await shareService.copyLink(verse);
-              if (context.mounted == false) return;
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("Link copied to clipboard"),
-                ),
-              );
-            },
-            label: "Copy Link",
-            icon: const Icon(Icons.link_outlined),
-          ),
-          ActionButton(
-            onPressed: () {
-              context.push(AppRoute.quoteShare, extra: {"verse": verse});
-            },
-            label: "Generate Image",
-            icon: const Icon(Icons.image_outlined),
-          ),
-        ],
+      floatingActionButton: ShareButton(
+        verse: verse,
+        onChange: (value) {
+          isSharedOpen = value;
+          setState(() {});
+        },
       ),
       body: Hero(
         tag: widget.verse ?? widget.mood,
@@ -132,22 +98,23 @@ class _QuotePageState extends State<QuotePage> {
                 ),
               ),
               const SizedBox(height: 64),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton.outlined(
-                    onPressed: onPreviousBack,
-                    icon: const Icon(Icons.arrow_back_ios_new),
-                  ),
-                  const SizedBox(width: 24),
-                  ElevatedButton.icon(
-                    onPressed: nextVerse,
-                    iconAlignment: IconAlignment.end,
-                    label: const Text("Next verse"),
-                    icon: const Icon(Icons.arrow_forward_ios),
-                  ),
-                ],
-              ),
+              if (!isSharedOpen)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton.outlined(
+                      onPressed: onPreviousBack,
+                      icon: const Icon(Icons.arrow_back_ios_new),
+                    ),
+                    const SizedBox(width: 24),
+                    ElevatedButton.icon(
+                      onPressed: nextVerse,
+                      iconAlignment: IconAlignment.end,
+                      label: const Text("Next verse"),
+                      icon: const Icon(Icons.arrow_forward_ios),
+                    ),
+                  ],
+                ),
               const SizedBox(height: 72),
             ],
           ),

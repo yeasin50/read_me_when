@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:read_me_when/src/app/theme_config.dart';
 
 import '../../infrastructure/models/quranic_verse.dart';
 
@@ -14,23 +15,34 @@ class GenerateImageToShare extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.green,
-      // appBar: AppBar(),
-      body: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/share_bg_img/1.jpg'),
-              fit: BoxFit.cover,
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/share_bg_img/1.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          leading: Center(
+            child: Material(
+              shape: const CircleBorder(),
+              color: AppTheme.background.withAlpha(150),
+              child: const BackButton(color: Colors.black),
             ),
           ),
-          child: Column(
-            children: [
-              Expanded(
-                flex: 8,
-                child: Center(
-                    child: Container(
+        ),
+        body: SafeArea(
+          child: Container(
+            decoration: const BoxDecoration(),
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 8,
+                  child: Center(
+                      child: Container(
                     margin: const EdgeInsets.all(4),
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
@@ -44,60 +56,61 @@ class GenerateImageToShare extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                  )
-                ),
-              ),
-              const Spacer(),
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey.withAlpha(150),
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  ),
-                  // margin: const EdgeInsets.all(24),
-                  // padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                        icon: const Icon(
-                          Icons.download,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          print("tapped");
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.share,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          // share image
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.image,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          // change background image
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.color_lens,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          // change text color
-                        },
-                      ),
-                    ],
                   )),
-            ],
+                ),
+                const Spacer(),
+                Container(
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey.withAlpha(150),
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    ),
+                    // margin: const EdgeInsets.all(24),
+                    // padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        IconButton(
+                          icon: const Icon(
+                            Icons.download,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            print("tapped");
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(
+                            Icons.share,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            // share image
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(
+                            Icons.image,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            // change background image
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(
+                            Icons.color_lens,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            // change text color
+                          },
+                        ),
+                      ],
+                    )),
+              ],
+            ),
           ),
         ),
       ),

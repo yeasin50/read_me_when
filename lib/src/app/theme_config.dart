@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
+  static const Color background = Colors.white;
+  
   static ThemeData theme(TextTheme textTheme) {
     return ThemeData(
       brightness: Brightness.light,
@@ -36,14 +38,16 @@ class AppTheme {
         style: TextButton.styleFrom(
           foregroundColor: const Color(0xFF54B684), // Text button text color
           backgroundColor: Colors.transparent, // Transparent for minimalism
-          textStyle: GoogleFonts.lora(fontSize: 16.0, fontWeight: FontWeight.bold),
+          textStyle:
+              GoogleFonts.lora(fontSize: 16.0, fontWeight: FontWeight.bold),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white, // White text on primary buttons
           backgroundColor: const Color(0xFF54B684), // Soft Emerald
-          textStyle: GoogleFonts.lora(fontSize: 24.0, fontWeight: FontWeight.bold),
+          textStyle:
+              GoogleFonts.lora(fontSize: 24.0, fontWeight: FontWeight.bold),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
           ),
