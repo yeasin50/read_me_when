@@ -60,14 +60,22 @@ class _ExpandableFabState extends State<ExpandableFab>
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
-      child: Stack(
-        alignment: Alignment.bottomRight,
-        clipBehavior: Clip.none,
-        children: [
-          _buildTapToCloseFab(),
-          ..._buildExpandingActionButtons(),
-          _buildTapToOpenFab(),
-        ],
+      child: GestureDetector(
+        onTap: (){
+          if (_open) {
+            _toggle();
+          }
+        },
+        behavior: HitTestBehavior.opaque,
+        child: Stack(
+          alignment: Alignment.bottomRight,
+          clipBehavior: Clip.none,
+          children: [
+            _buildTapToCloseFab(),
+            ..._buildExpandingActionButtons(),
+            _buildTapToOpenFab(),
+          ],
+        ),
       ),
     );
   }
@@ -81,14 +89,11 @@ class _ExpandableFabState extends State<ExpandableFab>
           shape: const CircleBorder(),
           clipBehavior: Clip.antiAlias,
           elevation: 4,
-          child: InkWell(
-            onTap: _toggle,
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: Icon(
-                Icons.close,
-                color: Theme.of(context).primaryColor,
-              ),
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Icon(
+              Icons.close,
+              color: Theme.of(context).primaryColor,
             ),
           ),
         ),
@@ -150,39 +155,33 @@ class ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: Colors.black26,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Row(
-        children: [
-          // Label on the left
-          if (label.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.only(right: 12.0),
-              child: Text(
-                label,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
+    // final theme = Theme.of(context);
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        decoration: BoxDecoration(
+          color: Colors.black26,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            if (label.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(right: 12.0),
+                child: Text(
+                  label,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
-            ),
-          // Icon Button
-          Material(
-            shape: const CircleBorder(),
-            clipBehavior: Clip.antiAlias,
-            color: Colors.transparent,
-            child: IconButton(
-              onPressed: onPressed,
-              icon: icon,
-              color: theme.colorScheme.onSecondary,
-            ),
-          ),
-        ],
+            // Icon Button
+            icon
+          ],
+        ),
       ),
     );
   }

@@ -19,16 +19,30 @@ class QuoteBox extends StatelessWidget {
         color: Colors.blueGrey.withOpacity(0.8),
         borderRadius: const BorderRadius.all(Radius.circular(12)),
       ),
-      constraints: BoxConstraints(maxWidth: 650),
+      constraints: const BoxConstraints(maxWidth: 650),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              '${verse.nativeAyah(lang)}',
+              verse.nativeAyah(lang),
               textAlign: TextAlign.center,
-              style: textTheme.headlineLarge?.copyWith(
+              style: textTheme.headlineMedium?.copyWith(
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              verse.ayatInArabic,
+              textAlign: TextAlign.center,
+              style: textTheme.bodyMedium?.copyWith(
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              "--- \n ${verse.suraName}:${verse.ayatNo}",
+              textAlign: TextAlign.center,
+              style: textTheme.bodyMedium?.copyWith(
                 color: Colors.white,
               ),
             ),

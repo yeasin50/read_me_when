@@ -44,55 +44,44 @@ class GenerateImageToShare extends StatelessWidget {
                 ),
               ),
               Container(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey.withAlpha(150),
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  ),
-                  // margin: const EdgeInsets.all(24),
-                  // padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                        icon: const Icon(
-                          Icons.download,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          print("tapped");
-                        },
+                margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey.withAlpha(150),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.download,
+                        color: Colors.white,
                       ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.share,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          // share image
-                        },
+                      onPressed: () {
+                        print("tapped");
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.share,
+                        color: Colors.white,
                       ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.image,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          // change background image
-                        },
+                      onPressed: () {
+                        // share image
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.image,
+                        color: Colors.white,
                       ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.color_lens,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {
-                          // change text color
-                        },
-                      ),
-                    ],
-                  )),
+                      onPressed: () {
+                        // change background image
+                      },
+                    ),
+                  ],
+                )
+              ),
             ],
           ),
         ),
