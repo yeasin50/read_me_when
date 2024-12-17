@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:read_me_when/src/infrastructure/app_repo.dart';
-import 'package:read_me_when/src/infrastructure/models/quranic_verse.dart';
+import '../../../infrastructure/app_repo.dart';
+import '../../../infrastructure/models/quranic_verse.dart';
 
 class QuoteBox extends StatelessWidget {
   const QuoteBox({super.key, required this.verse});
@@ -32,6 +32,7 @@ class QuoteBox extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
+            const SizedBox(height: 8),
             Text(
               verse.ayatInArabic,
               textAlign: TextAlign.center,
@@ -39,6 +40,7 @@ class QuoteBox extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
+            const SizedBox(height: 8),
             Text(
               "--- \n ${verse.suraName}:${verse.ayatNo}",
               textAlign: TextAlign.center,

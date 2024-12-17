@@ -16,6 +16,9 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   shared_preferences: ^2.3.3
   flutter_animate: ^4.5.2
+  share_plus: ^10.1.3
+  url_launcher: ^6.3.1
+  path_provider: ^2.1.5
 
 
 dev_dependencies:

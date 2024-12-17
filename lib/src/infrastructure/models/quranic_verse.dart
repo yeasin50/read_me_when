@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import 'package:read_me_when/src/infrastructure/enum/ayah_langage.dart';
-import 'package:read_me_when/src/infrastructure/enum/mood.dart';
+import '../enum/ayah_langage.dart';
+import '../enum/mood.dart';
 
 extension QuranicVerseExt on QuranicVerse {
   String nativeAyah(AyahLanguage lang) => switch (lang) {
@@ -14,6 +14,7 @@ extension QuranicVerseExt on QuranicVerse {
             return "";
           }()
       };
+  String get fileName => "read_me_when-$suraName:$ayatNo.png";
 }
 
 class QuranicVerse extends Equatable {
@@ -49,7 +50,8 @@ class QuranicVerse extends Equatable {
     suraName: "Al-Fatiha",
     ayatNo: "1",
     ayatInArabic: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ",
-    englishTranslation: "In the name of Allah, the Most Gracious, the Most Merciful",
+    englishTranslation:
+        "In the name of Allah, the Most Gracious, the Most Merciful",
     banglaTranslation: "আল্লাহর নামে, যিনি পরম দয়ালু, পরম করুণাময়",
     chineseTranslation: "奉普慈、全能的真主的名",
   );
