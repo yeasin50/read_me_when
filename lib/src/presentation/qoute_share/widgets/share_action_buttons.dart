@@ -6,23 +6,30 @@ import 'package:read_me_when/src/infrastructure/models/quranic_verse.dart';
 import '../generate_image.dart';
 import '../utils/image_caputre.dart';
 
+typedef OnImageDownload = Function(Size size);
+
+typedef OnImageUpdate = Function(Uint8List);
+
 class ShareAction extends StatefulWidget {
   const ShareAction({
     super.key,
     required this.imageKey,
     required this.isTextVisible,
     required this.onImageUpload,
+    required this.onDownload,
   });
 
   final GlobalKey imageKey;
   final bool isTextVisible;
-  final Function(Uint8List) onImageUpload;
+  final OnImageUpdate onImageUpload;
+  final OnImageDownload onDownload;
 
   @override
   State<ShareAction> createState() => _ShareActionState();
 }
 
 class _ShareActionState extends State<ShareAction> {
+  ///getting local file to change the background image and passing to the parent
   Future<void> uploadFile() async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -42,20 +49,11 @@ class _ShareActionState extends State<ShareAction> {
     }
   }
 
-  void _toggleTextVisibility(bool isTextVisible) {
-    setState(() {
-      isTextVisible = isTextVisible;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    final verse =
-        context.findAncestorWidgetOfExactType<GenerateImageToShare>()?.verse;
-
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-      constraints: BoxConstraints(maxWidth: 650),
+      constraints: const BoxConstraints(maxWidth: 650),
       decoration: BoxDecoration(
         color: Colors.blueGrey.withAlpha(150),
         borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -69,18 +67,8 @@ class _ShareActionState extends State<ShareAction> {
               color: Colors.white,
             ),
             onPressed: () async {
-              try {
-                _toggleTextVisibility(true);
-                await Future.delayed(const Duration(milliseconds: 100));
-
-                RenderRepaintBoundary boundary = widget.imageKey.currentContext!
-                    .findRenderObject() as RenderRepaintBoundary;
-                await captureWidget(boundary, fileName: verse!.fileName);
-
-                _toggleTextVisibility(false);
-              } catch (e) {
-                ///
-              }
+              //todo:
+              widget.onDownload(Size.zero);
             },
           ),
           IconButton(
@@ -93,14 +81,11 @@ class _ShareActionState extends State<ShareAction> {
             },
           ),
           IconButton(
-            icon: const Icon(
-              Icons.image,
-              color: Colors.white,
-            ),
-            onPressed: () async {
-              uploadFile();
-            },
-          ),
+              icon: const Icon(
+                Icons.image,
+                color: Colors.white,
+              ),
+              onPressed: uploadFile),
         ],
       ),
     );

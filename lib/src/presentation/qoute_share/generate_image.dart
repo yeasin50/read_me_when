@@ -2,9 +2,11 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import '../../app/theme_config.dart';
 import '../../infrastructure/models/quranic_verse.dart';
+import 'utils/image_caputre.dart';
 import 'widgets/qoute_box.dart';
 import 'widgets/share_action_buttons.dart';
 
@@ -23,10 +25,28 @@ class GenerateImageToShare extends StatefulWidget {
 }
 
 class _GenerateImageToShareState extends State<GenerateImageToShare> {
-  final GlobalKey _imageCaptureKey = GlobalKey();
+  ///
   bool isTextVisible = false;
-  Uint8List? _backgroundImage;
+  final GlobalKey _imageCaptureKey = GlobalKey();
 
+  void onImageDownload(Size imageSize) async {
+    try {
+      setState(() => isTextVisible = true);
+      WidgetsBinding.instance.addPostFrameCallback(
+        (timeStamp) async {
+          debugPrint(timeStamp.inMicroseconds.toString());
+          RenderRepaintBoundary boundary = _imageCaptureKey.currentContext!
+              .findRenderObject() as RenderRepaintBoundary;
+          await captureWidget(boundary, fileName: widget.verse.fileName);
+          setState(() => isTextVisible = false);
+        },
+      );
+    } catch (e) {
+      ///
+    }
+  }
+
+  Uint8List? _backgroundImage;
   void updateBackgroundImage(Uint8List? image) {
     _backgroundImage = image;
     setState(() {});
@@ -70,9 +90,8 @@ class _GenerateImageToShareState extends State<GenerateImageToShare> {
                       child: QuoteBox(verse: widget.verse),
                     ),
                   ),
-                  Visibility(
-                    visible: isTextVisible,
-                    child: const Positioned(
+                  if (isTextVisible)
+                    const Positioned(
                       top: 10,
                       right: 10,
                       child: Text(
@@ -83,7 +102,6 @@ class _GenerateImageToShareState extends State<GenerateImageToShare> {
                         ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
@@ -94,6 +112,7 @@ class _GenerateImageToShareState extends State<GenerateImageToShare> {
               imageKey: _imageCaptureKey,
               isTextVisible: isTextVisible,
               onImageUpload: updateBackgroundImage,
+              onDownload: onImageDownload,
             ),
           ),
         ],
