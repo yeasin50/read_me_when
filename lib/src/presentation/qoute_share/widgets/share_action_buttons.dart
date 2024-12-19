@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -26,24 +23,22 @@ class ShareAction extends StatefulWidget {
 }
 
 class _ShareActionState extends State<ShareAction> {
-  Future<PlatformFile?> uploadFile() async {
+  Future<void> uploadFile() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        // onFileLoading: (status) => print(status),
+        allowedExtensions: ['jpg', 'png'],
+      );
 
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      // onFileLoading: (status) => print(status),
-      allowedExtensions: ['jpg', 'png'],
-    );
-
-    if (result != null) {
-      final bytes = result.files.first.bytes;
-      final filePath = result.files.first.path;
-      if (kIsWeb && bytes != null) {
-        setState(() {
-          widget.onImageUpload(File(filePath!).readAsBytesSync());
-        });
-      }
-    } else {
-      return null;
+      if (result != null) {
+        final bytes = result.files.first.bytes;
+        if (kIsWeb && bytes != null) {
+          widget.onImageUpload(bytes);
+        }
+      } else {}
+    } catch (e, strace) {
+      debugPrint("${e.toString()}  ${strace.toString()}");
     }
   }
 
@@ -52,6 +47,7 @@ class _ShareActionState extends State<ShareAction> {
       isTextVisible = isTextVisible;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     final verse =
@@ -59,6 +55,7 @@ class _ShareActionState extends State<ShareAction> {
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+      constraints: BoxConstraints(maxWidth: 650),
       decoration: BoxDecoration(
         color: Colors.blueGrey.withAlpha(150),
         borderRadius: const BorderRadius.all(Radius.circular(8)),

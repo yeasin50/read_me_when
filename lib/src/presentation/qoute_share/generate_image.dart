@@ -10,7 +10,7 @@ import 'widgets/share_action_buttons.dart';
 
 /// only image generator to share the quote
 ///
-class GenerateImageToShare extends StatelessWidget {
+class GenerateImageToShare extends StatefulWidget {
   const GenerateImageToShare({
     super.key,
     required this.verse,
@@ -19,15 +19,21 @@ class GenerateImageToShare extends StatelessWidget {
   final QuranicVerse verse;
 
   @override
+  State<GenerateImageToShare> createState() => _GenerateImageToShareState();
+}
+
+class _GenerateImageToShareState extends State<GenerateImageToShare> {
+  final GlobalKey _imageCaptureKey = GlobalKey();
+  bool isTextVisible = false;
+  Uint8List? _backgroundImage;
+
+  void updateBackgroundImage(Uint8List? image) {
+    _backgroundImage = image;
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final GlobalKey _imageCaptureKey = GlobalKey();
-    bool isTextVisible = false;
-    Uint8List? _backgroundImage;
-
-    void updateBackgroundImage(Uint8List? image){
-      _backgroundImage = image;
-    }
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       extendBody: true,
@@ -49,7 +55,10 @@ class GenerateImageToShare extends StatelessWidget {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: _backgroundImage != null ? MemoryImage(_backgroundImage!) : const AssetImage('assets/share_bg_img/1.jpg') as ImageProvider,
+                  image: _backgroundImage != null
+                      ? MemoryImage(_backgroundImage!)
+                      : const AssetImage('assets/share_bg_img/1.jpg')
+                          as ImageProvider,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -58,7 +67,7 @@ class GenerateImageToShare extends StatelessWidget {
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.all(24.0),
-                      child: QuoteBox(verse: verse),
+                      child: QuoteBox(verse: widget.verse),
                     ),
                   ),
                   Visibility(
@@ -79,10 +88,13 @@ class GenerateImageToShare extends StatelessWidget {
               ),
             ),
           ),
-          
           Align(
             alignment: const Alignment(0, .95),
-            child: ShareAction(imageKey: _imageCaptureKey, isTextVisible: isTextVisible, onImageUpload: updateBackgroundImage),
+            child: ShareAction(
+              imageKey: _imageCaptureKey,
+              isTextVisible: isTextVisible,
+              onImageUpload: updateBackgroundImage,
+            ),
           ),
         ],
       ),
