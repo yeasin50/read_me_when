@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/route_config.dart';
-import 'animated_body_transition.dart';
 
 class AppBottomNavBar extends StatefulWidget {
   const AppBottomNavBar({

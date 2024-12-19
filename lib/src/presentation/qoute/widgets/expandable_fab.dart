@@ -60,22 +60,25 @@ class _ExpandableFabState extends State<ExpandableFab>
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
-      child: GestureDetector(
-        onTap: (){
-          if (_open) {
-            _toggle();
-          }
-        },
-        behavior: HitTestBehavior.opaque,
-        child: Stack(
-          alignment: Alignment.bottomRight,
-          clipBehavior: Clip.none,
-          children: [
-            _buildTapToCloseFab(),
-            ..._buildExpandingActionButtons(),
-            _buildTapToOpenFab(),
-          ],
-        ),
+      child: Stack(
+        alignment: Alignment.bottomRight,
+        clipBehavior: Clip.none,
+        children: [
+          IgnorePointer(
+            ignoring: !_open, // Ignore gestures when the modal is closed
+            child: GestureDetector(
+              onTap: () {
+                if (_open) {
+                  _toggle();
+                }
+              },
+              behavior: HitTestBehavior.opaque,
+            ),
+          ),
+          _buildTapToCloseFab(),
+          ..._buildExpandingActionButtons(),
+          _buildTapToOpenFab(),
+        ],
       ),
     );
   }

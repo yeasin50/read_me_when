@@ -1,3 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:read_me_when/src/infrastructure/models/quranic_verse.dart';
@@ -8,15 +13,45 @@ class ShareAction extends StatefulWidget {
   const ShareAction({
     super.key,
     required this.imageKey,
+    required this.isTextVisible,
+    required this.onImageUpload,
   });
 
   final GlobalKey imageKey;
+  final bool isTextVisible;
+  final Function(Uint8List) onImageUpload;
 
   @override
   State<ShareAction> createState() => _ShareActionState();
 }
 
 class _ShareActionState extends State<ShareAction> {
+  Future<PlatformFile?> uploadFile() async {
+
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      // onFileLoading: (status) => print(status),
+      allowedExtensions: ['jpg', 'png'],
+    );
+
+    if (result != null) {
+      final bytes = result.files.first.bytes;
+      final filePath = result.files.first.path;
+      if (kIsWeb && bytes != null) {
+        setState(() {
+          widget.onImageUpload(File(filePath!).readAsBytesSync());
+        });
+      }
+    } else {
+      return null;
+    }
+  }
+
+  void _toggleTextVisibility(bool isTextVisible) {
+    setState(() {
+      isTextVisible = isTextVisible;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     final verse =
@@ -38,9 +73,14 @@ class _ShareActionState extends State<ShareAction> {
             ),
             onPressed: () async {
               try {
+                _toggleTextVisibility(true);
+                await Future.delayed(const Duration(milliseconds: 100));
+
                 RenderRepaintBoundary boundary = widget.imageKey.currentContext!
                     .findRenderObject() as RenderRepaintBoundary;
                 await captureWidget(boundary, fileName: verse!.fileName);
+
+                _toggleTextVisibility(false);
               } catch (e) {
                 ///
               }
@@ -60,30 +100,12 @@ class _ShareActionState extends State<ShareAction> {
               Icons.image,
               color: Colors.white,
             ),
-            onPressed: () {
-              // change background image
+            onPressed: () async {
+              uploadFile();
             },
           ),
         ],
       ),
-    );
-  }
-}
-
-class _EditOption extends StatelessWidget {
-  const _EditOption({
-    super.key,
-    required this.icon,
-    this.onPressed,
-  });
-  final IconData icon;
-  final Function()? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(icon, color: Colors.white),
-      onPressed: onPressed,
     );
   }
 }
