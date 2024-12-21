@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'app/route_config.dart';
@@ -12,7 +15,17 @@ class ReadMeWhen extends StatefulWidget {
 }
 
 class _ReadMeWhenState extends State<ReadMeWhen> {
-  final Future<AppRepo> future = AppRepo.init();
+  // get lang => ui.window.locale;
+
+  late final Future<AppRepo> future = AppRepo.init(language: "");
+
+  final routeConfig = AppRoute.router();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -31,7 +44,12 @@ class _ReadMeWhenState extends State<ReadMeWhen> {
         return AppRepoInheritedWidget(
           repo: snapshot.requireData,
           child: MaterialApp.router(
-            routerConfig: AppRoute.router(),
+            scrollBehavior: const ScrollBehavior().copyWith(
+              scrollbars: false,
+              dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
+            ),
+            debugShowCheckedModeBanner: false,
+            routerConfig: routeConfig,
           ),
         );
       },

@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:read_me_when/src/infrastructure/db/quranic_verse_repo.dart';
+import 'package:read_me_when/src/infrastructure/db/user_preference_repo.dart';
 import 'package:read_me_when/src/infrastructure/enum/mood.dart';
 import 'package:read_me_when/src/infrastructure/models/quranic_verse.dart';
 
@@ -9,19 +10,16 @@ void main() {
     test(
       "database shouldn't return any error",
       () async {
-        final repo = QuranicVerseRepo();
-        final result = await repo.load();
-        expect(result, null);
+        final repo = await QuranicVerseRepo.create(UserPreferenceState.none);
       },
     );
 
     test(
       "make sure we have proper data",
       () async {
-        final repo = QuranicVerseRepo();
-        await repo.load();
-        expect(repo.data.length, Mood.values.length);
-        final List<QuranicVerse> data = repo.data.values.fold(//
+        final repo = await QuranicVerseRepo.create(UserPreferenceState.none);
+        expect(repo.state.data.length, Mood.values.length);
+        final List<QuranicVerse> data = repo.state.data.values.fold(//
             [], (previousValue, element) => [...previousValue, ...element]);
 
         for (final item in data) {
