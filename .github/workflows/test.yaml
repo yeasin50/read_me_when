@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - master
-      - 2-database
+      - dev
   pull_request:
     branches:
       - master
+      - dev
 
 jobs:
   test:
