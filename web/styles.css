@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle, #121212, #1a1a1a, #292929);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  direction: rtl;
+}
+
+/* Container for the 3D book and text */
+.container {
+  text-align: center;
+  padding: 20px; /* Added padding for better spacing */
+}
+
+/* Book container */
+.book {
+  /* overflow: hidden; */
+  position: relative;
+  width: 300px;
+  height: 400px;
+  transform-style: preserve-3d;
+  border-radius: 16px;
+  perspective: 1000px;
+  animation: bookGlow 3s infinite;
+  transition: transform 0.5s ease; /* Smooth 3D transition */
+}
+
+.book:hover {
+  transform: rotateY(15deg); /* Add tilt effect on hover */
+}
+
+/* Front Cover */
+.front-cover {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+  border-radius: 15px; /* Apply border-radius here */
+  box-shadow: 0 10px 20px rgba(255, 223, 0, 0.3),
+    0 0 20px rgba(255, 223, 0, 0.1);
+  transform: rotateY(0deg) translateZ(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glow effect for corners */
+.front-cover::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 310px; /* Adjusted width for better coverage */
+  height: 410px; /* Adjusted height for better coverage */
+  border-radius: 18px;
+  background: radial-gradient(circle, rgba(255, 223, 0, 0.2), transparent);
+  filter: blur(6px); /* Increased blur */
+  z-index: -1;
+}
+
+/* Spine of the book */
+.spine {
+  position: absolute;
+  width: 30px;
+  height: 400px;
+  background: #2a2a2a;
+  transform: rotateY(90deg) translateZ(-150px);
+  transform-origin: center;
+}
+
+/* Back Cover */
+.back-cover {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a, #292929);
+  border-radius: 15px;
+  transform: rotateY(180deg) translateZ(10px);
+}
+
+/* Glow animation for book */
+@keyframes bookGlow {
+  0%,
+  100% {
+    box-shadow: 0 10px 20px rgba(255, 223, 0, 0.3),
+      0 0 20px rgba(255, 223, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 20px 40px rgba(255, 223, 0, 0.6),
+      0 0 40px rgba(255, 223, 0, 0.3);
+  }
+}
+/* Bismillah Text */
+.bismillah {
+  font-size: 2.5rem;
+  color: gold;
+  text-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 223, 0, 0.6); /* Increased glow */
+  font-family: "Amiri", serif;
+  opacity: 0; /* Initially hidden */
+  width: 0; /* Initially hide the text */
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide the text until it's revealed */
+  animation: fadeInReveal 3s forwards; /* Apply the fade-in reveal effect */
+}
+
+/* Fade-In Reveal Effect */
+@keyframes fadeInReveal {
+  0% {
+    opacity: 0; /* Start with 0 opacity */
+    width: 0; /* Initially hidden width */
+  }
+  100% {
+    opacity: 1; /* End with full opacity */
+    width: 100%; /* Reveal the full text */
+  }
+}
+
+/* Loading Text */
+.loading-text {
+  margin-top: 48px; /* Increased margin for better separation */
+  font-size: 1.2rem; /* Slightly larger loading text */
+  color: rgba(255, 255, 255, 0.8);
+  direction: ltr;
+  margin-left: 20px;
+}
+
+/* Glow effect for loading text */
+@keyframes glowText {
+  0%,
+  100% {
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    color: rgba(255, 223, 0, 1);
+    text-shadow: 0 0 10px rgba(255, 223, 0, 0.8);
+  }
+}
+
+/* Pulse effect on loading text */
+@keyframes pulseText {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
