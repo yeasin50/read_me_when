@@ -2,13 +2,19 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:read_me_when/src/app/app_config.dart';
 
-import 'app/route_config.dart';
-import 'app/theme_config.dart';
-import 'infrastructure/app_repo.dart';
+import 'route_config.dart';
+import 'theme_config.dart';
+import '../infrastructure/app_repo.dart';
 
 class ReadMeWhen extends StatefulWidget {
-  const ReadMeWhen({super.key});
+  const ReadMeWhen({
+    super.key,
+    required this.config,
+  });
+
+  final AppConfig config;
 
   @override
   State<ReadMeWhen> createState() => _ReadMeWhenState();
@@ -17,7 +23,10 @@ class ReadMeWhen extends StatefulWidget {
 class _ReadMeWhenState extends State<ReadMeWhen> {
   // get lang => ui.window.locale;
 
-  late final Future<AppRepo> future = AppRepo.init(language: "");
+  late final Future<AppRepo> future = AppRepo.init(
+    language: "",
+    appConfig: widget.config,
+  );
 
   final routeConfig = AppRoute.router();
 
