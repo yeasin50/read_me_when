@@ -37,17 +37,13 @@ class _ReadMeWhenState extends State<ReadMeWhen> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return FutureBuilder<AppRepo>(
       future: future,
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
-          return Theme(
-            data: AppTheme.theme(textTheme),
-            child: const Directionality(
-              textDirection: TextDirection.ltr,
-              child: CircularProgressIndicator(),
-            ),
+          return const Material(
+            color: Colors.blueGrey,
+            child: Center(child: CircularProgressIndicator()),
           );
         }
         return AppRepoInheritedWidget(
