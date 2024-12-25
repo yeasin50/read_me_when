@@ -54,7 +54,10 @@ class ShareButton extends StatelessWidget {
         ),
         ActionButton(
           onPressed: () {
-            context.push(AppRoute.quoteShare, extra: {"verse": verse});
+            context.go(
+              "${AppRoute.quoteShare}/${verse.id}",
+              extra: {"verse": verse},
+            );
           },
           label: "Generate Image",
           icon: const Icon(Icons.image_outlined),

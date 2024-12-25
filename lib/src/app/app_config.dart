@@ -12,4 +12,9 @@ class AppConfig {
   final AppEnv env;
 
   final String baseApiUrl;
+
+  static const AppConfig dev = AppConfig(
+    env: AppEnv.dev,
+    baseApiUrl: "localhost:59201",
+  );
 }

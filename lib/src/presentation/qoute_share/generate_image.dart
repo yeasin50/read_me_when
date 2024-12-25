@@ -3,6 +3,8 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:go_router/go_router.dart';
+import 'package:read_me_when/src/app/route_config.dart';
 
 import '../../app/theme_config.dart';
 import '../../infrastructure/models/quranic_verse.dart';
@@ -52,6 +54,7 @@ class _GenerateImageToShareState extends State<GenerateImageToShare> {
     setState(() {});
   }
 
+  bool get fromHome => context.canPop();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +67,12 @@ class _GenerateImageToShareState extends State<GenerateImageToShare> {
           child: Material(
             shape: const CircleBorder(),
             color: AppTheme.background.withAlpha(150),
-            child: const BackButton(color: Colors.black),
+            child: fromHome
+                ? BackButton(
+                    color: Colors.black, onPressed: () => context.pop())
+                : IconButton.outlined(
+                    onPressed: () => context.go(AppRoute.home),
+                    icon: const Icon(Icons.home)),
           ),
         ),
       ),

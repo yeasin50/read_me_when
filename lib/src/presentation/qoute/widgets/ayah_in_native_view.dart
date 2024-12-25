@@ -35,11 +35,9 @@ class AyahInNativeView extends StatelessWidget {
 
     return StreamBuilder<UserPreferenceState>(
       stream: context.userPreference.savedStream,
-      // initialData: UserPreferenceState.none,
       builder: (context, snapshot) {
         var ayahLang = snapshot.data?.ayahLanguage;
 
-        print(ayahLang);
         ayahLang ??= AyahLanguage.english;
 
         return IntrinsicWidth(

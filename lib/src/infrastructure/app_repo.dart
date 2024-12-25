@@ -32,7 +32,7 @@ class AppRepo {
     final pref = await LocalDatabase.init();
     final verseRepo = await QuranicVerseRepo.create(pref);
 
-    final uri = Uri.parse("www.google.com");
+    final uri = Uri.parse(appConfig.baseApiUrl);
 
     final quoteShareService = await QuoteShareService.create(
       pref: userRepo,

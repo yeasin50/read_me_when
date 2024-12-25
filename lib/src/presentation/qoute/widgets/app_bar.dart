@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:read_me_when/src/app/route_config.dart';
 import 'package:read_me_when/src/presentation/_common/max_width_constraints.dart';
 import '../../../infrastructure/app_repo.dart';
 
@@ -38,7 +40,11 @@ class _QuotePageAppBarState extends State<QuotePageAppBar> {
 
     return Row(
       children: [
-        const BackButton(),
+        BackButton(
+          onPressed: () {
+            context.go(AppRoute.home);
+          },
+        ),
         Expanded(
           child: Column(
             children: [

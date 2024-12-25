@@ -17,6 +17,7 @@ class QuotePage extends StatefulWidget {
   })  : verse = null,
         selectedVerseIndex = null;
 
+  @Deprecated("This has been removed for web release v1")
   const QuotePage.fromSaved({
     super.key,
     required this.mood,
