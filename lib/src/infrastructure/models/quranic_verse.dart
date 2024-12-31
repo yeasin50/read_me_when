@@ -1,6 +1,22 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import '../enum/ayah_langage.dart';
+import '../enum/mood.dart';
+
+extension QuranicVerseExt on QuranicVerse {
+  String nativeAyah(AyahLanguage lang) => switch (lang) {
+        AyahLanguage.bangla => banglaTranslation,
+        AyahLanguage.english => englishTranslation,
+        AyahLanguage.chines => chineseTranslation,
+        _ => () {
+            assert(false, "Missing language ");
+            return "";
+          }()
+      };
+  String get fileName => "read_me_when-$suraName:$ayatNo.png";
+}
+
 class QuranicVerse extends Equatable {
   const QuranicVerse({
     required this.suraNo,
@@ -11,6 +27,7 @@ class QuranicVerse extends Equatable {
     required this.banglaTranslation,
     required this.chineseTranslation,
     this.isFavorite = false,
+    required this.mood,
   });
 
   final int suraNo;
@@ -23,8 +40,24 @@ class QuranicVerse extends Equatable {
 
   final bool isFavorite;
 
+  final Mood mood;
+
+  String get id => "$suraNo-$ayatNo-$suraName";
+
+  static const QuranicVerse ui = QuranicVerse(
+    suraNo: 1,
+    mood: Mood.happy,
+    suraName: "Al-Fatiha",
+    ayatNo: "1",
+    ayatInArabic: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ",
+    englishTranslation:
+        "In the name of Allah, the Most Gracious, the Most Merciful",
+    banglaTranslation: "আল্লাহর নামে, যিনি পরম দয়ালু, পরম করুণাময়",
+    chineseTranslation: "奉普慈、全能的真主的名",
+  );
   @override
   List<Object?> get props => [
+        mood,
         suraNo,
         suraName,
         ayatNo,
@@ -37,12 +70,13 @@ class QuranicVerse extends Equatable {
 
   @override
   String toString() {
-    return 'QuranicVerse(suraNo: $suraNo, suraName: $suraName, ayatNo: $ayatNo, ayatInArabic: $ayatInArabic, englishTranslation: $englishTranslation, banglaTranslation: $banglaTranslation, chineseTranslation: $chineseTranslation, isFavorite: $isFavorite)';
+    return 'QuranicVerse(suraNo: $suraNo, suraName: $suraName, ayatNo: $ayatNo, ayatInArabic: $ayatInArabic, englishTranslation: $englishTranslation, banglaTranslation: $banglaTranslation, chineseTranslation: $chineseTranslation, isFavorite: $isFavorite, mood: $mood)';
   }
 
-  factory QuranicVerse.fromMap(Map<String, dynamic> map) {
+  factory QuranicVerse.fromMap(Map<String, dynamic> map, {required Mood mood}) {
     try {
       return QuranicVerse(
+        mood: mood,
         suraNo: map['sura_no']?.toInt() ?? 0,
         suraName: map['sura_name'] ?? '',
         ayatNo: map['ayat_no']?.toString() ?? '',
@@ -56,5 +90,29 @@ class QuranicVerse extends Equatable {
       debugPrint("QuranicVerse.fromMap $map");
       rethrow;
     }
+  }
+
+  QuranicVerse copyWith({
+    int? suraNo,
+    String? suraName,
+    String? ayatNo,
+    String? ayatInArabic,
+    String? englishTranslation,
+    String? banglaTranslation,
+    String? chineseTranslation,
+    bool? isFavorite,
+    Mood? mood,
+  }) {
+    return QuranicVerse(
+      suraNo: suraNo ?? this.suraNo,
+      suraName: suraName ?? this.suraName,
+      ayatNo: ayatNo ?? this.ayatNo,
+      ayatInArabic: ayatInArabic ?? this.ayatInArabic,
+      englishTranslation: englishTranslation ?? this.englishTranslation,
+      banglaTranslation: banglaTranslation ?? this.banglaTranslation,
+      chineseTranslation: chineseTranslation ?? this.chineseTranslation,
+      isFavorite: isFavorite ?? this.isFavorite,
+      mood: mood ?? this.mood,
+    );
   }
 }
