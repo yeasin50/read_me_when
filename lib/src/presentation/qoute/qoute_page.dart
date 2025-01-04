@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../_common/max_width_constraints.dart';
+import 'widgets/ayah_change_button.dart';
 
 import 'widgets/share_button.dart';
 
@@ -15,6 +17,7 @@ class QuotePage extends StatefulWidget {
   })  : verse = null,
         selectedVerseIndex = null;
 
+  @Deprecated("This has been removed for web release v1")
   const QuotePage.fromSaved({
     super.key,
     required this.mood,
@@ -57,7 +60,14 @@ class _QuotePageState extends State<QuotePage> {
     setState(() {});
   }
 
-  bool isSharedOpen = false;
+  ///  the  [AyahInNativeView] have some cool animation
+  ///
+  bool isAyahAnimationDone = false;
+
+  bool isSharedSectionOpen = false;
+
+  bool get showNextButton => !isSharedSectionOpen && isAyahAnimationDone;
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -66,16 +76,16 @@ class _QuotePageState extends State<QuotePage> {
       floatingActionButton: ShareButton(
         verse: verse,
         onChange: (value) {
-          isSharedOpen = value;
+          isSharedSectionOpen = value;
           setState(() {});
         },
       ),
+      backgroundColor: verse.mood.scaffoldBackgroundColor,
       body: Hero(
         tag: widget.verse ?? widget.mood,
         child: AnimatedContainer(
           duration: Durations.medium1,
           width: double.infinity,
-          color: verse.mood.scaffoldBackgroundColor,
           padding: MediaQuery.paddingOf(context),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -86,36 +96,32 @@ class _QuotePageState extends State<QuotePage> {
                 verse: verse,
               ),
               Expanded(
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    return Center(
-                      child: SingleChildScrollView(
-                        padding: const EdgeInsets.all(24),
-                        child: AyahInNativeView(mood: verse.mood, verse: verse),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 64),
-              if (!isSharedOpen)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton.outlined(
-                      onPressed: onPreviousBack,
-                      icon: const Icon(Icons.arrow_back_ios_new),
+                  child: Center(
+                child: MaxWidthConstraints(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(24),
+                    child: Column(
+                      children: [
+                        AyahInNativeView(
+                          mood: verse.mood,
+                          verse: verse,
+                          onAnimationEnd: () {
+                            setState(() => isAyahAnimationDone = true);
+                          },
+                        ),
+                        const SizedBox(height: 72),
+                        Visibility.maintain(
+                          visible: showNextButton,
+                          child: AyahChangeButton(
+                            onNext: nextVerse,
+                            onPrevious: onPreviousBack,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 24),
-                    ElevatedButton.icon(
-                      onPressed: nextVerse,
-                      iconAlignment: IconAlignment.end,
-                      label: const Text("Next verse"),
-                      icon: const Icon(Icons.arrow_forward_ios),
-                    ),
-                  ],
+                  ),
                 ),
-              const SizedBox(height: 72),
+              )),
             ],
           ),
         ),

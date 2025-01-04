@@ -24,7 +24,23 @@ class QuranicVerseState {
         .toList();
   }
 
+  QuranicVerse? getFromId(String id) {
+    if (id.isEmpty) return null;
+
+    for (final key in data.keys) {
+      for (final item in data[key] ?? <QuranicVerse>[]) {
+        print("${item.id} id $id");
+        if (item.id == id) return item;
+      }
+    }
+
+    return null;
+  }
+
   List<QuranicVerse> getFromIds(List<String> ids) {
+    ids.removeWhere((element) => element.isEmpty);
+    if (ids.isEmpty) return [];
+
     final List<QuranicVerse> verses = [];
     for (final key in data.keys) {
       for (final item in data[key] ?? <QuranicVerse>[]) {
@@ -47,5 +63,6 @@ class QuranicVerseState {
   }
 
   @override
-  String toString() => 'QuranicVerseState(data: ${data.length}, savedItemIds: ${savedItemIds.length}) hash${hashCode}';
+  String toString() =>
+      'QuranicVerseState(data: ${data.length}, savedItemIds: ${savedItemIds.length}) hash${hashCode}';
 }

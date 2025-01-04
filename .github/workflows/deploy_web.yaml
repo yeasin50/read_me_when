@@ -21,7 +21,7 @@ jobs:
           channel: "stable"
       - run: flutter clean
       - run: flutter pub get
-      - run: flutter build web --release --web-renderer html --base-href /read_me_when/
+      - run: flutter build web --target lib/main_prod.dart --release --web-renderer html --base-href /read_me_when/
       - run: |
           cd build/web
           git init

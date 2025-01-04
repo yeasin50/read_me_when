@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/route_config.dart';
+import '../_common/max_width_constraints.dart';
 
 class AppBottomNavBar extends StatefulWidget {
   const AppBottomNavBar({
@@ -33,26 +34,27 @@ class _AppBottomNavBarState extends State<AppBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    ///
+    final bool isMobile = MaxWidthConstraints.isMobileView(context);
+
+    var bottomNavigationBar = BottomNavigationBar(
+      onTap: onTap,
+      currentIndex: widget.shell.currentIndex,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: "home",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          label: "Favorite",
+        ),
+      ],
+    );
+
     return Scaffold(
-      body: widget.shell,
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: onTap,
-        currentIndex: widget.shell.currentIndex,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: "Favorite",
-          ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.article),
-          //   label: "Story",
-          // ),
-        ],
-      ),
+      body: isMobile ? widget.shell : widget.shell,
+      bottomNavigationBar: isMobile ? bottomNavigationBar : null,
     );
   }
 }

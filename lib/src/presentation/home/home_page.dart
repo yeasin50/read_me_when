@@ -16,33 +16,27 @@ class _HomePageState extends State<HomePage> {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
         body: SafeArea(
-      child: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            centerTitle: true,
-            pinned: true,
-            elevation: 0,
-            forceElevated: false,
-            scrolledUnderElevation: 0,
-            title: Text(
-              'Select Your Mood',
-              style: textTheme.headlineLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ).animate().fadeIn(duration: 600.ms, curve: Curves.easeOutQuad).slide(),
-          ),
-          SliverList.list(
-            children: const [
-              Center(
-                child: Padding(
-                  padding: EdgeInsets.all(24),
-                  child: MoodSelectionView(),
+      child: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Select Your Mood',
+                style: textTheme.headlineLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
                 ),
-              ),
+                textAlign: TextAlign.center,
+              )
+                  .animate()
+                  .fadeIn(duration: 600.ms, curve: Curves.easeOutQuad)
+                  .slide(),
+              const SizedBox(height: 64),
+              const MoodSelectionView(),
             ],
           ),
-        ],
+        ),
       ),
     ));
   }

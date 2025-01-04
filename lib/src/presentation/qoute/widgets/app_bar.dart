@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:read_me_when/src/app/route_config.dart';
+import 'package:read_me_when/src/presentation/_common/max_width_constraints.dart';
 import '../../../infrastructure/app_repo.dart';
 
 import '../../../infrastructure/models/quranic_verse.dart';
@@ -33,29 +36,38 @@ class _QuotePageAppBarState extends State<QuotePageAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isMobile = MaxWidthConstraints.isMobileView(context);
+
     return Row(
       children: [
-        const BackButton(),
+        BackButton(
+          onPressed: () {
+            context.go(AppRoute.home);
+          },
+        ),
         Expanded(
           child: Column(
             children: [
               Text(
                 widget.verse?.suraName ?? "...",
-                style: widget.textTheme.headlineLarge?.copyWith(color: widget.textColor),
+                style: widget.textTheme.headlineLarge
+                    ?.copyWith(color: widget.textColor),
               ),
               Text(
                 widget.verse?.ayatNo ?? "...",
-                style: widget.textTheme.titleSmall?.copyWith(color: widget.textColor),
+                style: widget.textTheme.titleSmall
+                    ?.copyWith(color: widget.textColor),
               ),
             ],
           ),
         ),
-        IconButton.outlined(
-          onPressed: toggleSaved,
-          icon: Icon(
-            isSaved ? Icons.favorite : Icons.favorite_outline,
+        if (isMobile)
+          IconButton.outlined(
+            onPressed: toggleSaved,
+            icon: Icon(
+              isSaved ? Icons.favorite : Icons.favorite_outline,
+            ),
           ),
-        ),
       ],
     );
   }

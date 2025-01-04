@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../app/app_config.dart';
 import 'db/local_db.dart';
 import 'db/quranic_verse_repo.dart';
 import 'db/user_preference_repo.dart';
@@ -7,7 +8,12 @@ import 'quote_share_service.dart';
 
 /// base class to provide db across the app
 class AppRepo {
-  const AppRepo._(this.verseRepo, this.preferenceRepo, this.shareService);
+  const AppRepo._({
+    required this.config,
+    required this.verseRepo,
+    required this.preferenceRepo,
+    required this.shareService,
+  });
 
   final QuranicVerseRepo verseRepo;
   final UserPreferenceRepo preferenceRepo;
@@ -15,20 +21,30 @@ class AppRepo {
   //! might replace  in a repo in future
   final QuoteShareService shareService;
 
-  static Future<AppRepo> init({required String language}) async {
-    final userRepo =
-        await UserPreferenceRepo.create(localLanguageCode: language);
+  final AppConfig config;
+  static Future<AppRepo> init({
+    required AppConfig appConfig,
+    required String language,
+  }) async {
+    final userRepo = await UserPreferenceRepo.create(
+      localLanguageCode: language,
+    );
     final pref = await LocalDatabase.init();
     final verseRepo = await QuranicVerseRepo.create(pref);
 
-    final uri = Uri.parse("www.google.com");
+    final uri = Uri.parse(appConfig.baseApiUrl);
 
     final quoteShareService = await QuoteShareService.create(
       pref: userRepo,
       hostUri: uri,
     );
 
-    final repo = AppRepo._(verseRepo, userRepo, quoteShareService);
+    final repo = AppRepo._(
+      config: appConfig,
+      shareService: quoteShareService,
+      preferenceRepo: userRepo,
+      verseRepo: verseRepo,
+    );
     return repo;
   }
 }
