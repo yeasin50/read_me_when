@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import '../../../infrastructure/app_repo.dart';
+
+import '../../../infrastructure/enum/ayah_langage.dart';
 import '../../../infrastructure/models/quranic_verse.dart';
 
 class QuoteBox extends StatelessWidget {
-  const QuoteBox({super.key, required this.verse});
+  const QuoteBox({
+    super.key,
+    required this.verse,
+    required this.lang,
+  });
 
   final QuranicVerse verse;
+  final AyahLanguage lang;
 
   @override
   Widget build(BuildContext context) {
-    final lang = context.userPreference.state.ayahLanguage;
-
     final textTheme = Theme.of(context).textTheme;
 
     return Container(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:read_me_when/src/infrastructure/enum/ayah_langage.dart';
 
 import '../infrastructure/app_repo.dart';
 import '../infrastructure/enum/mood.dart';
@@ -24,6 +25,13 @@ class AppRoute {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
       initialLocation: home,
+      initialExtra: {"initial": true},
+      redirect: (context, state) {
+        if ((state.extra as Map?)?["initial"] != true) return null;
+        final id = state.pathParameters["id"];
+        final lang = state.pathParameters["lang"] ?? "en";
+        return id == null ? null : "$quoteShare/$lang/$id";
+      },
       routes: [
         GoRoute(
           path: home,
@@ -44,16 +52,20 @@ class AppRoute {
           },
         ),
         GoRoute(
-          path: "$quoteShare/:id",
+          path: "$quoteShare/:lang/:id",
           pageBuilder: (context, state) {
             QuranicVerse? verse = (state.extra as Map?)?["verse"];
             final id = state.pathParameters["id"] ?? "";
+            final langCode = state.pathParameters["lang"] ?? "en";
 
             verse ??= context.verseRepo.state.getFromId(id);
             return MaterialPage(
               child: verse == null
                   ? const Text("failed to fetch")
-                  : GenerateImageToShare(verse: verse),
+                  : GenerateImageToShare(
+                      verse: verse,
+                      lang: AyahLanguage.fromCode(langCode),
+                    ),
             );
           },
         ),
