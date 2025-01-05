@@ -97,6 +97,7 @@ body {
 }
 /* Bismillah Text */
 .bismillah {
+  text-align: center;
   font-size: 2.5rem;
   color: gold;
   text-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 223, 0, 0.6); /* Increased glow */
@@ -122,6 +123,7 @@ body {
 
 /* Loading Text */
 .loading-text {
+  text-align: center;
   margin-top: 48px; /* Increased margin for better separation */
   font-size: 1.2rem; /* Slightly larger loading text */
   color: rgba(255, 255, 255, 0.8);
