@@ -1,0 +1,47 @@
+# Dart/Flutter build outputs
+.dart_tool/
+.packages
+build/
+generated_plugin_registrant.dart
+.metadata
+
+# Flutter-specific
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+android/app/build/
+android/.gradle/
+android/.idea/
+android/local.properties
+
+# Editor directories and settings
+.idea/
+.vscode/
+*.iml
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IntelliJ/Android Studio
+*.iml
+.gradle/
+*.apk
+*.keystore
+
+# Files created by pub
+pubspec.lock
+
+# Logs and debug output
+*.log
+
+# Coverage results
+coverage/
+
+# macOS-specific files
+*.DS_Store
+
+# Windows-specific files
+*.lnk
