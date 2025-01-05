@@ -1,0 +1,37 @@
+name: Update Contributors List in README
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+jobs:
+  update-readme:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Fetch contributors and update README
+        run: |
+          CONTRIBUTORS=$(curl -s https://api.github.com/repos/yeasin50/read_me_when/contributors)
+          CONTRIBUTORS_LIST=""
+
+          for user in $(echo "$CONTRIBUTORS" | jq -r '.[].login'); do
+            AVATAR_URL=$(echo "$CONTRIBUTORS" | jq -r ".[] | select(.login==\"$user\") | .avatar_url")
+            CONTRIBUTORS_LIST+="- ![$user]($AVATAR_URL) [$user](https://github.com/$user)\n"
+          done
+
+          # Update README file with contributors
+          sed -i "/## Contributors/,$ d" README.md
+          echo -e "\n## Contributors\n\n$CONTRIBUTORS_LIST" >> README.md
+
+      - name: Commit changes to README
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update contributors list in README"
+          git push

@@ -1,14 +1,15 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/app/route_config.dart';
+import 'package:verse_share/verse_share.dart';
+
+import '../../app/route_config.dart';
+import '../../infrastructure/enum/ayah_langage.dart';
 
 import '../../app/theme_config.dart';
 import '../../infrastructure/models/quranic_verse.dart';
-import 'utils/image_caputre.dart';
 import 'widgets/qoute_box.dart';
 import 'widgets/share_action_buttons.dart';
 
@@ -18,9 +19,11 @@ class GenerateImageToShare extends StatefulWidget {
   const GenerateImageToShare({
     super.key,
     required this.verse,
+    required this.lang,
   });
 
   final QuranicVerse verse;
+  final AyahLanguage lang;
 
   @override
   State<GenerateImageToShare> createState() => _GenerateImageToShareState();
@@ -39,7 +42,8 @@ class _GenerateImageToShareState extends State<GenerateImageToShare> {
           debugPrint(timeStamp.inMicroseconds.toString());
           RenderRepaintBoundary boundary = _imageCaptureKey.currentContext!
               .findRenderObject() as RenderRepaintBoundary;
-          await captureWidget(boundary, fileName: widget.verse.fileName);
+          await VerseShare().downloadImage(
+              boundary: boundary, fileName: widget.verse.fileName);
           setState(() => isTextVisible = false);
         },
       );
@@ -95,7 +99,10 @@ class _GenerateImageToShareState extends State<GenerateImageToShare> {
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.all(24.0),
-                      child: QuoteBox(verse: widget.verse),
+                      child: QuoteBox(
+                        verse: widget.verse,
+                        lang: widget.lang,
+                      ),
                     ),
                   ),
                   if (isTextVisible)

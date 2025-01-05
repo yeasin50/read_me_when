@@ -1,10 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:read_me_when/src/infrastructure/models/quranic_verse.dart';
-import '../generate_image.dart';
-import '../utils/image_caputre.dart';
 
 typedef OnImageDownload = Function(Size size);
 

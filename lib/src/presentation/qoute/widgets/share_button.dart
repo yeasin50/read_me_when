@@ -54,8 +54,9 @@ class ShareButton extends StatelessWidget {
         ),
         ActionButton(
           onPressed: () {
+            final langCode = context.userPreference.state.ayahLanguage.code;
             context.go(
-              "${AppRoute.quoteShare}/${verse.id}",
+              "${AppRoute.quoteShare}/$langCode/${verse.id}",
               extra: {"verse": verse},
             );
           },

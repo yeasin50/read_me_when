@@ -21,6 +21,8 @@ dependencies:
   path_provider: ^2.1.5
   file_picker: ^8.1.6
 
+  verse_share:
+    path: ./packages/verse_share
 
 dev_dependencies:
   flutter_test:

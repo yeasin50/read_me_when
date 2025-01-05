@@ -17,7 +17,7 @@ _flutter.loader.load({
         if (document.body.contains(loaderContainer)) {
           document.body.removeChild(loaderContainer);
         }
-      }, 500);
+      }, 3000);
     }
 
     await appRunner.runApp();
