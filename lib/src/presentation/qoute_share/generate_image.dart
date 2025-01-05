@@ -1,14 +1,13 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_me_when/src/app/route_config.dart';
+import 'package:verse_share/verse_share.dart';
 
 import '../../app/theme_config.dart';
 import '../../infrastructure/models/quranic_verse.dart';
-import 'utils/image_caputre.dart';
 import 'widgets/qoute_box.dart';
 import 'widgets/share_action_buttons.dart';
 
@@ -39,7 +38,8 @@ class _GenerateImageToShareState extends State<GenerateImageToShare> {
           debugPrint(timeStamp.inMicroseconds.toString());
           RenderRepaintBoundary boundary = _imageCaptureKey.currentContext!
               .findRenderObject() as RenderRepaintBoundary;
-          await captureWidget(boundary, fileName: widget.verse.fileName);
+          await VerseShare().downloadImage(
+              boundary: boundary, fileName: widget.verse.fileName);
           setState(() => isTextVisible = false);
         },
       );
