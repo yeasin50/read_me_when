@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/infrastructure/enum/ayah_langage.dart';
 
 import '../infrastructure/app_repo.dart';
+import '../infrastructure/enum/ayah_langage.dart';
 import '../infrastructure/enum/mood.dart';
 import '../infrastructure/models/quranic_verse.dart';
 import '../presentation/home/home_page.dart';
@@ -14,8 +14,8 @@ class AppRoute {
   static String favorite = "/favorite";
   static String history = "/history";
 
-  static String quote = "/quote/:mood";
-  static String quoteShare = "/quoteShare";
+  static String quote = "/verse";
+  static String quoteShare = "/share";
 
   static final GlobalKey<NavigatorState> _rootNavigatorKey =
       GlobalKey<NavigatorState>();
@@ -28,9 +28,12 @@ class AppRoute {
       initialExtra: {"initial": true},
       redirect: (context, state) {
         if ((state.extra as Map?)?["initial"] != true) return null;
-        final id = state.pathParameters["id"];
-        final lang = state.pathParameters["lang"] ?? "en";
-        return id == null ? null : "$quoteShare/$lang/$id";
+
+        print(state.uri.queryParameters);
+
+        // final id = state.uri.queryParameters["id"];
+        // final lang = state.uri.queryParameters["lang"] ?? "en";
+        // return id == null ? null : "$quoteShare/$lang/$id";
       },
       routes: [
         GoRoute(
@@ -42,7 +45,7 @@ class AppRoute {
         GoRoute(
           path: quote,
           pageBuilder: (context, state) {
-            final moodName = (state.pathParameters as Map? ?? {})["mood"];
+            final moodName = state.uri.queryParameters["mood"];
             return MaterialPage(
               name: quote,
               child: QuotePage(
@@ -52,11 +55,11 @@ class AppRoute {
           },
         ),
         GoRoute(
-          path: "$quoteShare/:lang/:id",
+          path: quoteShare,
           pageBuilder: (context, state) {
             QuranicVerse? verse = (state.extra as Map?)?["verse"];
-            final id = state.pathParameters["id"] ?? "";
-            final langCode = state.pathParameters["lang"] ?? "en";
+            final id = state.uri.queryParameters["id"] ?? "";
+            final langCode = state.uri.queryParameters["lang"] ?? "en";
 
             verse ??= context.verseRepo.state.getFromId(id);
             return MaterialPage(
