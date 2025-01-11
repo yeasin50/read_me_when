@@ -56,8 +56,7 @@ class ShareButton extends StatelessWidget {
           onPressed: () {
             final langCode = context.userPreference.state.ayahLanguage.code;
             context.go(
-              "${AppRoute.quoteShare}/$langCode/${verse.id}",
-              extra: {"verse": verse},
+              "${AppRoute.quoteShare}?lang=$langCode&id=${verse.id}",
             );
           },
           label: "Generate Image",
