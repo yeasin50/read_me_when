@@ -5,16 +5,19 @@ import '../infrastructure/app_repo.dart';
 import '../infrastructure/enum/ayah_langage.dart';
 import '../infrastructure/enum/mood.dart';
 import '../infrastructure/models/quranic_verse.dart';
+import '../presentation/error/error_page.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/qoute/qoute_page.dart';
 import '../presentation/qoute_share/generate_image.dart';
 
 class AppRoute {
-  static String home = '/?lang=&id=';
+  static String home = '/';
   static String favorite = "/favorite";
   static String history = "/history";
 
   static String quote = "/verse";
+
+  @Deprecated("this will be removed, use homepage sub route")
   static String quoteShare = "/share";
 
   static final GlobalKey<NavigatorState> _rootNavigatorKey =
@@ -25,20 +28,30 @@ class AppRoute {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
       initialLocation: home,
-      redirect: (context, state) {
-        final idStr = state.uri.queryParameters["id"] ?? '';
-        final langStr = state.uri.queryParameters["lang"] ?? 'en';
-
-        if (idStr.trim().isEmpty) return null;
-
-        return "$quoteShare?lang=$langStr&id=$idStr";
-      },
       routes: [
         GoRoute(
-          path: '/',
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: HomePage(),
-          ),
+          path: home,
+          pageBuilder: (context, state) {
+            final idStr = state.uri.queryParameters["id"] ?? '';
+            //todo: set userLang if null
+            final langCode = state.uri.queryParameters["lang"] ?? 'en';
+
+            if (idStr.trim().isEmpty) {
+              return const NoTransitionPage(
+                child: HomePage(),
+              );
+            }
+            final verse = context.verseRepo.state.getFromId(idStr);
+
+            return MaterialPage(
+              child: verse == null
+                  ? const ErrorPage(message: "failed to fetch")
+                  : GenerateImageToShare(
+                      verse: verse,
+                      lang: AyahLanguage.fromCode(langCode),
+                    ),
+            );
+          },
         ),
         GoRoute(
           path: quote,

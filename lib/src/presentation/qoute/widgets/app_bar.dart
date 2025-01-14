@@ -42,7 +42,7 @@ class _QuotePageAppBarState extends State<QuotePageAppBar> {
       children: [
         BackButton(
           onPressed: () {
-            context.go(AppRoute.home);
+            context.canPop() ? context.pop() : context.go(AppRoute.home);
           },
         ),
         Expanded(
