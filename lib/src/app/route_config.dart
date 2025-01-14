@@ -10,7 +10,7 @@ import '../presentation/qoute/qoute_page.dart';
 import '../presentation/qoute_share/generate_image.dart';
 
 class AppRoute {
-  static String home = "/";
+  static String home = '/?lang=&id=';
   static String favorite = "/favorite";
   static String history = "/history";
 
@@ -25,19 +25,17 @@ class AppRoute {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
       initialLocation: home,
-      initialExtra: {"initial": true},
       redirect: (context, state) {
-        if ((state.extra as Map?)?["initial"] != true) return null;
+        final idStr = state.uri.queryParameters["id"] ?? '';
+        final langStr = state.uri.queryParameters["lang"] ?? 'en';
 
-        print(state.uri.queryParameters);
+        if (idStr.trim().isEmpty) return null;
 
-        // final id = state.uri.queryParameters["id"];
-        // final lang = state.uri.queryParameters["lang"] ?? "en";
-        // return id == null ? null : "$quoteShare/$lang/$id";
+        return "$quoteShare?lang=$langStr&id=$idStr";
       },
       routes: [
         GoRoute(
-          path: home,
+          path: '/',
           pageBuilder: (context, state) => const NoTransitionPage(
             child: HomePage(),
           ),

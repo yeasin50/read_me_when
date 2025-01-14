@@ -33,7 +33,9 @@ ${verse.ayatInArabic} (${verse.suraName},${verse.ayatNo})
   }
 
   Future<void> copyLink(QuranicVerse verse) async {
-    final quoteLink = _deployUri.replace(query: verse.id).toString();
+    final langCode = _userPref.state.ayahLanguage.code;
+    final quoteLink =
+        _deployUri.replace(query: "lang=$langCode&id=${verse.id}").toString();
     await Clipboard.setData(ClipboardData(text: quoteLink));
   }
 }
