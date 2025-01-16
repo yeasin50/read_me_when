@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/infrastructure/enum/ayah_langage.dart';
 
 import '../infrastructure/app_repo.dart';
+import '../infrastructure/enum/ayah_langage.dart';
 import '../infrastructure/enum/mood.dart';
 import '../infrastructure/models/quranic_verse.dart';
+import '../presentation/error/error_page.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/qoute/qoute_page.dart';
 import '../presentation/qoute_share/generate_image.dart';
 
 class AppRoute {
-  static String home = "/";
+  static String home = '/';
   static String favorite = "/favorite";
   static String history = "/history";
 
-  static String quote = "/quote/:mood";
-  static String quoteShare = "/quoteShare";
+  static String quote = "/verse";
+
+  @Deprecated("this will be removed, use homepage sub route")
+  static String quoteShare = "/share";
 
   static final GlobalKey<NavigatorState> _rootNavigatorKey =
       GlobalKey<NavigatorState>();
@@ -25,24 +28,35 @@ class AppRoute {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
       initialLocation: home,
-      initialExtra: {"initial": true},
-      redirect: (context, state) {
-        if ((state.extra as Map?)?["initial"] != true) return null;
-        final id = state.pathParameters["id"];
-        final lang = state.pathParameters["lang"] ?? "en";
-        return id == null ? null : "$quoteShare/$lang/$id";
-      },
       routes: [
         GoRoute(
           path: home,
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: HomePage(),
-          ),
+          pageBuilder: (context, state) {
+            final idStr = state.uri.queryParameters["id"] ?? '';
+            //todo: set userLang if null
+            final langCode = state.uri.queryParameters["lang"] ?? 'en';
+
+            if (idStr.trim().isEmpty) {
+              return const NoTransitionPage(
+                child: HomePage(),
+              );
+            }
+            final verse = context.verseRepo.state.getFromId(idStr);
+
+            return MaterialPage(
+              child: verse == null
+                  ? const ErrorPage(message: "failed to fetch")
+                  : GenerateImageToShare(
+                      verse: verse,
+                      lang: AyahLanguage.fromCode(langCode),
+                    ),
+            );
+          },
         ),
         GoRoute(
           path: quote,
           pageBuilder: (context, state) {
-            final moodName = (state.pathParameters as Map? ?? {})["mood"];
+            final moodName = state.uri.queryParameters["mood"];
             return MaterialPage(
               name: quote,
               child: QuotePage(
@@ -52,11 +66,11 @@ class AppRoute {
           },
         ),
         GoRoute(
-          path: "$quoteShare/:lang/:id",
+          path: quoteShare,
           pageBuilder: (context, state) {
             QuranicVerse? verse = (state.extra as Map?)?["verse"];
-            final id = state.pathParameters["id"] ?? "";
-            final langCode = state.pathParameters["lang"] ?? "en";
+            final id = state.uri.queryParameters["id"] ?? "";
+            final langCode = state.uri.queryParameters["lang"] ?? "en";
 
             verse ??= context.verseRepo.state.getFromId(id);
             return MaterialPage(

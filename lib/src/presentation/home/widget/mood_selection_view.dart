@@ -34,10 +34,7 @@ class MoodSelectionView extends StatelessWidget {
                       child: MoodItemBuilder(
                         mood: e,
                         onTap: () {
-                          context.push(
-                            AppRoute.quote,
-                            extra: {"mood_name": e.name},
-                          );
+                          context.push("${AppRoute.quote}?mood=${e.name}");
                         },
                       ),
                     ),

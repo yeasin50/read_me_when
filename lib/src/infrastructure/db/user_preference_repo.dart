@@ -49,7 +49,6 @@ class UserPreferenceRepo {
   Future<void> setLocal(AyahLanguage lang) async {
     await localDB.saveUserAyahPreferLanguage(lang);
     _update(state.copyWith(ayahLanguage: lang));
-    
   }
 }
 
@@ -58,7 +57,8 @@ class UserPreferenceState extends Equatable {
 
   final AyahLanguage ayahLanguage;
 
-  static const UserPreferenceState none = UserPreferenceState(ayahLanguage: AyahLanguage.bangla);
+  static const UserPreferenceState none =
+      UserPreferenceState(ayahLanguage: AyahLanguage.english);
 
   @override
   List<Object?> get props => [ayahLanguage];
