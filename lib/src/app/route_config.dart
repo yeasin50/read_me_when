@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../infrastructure/app_repo.dart';
-import '../infrastructure/enum/ayah_langage.dart';
+import '../infrastructure/enum/ayah_language.dart';
 import '../infrastructure/enum/mood.dart';
 import '../infrastructure/models/quranic_verse.dart';
 import '../presentation/error/error_page.dart';

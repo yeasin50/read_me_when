@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../enum/ayah_langage.dart';
+import '../enum/ayah_language.dart';
 import '../enum/mood.dart';
 
 extension QuranicVerseExt on QuranicVerse {

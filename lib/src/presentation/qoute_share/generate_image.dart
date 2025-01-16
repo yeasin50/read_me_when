@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:verse_share/verse_share.dart';
 
 import '../../app/route_config.dart';
-import '../../infrastructure/enum/ayah_langage.dart';
+import '../../infrastructure/enum/ayah_language.dart';
 
 import '../../app/theme_config.dart';
 import '../../infrastructure/models/quranic_verse.dart';

@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 
-import '../enum/ayah_langage.dart';
+import '../enum/ayah_language.dart';
 import 'local_db.dart';
 
 ///- [ ] language support

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../infrastructure/enum/ayah_langage.dart';
+import '../../../infrastructure/enum/ayah_language.dart';
 import '../../../infrastructure/models/quranic_verse.dart';
 
 class QuoteBox extends StatelessWidget {

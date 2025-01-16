@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+import '../../infrastructure/app_repo.dart';
+import '../../infrastructure/enum/ayah_language.dart';
+import '../_common/max_width_constraints.dart';
+import '../qoute/widgets/translation_selection_view.dart';
 import 'widget/background_view.dart';
 import 'widget/mood_selection_view.dart';
 
@@ -12,6 +16,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  void onNativeChanged(AyahLanguage lang) async {
+    await context.userPreference.setLocal(lang);
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -34,7 +42,13 @@ class _HomePageState extends State<HomePage> {
                       .animate()
                       .fadeIn(duration: 600.ms, curve: Curves.easeOutQuad)
                       .slide(),
-                  const SizedBox(height: 64),
+                  const MaxWidthConstraints(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: LanguageUpdateView(),
+                    ),
+                  ),
+                  const SizedBox(height: 48),
                   const MoodSelectionView(),
                 ],
               ),
