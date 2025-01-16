@@ -33,35 +33,42 @@ class AyahInNativeView extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           RepaintBoundary(
-              child: Text(
-            verse.nativeAyah(ayahLang),
-            style: textTheme.headlineLarge?.copyWith(color: textColor),
-            textAlign: TextAlign.center,
-          )
-                  .animate(delay: 200.ms, target: 0, value: 1) //
-                  .blurXY(end: 16, duration: 300.ms)
-                  .tint(color: const Color(0xFF80DDFF))),
-          const SizedBox(height: 8),
-          RepaintBoundary(
             child: Text(
               verse.ayatInArabic,
               style: textTheme.titleLarge?.copyWith(color: textColor),
               textAlign: TextAlign.center,
             )
-                .animate(
-                  delay: 500.ms,
-                  onComplete: (_) => onAnimationEnd?.call(),
-                )
-                .fadeIn(duration: 600.ms, delay: 400.ms) //
+                .animate()
+                .fadeIn(duration: 500.milliseconds, delay: 250.ms)
                 .shimmer(
                   blendMode: BlendMode.exclusion,
-                  color: verse.mood.color.withAlpha(150),
+                  color: const Color(0xFFFFD700),
                 )
                 .animate()
                 .move(
                   begin: const Offset(16, 0),
                   curve: Curves.easeOutQuad,
                 ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            "${verse.suraName}(${verse.suraNo}:${verse.ayatNo})",
+            style: textTheme.bodyMedium,
+          )
+              .animate(delay: .7.seconds) //
+              .fadeIn(),
+          const SizedBox(height: 24),
+          RepaintBoundary(
+            child: Text(
+              verse.nativeAyah(ayahLang),
+              style: textTheme.headlineLarge?.copyWith(color: textColor),
+              textAlign: TextAlign.center,
+            )
+                .animate(
+                  delay: 1.seconds,
+                  onComplete: (_) => onAnimationEnd?.call(),
+                ) //
+                .fadeIn(duration: 300.ms),
           ),
         ],
       ),

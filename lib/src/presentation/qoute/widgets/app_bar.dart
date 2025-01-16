@@ -45,27 +45,16 @@ class _QuotePageAppBarState extends State<QuotePageAppBar> {
             context.canPop() ? context.pop() : context.go(AppRoute.home);
           },
         ),
-        Expanded(
-          child: Column(
-            children: [
-              Text(
-                widget.verse?.suraName ?? "...",
-                style: widget.textTheme.headlineLarge
-                    ?.copyWith(color: widget.textColor),
-              ),
-              Text(
-                widget.verse?.ayatNo ?? "...",
-                style: widget.textTheme.titleSmall
-                    ?.copyWith(color: widget.textColor),
-              ),
-            ],
-          ),
-        ),
         if (isMobile)
-          IconButton.outlined(
-            onPressed: toggleSaved,
-            icon: Icon(
-              isSaved ? Icons.favorite : Icons.favorite_outline,
+          Expanded(
+            child: Align(
+              alignment: Alignment.topRight,
+              child: IconButton.outlined(
+                onPressed: toggleSaved,
+                icon: Icon(
+                  isSaved ? Icons.favorite : Icons.favorite_outline,
+                ),
+              ),
             ),
           ),
       ],
