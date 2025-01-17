@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import '../_common/max_width_constraints.dart';
-import 'widgets/ayah_change_button.dart';
+import 'package:go_router/go_router.dart';
 
-import 'widgets/share_button.dart';
-
+import '../../app/route_config.dart';
 import '../../infrastructure/app_repo.dart';
 import '../../infrastructure/enum/mood.dart';
 import '../../infrastructure/models/quranic_verse.dart';
-import 'widgets/app_bar.dart';
+import '../_common/max_width_constraints.dart';
+import 'widgets/ayah_change_button.dart';
 import 'widgets/ayah_in_native_view.dart';
+import 'widgets/saved_button.dart';
+import 'widgets/share_button.dart';
 
 class QuotePage extends StatefulWidget {
   const QuotePage({
@@ -51,27 +52,41 @@ class _QuotePageState extends State<QuotePage> {
   void nextVerse() {
     selectedIndex++;
     if (selectedIndex >= verses.length) selectedIndex = 0;
+    controller.animateToPage(
+      selectedIndex,
+      duration: Durations.medium1,
+      curve: Curves.easeIn,
+    );
     setState(() {});
   }
 
   void onPreviousBack() {
     selectedIndex--;
     if (selectedIndex < 0) selectedIndex = verses.length - 1;
+    controller.animateToPage(
+      selectedIndex,
+      duration: Durations.medium1,
+      curve: Curves.easeOut,
+    );
     setState(() {});
   }
 
   ///  the  [AyahInNativeView] have some cool animation
   ///
   bool isAyahAnimationDone = false;
-
   bool isSharedSectionOpen = false;
 
   bool get showNextButton => !isSharedSectionOpen && isAyahAnimationDone;
 
+  final PageController controller = PageController();
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       floatingActionButton: ShareButton(
         verse: verse,
@@ -90,33 +105,76 @@ class _QuotePageState extends State<QuotePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              QuotePageAppBar(
-                textTheme: textTheme,
-                textColor: textColor,
-                verse: verse,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: BackButton(
+                  onPressed: () {
+                    context.canPop()
+                        ? context.pop()
+                        : context.go(AppRoute.home);
+                  },
+                ),
               ),
               Expanded(
                   child: Center(
                 child: MaxWidthConstraints(
-                  child: SingleChildScrollView(
+                  child: Padding(
                     padding: const EdgeInsets.all(24),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        AyahInNativeView(
-                          mood: verse.mood,
-                          verse: verse,
-                          onAnimationEnd: () {
-                            setState(() => isAyahAnimationDone = true);
-                          },
+                        Expanded(
+                          child: PageView.builder(
+                            pageSnapping: true,
+                            controller: controller,
+                            itemCount: verses.length,
+                            itemBuilder: (context, index) => Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: SavedButton(verse: verse),
+                                  ),
+                                  const SizedBox(height: 72),
+                                  AyahInNativeView(
+                                    mood: verses[index].mood,
+                                    verse: verses[index],
+                                    onAnimationEnd: () {
+                                      setState(
+                                          () => isAyahAnimationDone = true);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
                         const SizedBox(height: 72),
                         Visibility.maintain(
                           visible: showNextButton,
-                          child: AyahChangeButton(
-                            onNext: nextVerse,
-                            onPrevious: onPreviousBack,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton.icon(
+                                onPressed:
+                                    selectedIndex == 0 ? null : onPreviousBack,
+                                label: selectedIndex == 0
+                                    ? SizedBox.fromSize()
+                                    : const Text("Previous"),
+                              ),
+                              AyahChangeButton(
+                                onNext: nextVerse,
+                                onPrevious: onPreviousBack,
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: const Text("Share"),
+                              )
+                            ],
                           ),
                         ),
+                        const SizedBox(height: 72),
                       ],
                     ),
                   ),
