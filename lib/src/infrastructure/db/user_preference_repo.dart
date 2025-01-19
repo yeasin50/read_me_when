@@ -50,6 +50,12 @@ class UserPreferenceRepo {
     await localDB.saveUserAyahPreferLanguage(lang);
     _update(state.copyWith(ayahLanguage: lang));
   }
+
+  Future<void> setLangOnInit(String name) async {
+    final lang = AyahLanguage.fromCode(name);
+    _update(state.copyWith(ayahLanguage: lang));
+    await localDB.saveUserAyahPreferLanguage(lang);
+  }
 }
 
 class UserPreferenceState extends Equatable {

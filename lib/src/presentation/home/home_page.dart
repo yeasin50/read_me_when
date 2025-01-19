@@ -5,7 +5,7 @@ import '../../infrastructure/app_repo.dart';
 import '../../infrastructure/enum/ayah_language.dart';
 import '../_common/max_width_constraints.dart';
 import '../qoute/widgets/translation_selection_view.dart';
-import 'widget/background_view.dart';
+import '../_common/background_view.dart';
 import 'widget/mood_selection_view.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      body: HomeBackground(
+      body: BackgroundView(
         child: SafeArea(
           child: Center(
             child: SingleChildScrollView(

@@ -39,7 +39,7 @@ class _GenerateImageToShareState extends State<GenerateImageToShare> {
       setState(() => isTextVisible = true);
       WidgetsBinding.instance.addPostFrameCallback(
         (timeStamp) async {
-          debugPrint(timeStamp.inMicroseconds.toString());
+          // debugPrint(timeStamp.inMicroseconds.toString());
           RenderRepaintBoundary boundary = _imageCaptureKey.currentContext!
               .findRenderObject() as RenderRepaintBoundary;
           await VerseShare().downloadImage(

@@ -16,8 +16,6 @@ class AyahInNativeView extends StatelessWidget {
   final QuranicVerse verse;
   final Mood mood;
 
-  Color get textColor => mood.quoteTextColor;
-
   /// we gonna have pretty good animation  here.
   /// So, return  a callBack  when  the animation  is end
   final VoidCallback? onAnimationEnd;
@@ -35,7 +33,7 @@ class AyahInNativeView extends StatelessWidget {
           RepaintBoundary(
             child: Text(
               verse.ayatInArabic,
-              style: textTheme.titleLarge?.copyWith(color: textColor),
+              style: textTheme.titleLarge?.copyWith(),
               textAlign: TextAlign.center,
             )
                 .animate()
@@ -61,7 +59,7 @@ class AyahInNativeView extends StatelessWidget {
           RepaintBoundary(
             child: Text(
               verse.nativeAyah(ayahLang),
-              style: textTheme.headlineLarge?.copyWith(color: textColor),
+              style: textTheme.headlineLarge?.copyWith(),
               textAlign: TextAlign.center,
             )
                 .animate(

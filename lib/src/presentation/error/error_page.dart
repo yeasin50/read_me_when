@@ -7,13 +7,16 @@ class ErrorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ElevatedButton.icon(
-          onPressed: () => context.go("/"),
-          label: const Text("Go Home"),
-        )
-      ],
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ElevatedButton.icon(
+            onPressed: () => context.go("/"),
+            label: const Text("Go Home"),
+          )
+        ],
+      ),
     );
   }
 }

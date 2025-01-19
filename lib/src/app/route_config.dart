@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 
 import '../infrastructure/app_repo.dart';
 import '../infrastructure/enum/ayah_language.dart';
-import '../infrastructure/enum/mood.dart';
 import '../infrastructure/models/quranic_verse.dart';
 import '../presentation/error/error_page.dart';
 import '../presentation/home/home_page.dart';
@@ -28,39 +27,44 @@ class AppRoute {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
       initialLocation: home,
+      initialExtra: true,
+      redirect: (context, state) {
+        if (state.extra == true) {
+          final langCode = state.uri.queryParameters["lang"] ?? 'en';
+          context.userPreference.setLangOnInit(langCode);
+        }
+        return null;
+      },
       routes: [
         GoRoute(
           path: home,
           pageBuilder: (context, state) {
-            final idStr = state.uri.queryParameters["id"] ?? '';
-            //todo: set userLang if null
-            final langCode = state.uri.queryParameters["lang"] ?? 'en';
-
-            if (idStr.trim().isEmpty) {
+            final queryParam = state.uri.queryParameters;
+            final id = queryParam["id"] ?? '';
+            if (id.trim().isEmpty) {
               return const NoTransitionPage(
                 child: HomePage(),
               );
             }
-            final verse = context.verseRepo.state.getFromId(idStr);
 
-            return MaterialPage(
-              child: verse == null
-                  ? const ErrorPage(message: "failed to fetch")
-                  : GenerateImageToShare(
-                      verse: verse,
-                      lang: AyahLanguage.fromCode(langCode),
-                    ),
-            );
-          },
-        ),
-        GoRoute(
-          path: quote,
-          pageBuilder: (context, state) {
-            final moodName = state.uri.queryParameters["mood"];
-            return MaterialPage(
-              name: quote,
-              child: QuotePage(
-                mood: Mood.fromName(moodName),
+            final repo = context.verseRepo;
+            final verse = repo.state.getFromId(id);
+
+            if (verse != null) {
+              final verses = repo.state.getMoodForVerse(verse.mood);
+              final initialIndex = verses.indexOf(verse);
+
+              return NoTransitionPage(
+                child: VersePage(
+                  selectedIndex: initialIndex,
+                  verses: verses,
+                ),
+              );
+            }
+
+            return const NoTransitionPage(
+              child: ErrorPage(
+                message: "failed to fetch",
               ),
             );
           },

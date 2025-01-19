@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeBackground extends StatefulWidget {
-  const HomeBackground({
+class BackgroundView extends StatefulWidget {
+  const BackgroundView({
     super.key,
     required this.child,
   });
@@ -9,10 +9,10 @@ class HomeBackground extends StatefulWidget {
   final Widget child;
 
   @override
-  State<HomeBackground> createState() => _HomeBackgroundState();
+  State<BackgroundView> createState() => _BackgroundViewState();
 }
 
-class _HomeBackgroundState extends State<HomeBackground>
+class _BackgroundViewState extends State<BackgroundView>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Color?> _colorAnimation1;
