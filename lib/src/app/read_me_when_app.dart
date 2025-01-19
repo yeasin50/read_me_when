@@ -48,6 +48,7 @@ class _ReadMeWhenState extends State<ReadMeWhen> {
         return AppRepoInheritedWidget(
           repo: snapshot.requireData,
           child: MaterialApp.router(
+            title: "Read Me When",
             scrollBehavior: const ScrollBehavior().copyWith(
               scrollbars: false,
               dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},

@@ -12,8 +12,14 @@ class ShareButtonV2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        context.shareService.copyLink(verse);
+      onPressed: () async {
+        await context.shareService.copyLink(verse);
+        if (context.mounted == false) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Link copied to clipboard"),
+          ),
+        );
       },
       child: const Text("Share"),
     );

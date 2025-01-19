@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:read_me_when/src/app/read_me_when_app.dart';
+import 'package:read_me_when/src/infrastructure/app_repo.dart';
 
 import '../../app/route_config.dart';
 import '../../infrastructure/models/quranic_verse.dart';
@@ -33,6 +35,11 @@ class _VersePageState extends State<VersePage> {
   String get moodName => verses[selectedIndex].mood.name;
   QuranicVerse get verse => verses[selectedIndex];
 
+  void updatePath() {
+    final lang = context.userPreference.state.ayahLanguage.code;
+    context.go("/?lang=$lang&id=${verse.id}");
+  }
+
   void nextVerse() {
     selectedIndex++;
     if (selectedIndex >= verses.length) selectedIndex = 0;
@@ -41,7 +48,7 @@ class _VersePageState extends State<VersePage> {
       duration: Durations.medium1,
       curve: Curves.easeIn,
     );
-    context.go("/?id=${verse.id}");
+    updatePath();
     setState(() {});
   }
 
@@ -53,7 +60,7 @@ class _VersePageState extends State<VersePage> {
       duration: Durations.medium1,
       curve: Curves.easeOut,
     );
-    context.go("/?id=${verse.id}");
+    updatePath();
     setState(() {});
   }
 

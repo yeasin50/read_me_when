@@ -36,7 +36,9 @@ class MoodSelectionView extends StatelessWidget {
                         onTap: () {
                           final verse =
                               context.verseRepo.state.getMoodInitialVerse(e);
-                          context.go("/?id=${verse.id}");
+                          final lang =
+                              context.userPreference.state.ayahLanguage.code;
+                          context.go("/?lang-$lang&id=${verse.id}");
                         },
                       ),
                     ),
