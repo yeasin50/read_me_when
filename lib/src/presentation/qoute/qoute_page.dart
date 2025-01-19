@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/presentation/_common/background_view.dart';
 
 import '../../app/route_config.dart';
 import '../../infrastructure/models/quranic_verse.dart';
+import '../_common/background_view.dart';
 import '../_common/max_width_constraints.dart';
 import 'widgets/ayah_change_button.dart';
 import 'widgets/ayah_in_native_view.dart';
 import 'widgets/saved_button.dart';
+import 'widgets/share_button_v2.dart';
 
 ///  show a quranic verse for a specific mood
 ///
@@ -147,10 +148,9 @@ class _VersePageState extends State<VersePage> {
                                   onNext: nextVerse,
                                   onPrevious: onPreviousBack,
                                 ),
-                                TextButton(
-                                  onPressed: () {},
-                                  child: const Text("Share"),
-                                )
+                                ShareButtonV2(
+                                  verse: verse,
+                                ),
                               ],
                             ),
                           ),
