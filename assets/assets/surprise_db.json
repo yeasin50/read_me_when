@@ -1,0 +1,92 @@
+[
+    {
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 153,
+        "arabic": "إِنَّ ٱللَّهَ مَعَ ٱلصَّـٰبِرِينَ",
+        "english": "Indeed, Allah is with the patient.",
+        "bangla": "নিশ্চয় আল্লাহ্ ধৈর্যশীলদের সাথে আছেন।",
+        "chinese": "的确，真主与坚忍者同在。"
+    },
+    {
+        "sura_no": 65,
+        "sura_name": "At-Talaq",
+        "ayat_no": 3,
+        "arabic": "وَمَن يَتَوَكَّلْ عَلَى ٱللَّهِ فَهُوَ حَسْبُهُ",
+        "english": "And whoever relies upon Allah – then He is sufficient for him.",
+        "bangla": "যে আল্লাহ্‌র উপর নির্ভর করে, তিনিই তার জন্য যথেষ্ট।",
+        "chinese": "谁信托真主，真主对他来说足矣。"
+    },
+    {
+        "sura_no": 13,
+        "sura_name": "Ar-Ra’d",
+        "ayat_no": 28,
+        "arabic": "أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ",
+        "english": "Surely, in the remembrance of Allah do hearts find comfort.",
+        "bangla": "আল্লাহর স্মরণেই অন্তর শান্তি পায়।",
+        "chinese": "记念真主，心灵确实安宁。"
+    },
+    {
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 286,
+        "arabic": "لَا يُكَلِّفُ ٱللَّهُ نَفْسًۭا إِلَّا وُسْعَهَا",
+        "english": "Allah does not burden a soul beyond that it can bear.",
+        "bangla": "আল্লাহ্ কাউকে তার ক্ষমতার বাইরে কষ্ট দেন না।",
+        "chinese": "真主不使人承担超过其负担的重担。"
+    },
+    {
+        "sura_no": 7,
+        "sura_name": "Al-A'raf",
+        "ayat_no": 156,
+        "arabic": "وَرَحْمَتِى وَسِعَتْ كُلَّ شَىْءٍۢ",
+        "english": "My mercy encompasses all things.",
+        "bangla": "আমার দয়া সবকিছুকে আচ্ছাদিত করেছে।",
+        "chinese": "我的慈悯包罗万象。"
+    },
+    {
+        "sura_no": 14,
+        "sura_name": "Ibrahim",
+        "ayat_no": 7,
+        "arabic": "لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ",
+        "english": "If you are grateful, I will surely increase you.",
+        "bangla": "যদি তোমরা কৃতজ্ঞ হও, তবে আমি তোমাদের আরো বাড়িয়ে দেব।",
+        "chinese": "如果你们感谢，我必定增加你们的恩典。"
+    },
+    {
+        "sura_no": 94,
+        "sura_name": "Ash-Sharh",
+        "ayat_no": 6,
+        "arabic": "إِنَّ مَعَ ٱلْعُسْرِ يُسْرًۭا",
+        "english": "Indeed, with hardship [will be] ease.",
+        "bangla": "নিশ্চয় কষ্টের সাথে আছে সহজতা।",
+        "chinese": "的确，困难之后是容易。"
+    },
+    {
+        "sura_no": 82,
+        "sura_name": "Al-Infitar",
+        "ayat_no": 13,
+        "arabic": "إِنَّ ٱلْأَبْرَارَ لَفِى نَعِيمٍ",
+        "english": "Indeed, the righteous will be in pleasant places.",
+        "bangla": "নিশ্চয় সৎকর্মীরা থাকবে সুখী স্থানে।",
+        "chinese": "的确，善人必定生活在乐园中。"
+    },
+    {
+        "sura_no": 4,
+        "sura_name": "An-Nisa",
+        "ayat_no": 110,
+        "arabic": "وَهُوَ ٱلْغَفُورُ ٱلرَّحِيمُ",
+        "english": "And He is the Oft-Forgiving, Most Merciful.",
+        "bangla": "আর তিনি ক্ষমাশীল, পরম দয়ালু।",
+        "chinese": "他是宽恕的，仁慈的。"
+    },
+    {
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 2,
+        "arabic": "ذَٰلِكَ ٱلْكِتَـٰبُ لَا رَيْبَ ۛ فِيهِ هُدًۭى لِّلْمُتَّقِينَ",
+        "english": "This is the Book; in it is guidance sure, without doubt, to those who fear Allah.",
+        "bangla": "এটি সেই কিতাব যাতে নেই কোনো সন্দেহ, পথনির্দেশ মুত্তাকীদের জন্য।",
+        "chinese": "这是那本无疑的经典，为敬畏者的指导。"
+    }
+]
