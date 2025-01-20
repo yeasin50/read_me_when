@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:collection/collection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../enum/ayah_langage.dart';
+import '../enum/ayah_language.dart';
 
 /// could use abstract,
 class LocalDatabase {

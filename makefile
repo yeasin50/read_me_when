@@ -1,21 +1,50 @@
 # Define variables for the build
 FLUTTER = flutter
 WEB_PORT = 59201
-WEB_HOSTNAME = /read_me_when/
+REPO = read_me_when
 WEB_TARGET = ./lib/main_dev.dart
 
+ 
+build-web:
+	$(FLUTTER) build web --target=$(WEB_TARGET)  --release  --web-renderer html
 
-# Default target: Build the Flutter Web app
-build:
-	$(FLUTTER) build web --target=$(WEB_TARGET)  --release 
+ 
+run-dev:
+	$(FLUTTER) run -d web-server --web-port=$(WEB_PORT)  -t ./lib/main_dev.dart
 
-run:
-	$(FLUTTER) run --target=$(WEB_TARGET) --web-port=$(WEB_PORT) --web-hostname=$(WEB_HOSTNAME)
-
-# Clean the build
 clean:
-	$(FLUTTER) clean
+	@echo "Clean ..."
+	flutter clean
+	@echo "Clean Done ..."
+	flutter pub get
+	
+build:
+	@echo "Building ..."
+	flutter build web --release --base-href /$(REPO)/ -t ./lib/main_prod.dart
+	@echo "Building Done..."
 
-# Build and serve the app in one step
-build-and-serve: build
-	$(FLUTTER) serve --target=$(WEB_TARGET) --web-port=$(WEB_PORT) --web-hostname=$(WEB_HOSTNAME)
+
+deploy: clean build
+	@echo "Deploying the project..."
+
+	cd build/web && \
+	\
+	git init && \
+	\
+	git status && \
+	\
+	git remote add origin https://github.com/yeasin50/$(REPO).git && \
+	\
+	git checkout -b gh-pages && \
+	\
+	git add --all && \
+	git commit -m "update" && \
+	\
+	git push origin gh-pages -f
+
+	@echo "Deployment complete."
+	
+	
+	cd .. 
+	cd ..
+	@echo "Back to the root dir"

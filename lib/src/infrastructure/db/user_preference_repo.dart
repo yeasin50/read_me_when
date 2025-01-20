@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 
-import '../enum/ayah_langage.dart';
+import '../enum/ayah_language.dart';
 import 'local_db.dart';
 
 ///- [ ] language support
@@ -49,7 +49,12 @@ class UserPreferenceRepo {
   Future<void> setLocal(AyahLanguage lang) async {
     await localDB.saveUserAyahPreferLanguage(lang);
     _update(state.copyWith(ayahLanguage: lang));
-    
+  }
+
+  Future<void> setLangOnInit(String name) async {
+    final lang = AyahLanguage.fromCode(name);
+    _update(state.copyWith(ayahLanguage: lang));
+    await localDB.saveUserAyahPreferLanguage(lang);
   }
 }
 
@@ -58,7 +63,8 @@ class UserPreferenceState extends Equatable {
 
   final AyahLanguage ayahLanguage;
 
-  static const UserPreferenceState none = UserPreferenceState(ayahLanguage: AyahLanguage.bangla);
+  static const UserPreferenceState none =
+      UserPreferenceState(ayahLanguage: AyahLanguage.english);
 
   @override
   List<Object?> get props => [ayahLanguage];

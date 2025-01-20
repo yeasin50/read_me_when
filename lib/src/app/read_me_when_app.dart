@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:read_me_when/src/app/app_config.dart';
 
 import 'route_config.dart';
-import 'theme_config.dart';
 import '../infrastructure/app_repo.dart';
 
 class ReadMeWhen extends StatefulWidget {
@@ -49,6 +48,7 @@ class _ReadMeWhenState extends State<ReadMeWhen> {
         return AppRepoInheritedWidget(
           repo: snapshot.requireData,
           child: MaterialApp.router(
+            title: "Read Me When",
             scrollBehavior: const ScrollBehavior().copyWith(
               scrollbars: false,
               dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},

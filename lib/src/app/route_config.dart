@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../infrastructure/app_repo.dart';
-import '../infrastructure/enum/ayah_langage.dart';
-import '../infrastructure/enum/mood.dart';
+import '../infrastructure/enum/ayah_language.dart';
 import '../infrastructure/models/quranic_verse.dart';
+import '../presentation/error/error_page.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/qoute/qoute_page.dart';
 import '../presentation/qoute_share/generate_image.dart';
 
 class AppRoute {
-  static String home = "/";
+  static String home = '/';
   static String favorite = "/favorite";
   static String history = "/history";
 
   static String quote = "/verse";
+
+  @Deprecated("this will be removed, use homepage sub route")
   static String quoteShare = "/share";
 
   static final GlobalKey<NavigatorState> _rootNavigatorKey =
@@ -25,31 +27,44 @@ class AppRoute {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
       initialLocation: home,
-      initialExtra: {"initial": true},
+      initialExtra: true,
       redirect: (context, state) {
-        if ((state.extra as Map?)?["initial"] != true) return null;
-
-        print(state.uri.queryParameters);
-
-        // final id = state.uri.queryParameters["id"];
-        // final lang = state.uri.queryParameters["lang"] ?? "en";
-        // return id == null ? null : "$quoteShare/$lang/$id";
+        if (state.extra == true) {
+          final langCode = state.uri.queryParameters["lang"] ?? 'en';
+          context.userPreference.setLangOnInit(langCode);
+        }
+        return null;
       },
       routes: [
         GoRoute(
           path: home,
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: HomePage(),
-          ),
-        ),
-        GoRoute(
-          path: quote,
           pageBuilder: (context, state) {
-            final moodName = state.uri.queryParameters["mood"];
-            return MaterialPage(
-              name: quote,
-              child: QuotePage(
-                mood: Mood.fromName(moodName),
+            final queryParam = state.uri.queryParameters;
+            final id = queryParam["id"] ?? '';
+            if (id.trim().isEmpty) {
+              return const NoTransitionPage(
+                child: HomePage(),
+              );
+            }
+
+            final repo = context.verseRepo;
+            final verse = repo.state.getFromId(id);
+
+            if (verse != null) {
+              final verses = repo.state.getMoodForVerse(verse.mood);
+              final initialIndex = verses.indexOf(verse);
+
+              return NoTransitionPage(
+                child: VersePage(
+                  selectedIndex: initialIndex,
+                  verses: verses,
+                ),
+              );
+            }
+
+            return const NoTransitionPage(
+              child: ErrorPage(
+                message: "failed to fetch",
               ),
             );
           },

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/infrastructure/app_repo.dart';
-import 'package:read_me_when/src/infrastructure/models/quranic_verse.dart';
 
-import '../../../app/route_config.dart';
+import '../../../infrastructure/app_repo.dart';
+import '../../../infrastructure/models/quranic_verse.dart';
 import 'expandable_fab.dart';
 
 class ShareButton extends StatelessWidget {
@@ -55,8 +54,8 @@ class ShareButton extends StatelessWidget {
         ActionButton(
           onPressed: () {
             final langCode = context.userPreference.state.ayahLanguage.code;
-            context.go(
-              "${AppRoute.quoteShare}?lang=$langCode&id=${verse.id}",
+            context.push(
+              "/?lang=$langCode&id=${verse.id}",
             );
           },
           label: "Generate Image",

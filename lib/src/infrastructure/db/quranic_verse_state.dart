@@ -17,6 +17,12 @@ class QuranicVerseState {
 
   List<QuranicVerse> getMoodForVerse(Mood m) => data[m] ?? [];
 
+  QuranicVerse getMoodInitialVerse(Mood m) {
+    final verses = getMoodForVerse(m);
+    verses.shuffle();
+    return verses.first;
+  }
+
   List<QuranicVerse> get getSavedItems {
     return data.values //
         .reduce((value, element) => [...value, ...element])

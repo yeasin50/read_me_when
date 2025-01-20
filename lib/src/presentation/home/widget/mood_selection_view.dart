@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_me_when/src/presentation/_common/max_width_constraints.dart';
+import 'package:read_me_when/src/infrastructure/app_repo.dart';
 
-import '../../../app/route_config.dart';
 import '../../../infrastructure/enum/mood.dart';
+import '../../_common/max_width_constraints.dart';
 import 'mood_item_builder.dart';
 
 /// show the [Mood] selection view to navigate to
@@ -34,7 +34,11 @@ class MoodSelectionView extends StatelessWidget {
                       child: MoodItemBuilder(
                         mood: e,
                         onTap: () {
-                          context.push("${AppRoute.quote}?mood=${e.name}");
+                          final verse =
+                              context.verseRepo.state.getMoodInitialVerse(e);
+                          final lang =
+                              context.userPreference.state.ayahLanguage.code;
+                          context.go("/?lang-$lang&id=${verse.id}");
                         },
                       ),
                     ),
