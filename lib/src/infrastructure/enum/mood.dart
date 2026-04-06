@@ -74,22 +74,24 @@ extension MoodExt on Mood {
   /// Returns an appropriate icon based on the mood.
   Widget get icon => switch (this) {
         Mood.sad =>
-          Icon(FontAwesomeIcons.faceSadTear, color: iconColor, size: 40.0),
-        Mood.happy =>
-          Icon(FontAwesomeIcons.faceSmileBeam, color: iconColor, size: 40.0),
-        Mood.anger => Icon(FontAwesomeIcons.fire, color: iconColor, size: 40.0),
+          Icon(FontAwesomeIcons.faceSadTear.data, color: iconColor, size: 40.0),
+        Mood.happy => Icon(FontAwesomeIcons.faceSmileBeam.data,
+            color: iconColor, size: 40.0),
+        Mood.anger =>
+          Icon(FontAwesomeIcons.fire.data, color: iconColor, size: 40.0),
         Mood.disappointment =>
-          Icon(FontAwesomeIcons.frown, color: iconColor, size: 40.0),
+          Icon(FontAwesomeIcons.frown.data, color: iconColor, size: 40.0),
         Mood.loneliness =>
-          Icon(FontAwesomeIcons.solidMoon, color: iconColor, size: 40.0),
-        Mood.fear =>
-          Icon(FontAwesomeIcons.skullCrossbones, color: iconColor, size: 40.0),
-        Mood.trust =>
-          Icon(FontAwesomeIcons.handHoldingHeart, color: iconColor, size: 40.0),
-        Mood.love => Icon(FontAwesomeIcons.heart, color: iconColor, size: 40.0),
-        Mood.surprise =>
-          Icon(FontAwesomeIcons.faceSurprise, color: iconColor, size: 40.0),
-        Mood.disgust => Icon(FontAwesomeIcons.skull,
+          Icon(FontAwesomeIcons.solidMoon.data, color: iconColor, size: 40.0),
+        Mood.fear => Icon(FontAwesomeIcons.skullCrossbones.data,
+            color: iconColor, size: 40.0),
+        Mood.trust => Icon(FontAwesomeIcons.handHoldingHeart.data,
+            color: iconColor, size: 40.0),
+        Mood.love =>
+          Icon(FontAwesomeIcons.heart.data, color: iconColor, size: 40.0),
+        Mood.surprise => Icon(FontAwesomeIcons.faceSurprise.data,
+            color: iconColor, size: 40.0),
+        Mood.disgust => Icon(FontAwesomeIcons.skull.data,
             color: iconColor, size: 40.0), // Changed to Skull
       };
 

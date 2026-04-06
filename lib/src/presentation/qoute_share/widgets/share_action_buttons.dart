@@ -28,7 +28,7 @@ class _ShareActionState extends State<ShareAction> {
   ///getting local file to change the background image and passing to the parent
   Future<void> uploadFile() async {
     try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
+      FilePickerResult? result = await FilePicker.pickFiles(
         type: FileType.custom,
         // onFileLoading: (status) => print(status),
         allowedExtensions: ['jpg', 'png'],
