@@ -1,0 +1,92 @@
+[
+    {
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 40,
+        "arabic": "يَا بَنِي إِسْرَائِيلَ اذْكُرُوا نِعْمَتِيَ الَّتِي أَنْعَمْتُ عَلَيْكُمْ وَأَوْفُوا بِعَهْدِي أُوفِ بِعَهْدِكُمْ وَإِيَّايَ فَارْهَبُونِ",
+        "english": "\"Fear only Me\" as a reminder to follow God's covenant.",
+        "bangla": "আমাকেই ভয় করো- আল্লাহর অঙ্গীকার পালন করার জন্য একটি স্মরণ।",
+        "chinese": "“你们只应当畏惧我”提醒他们遵守真主的约言。"
+    },
+    {
+        "sura_no": 2,
+        "sura_name": "Al-Baqarah",
+        "ayat_no": 278,
+        "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ وَذَرُوا مَا بَقِيَ مِنَ الرِّبَا إِنْ كُنْتُمْ مُؤْمِنِينَ",
+        "english": "Calls believers to fear Allah and give up usury.",
+        "bangla": "আল্লাহকে ভয় করো এবং সুদ পরিত্যাগ করো।",
+        "chinese": "呼吁信士们敬畏真主并放弃利息。"
+    },
+    {
+        "sura_no": 3,
+        "sura_name": "Aal-e-Imran",
+        "ayat_no": 102,
+        "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَاتِهِ وَلَا تَمُوتُنَّ إِلَّا وَأَنْتُمْ مُسْلِمُونَ",
+        "english": "Urges believers to fear Allah as He deserves.",
+        "bangla": "আল্লাহকে তার প্রাপ্য সম্মানে ভয় করো।",
+        "chinese": "劝勉信士们敬畏真主，犹如他应得的敬畏。"
+    },
+    {
+        "sura_no": 3,
+        "sura_name": "Aal-e-Imran",
+        "ayat_no": 175,
+        "arabic": "إِنَّمَا ذَٰلِكُمُ الشَّيْطَانُ يُخَوِّفُ أَوْلِيَاءَهُ فَلَا تَخَافُوهُمْ وَخَافُونِ إِنْ كُنْتُمْ مُؤْمِنِينَ",
+        "english": "Do not fear people, but fear Allah if you are true believers.",
+        "bangla": "মানুষকে ভয় করো না, বরং আল্লাহকে ভয় করো যদি তোমরা প্রকৃত মুমিন হও।",
+        "chinese": "不要害怕人，若你们是真信士，当畏惧真主。"
+    },
+    {
+        "sura_no": 4,
+        "sura_name": "An-Nisa",
+        "ayat_no": 1,
+        "arabic": "يَا أَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمُ الَّذِي خَلَقَكُمْ مِنْ نَفْسٍ وَاحِدَةٍ",
+        "english": "Encourages fear of Allah who created and sustains humanity.",
+        "bangla": "আল্লাহকে ভয় করো যিনি মানব জাতিকে সৃষ্টি ও রক্ষণ করেন।",
+        "chinese": "劝勉人类敬畏创造并维持人类的真主。"
+    },
+    {
+        "sura_no": 5,
+        "sura_name": "Al-Ma'idah",
+        "ayat_no": 35,
+        "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ وَابْتَغُوا إِلَيْهِ الْوَسِيلَةَ",
+        "english": "Calls believers to fear Allah and seek means to come closer to Him.",
+        "bangla": "আল্লাহকে ভয় করো এবং তার নৈকট্য লাভের উপায় অনুসন্ধান করো।",
+        "chinese": "呼吁信士们敬畏真主并寻求接近他的途径。"
+    },
+    {
+        "sura_no": 8,
+        "sura_name": "Al-Anfal",
+        "ayat_no": 1,
+        "arabic": "فَاتَّقُوا اللَّهَ وَأَصْلِحُوا ذَاتَ بَيْنِكُمْ",
+        "english": "Reminds believers to fear Allah and maintain mutual relationships.",
+        "bangla": "আল্লাহকে ভয় করো এবং পারস্পরিক সম্পর্ক বজায় রাখো।",
+        "chinese": "提醒信士们敬畏真主并维持彼此的关系。"
+    },
+    {
+        "sura_no": 67,
+        "sura_name": "Al-Mulk",
+        "ayat_no": 12,
+        "arabic": "إِنَّ الَّذِينَ يَخْشَوْنَ رَبَّهُمْ بِالْغَيْبِ لَهُمْ مَغْفِرَةٌ وَأَجْرٌ كَبِيرٌ",
+        "english": "Those who fear Allah unseen receive His forgiveness and reward.",
+        "bangla": "যারা অদৃশ্য অবস্থায় আল্লাহকে ভয় করে, তাদের জন্য ক্ষমা এবং পুরস্কার রয়েছে।",
+        "chinese": "那些在未见真主情况下敬畏真主的人，将获得他的宽恕和奖赏。"
+    },
+    {
+        "sura_no": 79,
+        "sura_name": "An-Nazi’at",
+        "ayat_no": 40,
+        "arabic": "وَأَمَّا مَنْ خَافَ مَقَامَ رَبِّهِ وَنَهَى النَّفْسَ عَنِ الْهَوَىٰ",
+        "english": "Paradise is for those who fear standing before Allah.",
+        "bangla": "যারা আল্লাহর সামনে দাঁড়ানোর ভয় করে, তাদের জন্য জান্নাত রয়েছে।",
+        "chinese": "天堂属于那些畏惧在真主面前站立的人。"
+    },
+    {
+        "sura_no": 96,
+        "sura_name": "Al-‘Alaq",
+        "ayat_no": 14,
+        "arabic": "أَلَمْ يَعْلَمْ بِأَنَّ اللَّهَ يَرَىٰ",
+        "english": "Should people not fear Allah who observes all their actions?",
+        "bangla": "মানুষ কি আল্লাহকে ভয় করবে না, যিনি তাদের সমস্ত কার্যক্রম দেখেন?",
+        "chinese": "难道人不应当畏惧观察他们一切行为的真主吗？"
+    }
+]
